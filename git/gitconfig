@@ -128,5 +128,5 @@
 [include]
   path = .gitconfig.user
 [user]
-	email = jiefeng.hopkins@gmail.com
+	email = j@rallets.com
 	name = Jie Feng
