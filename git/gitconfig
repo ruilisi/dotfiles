@@ -125,3 +125,6 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[user]
+	email = jiefeng.hopkins@gmail.com
+	name = Jie Feng
