@@ -8,79 +8,79 @@
     # Yet Another Dotfile Repo v1.1
     # Now with Prezto and Vundle!
 
-[![Join the chat at https://gitter.im/hophacker/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hophacker/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![加入聊天https://gitter.im/hophacker/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hophacker/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 #### sh -c "\`curl -fsSL https://raw.githubusercontent.com/hophacker/dotfiles/master/install.sh \`"
 
 **Always be sure to run `rake update` after pulling to ensure plugins are updated**
 
-## What is YADR?
+## 什么是YADR?
 
-**YADR is an opinionated dotfile repo that will make your heart sing**
+**YADR 是一个具有偏向性的dotfile源，它会让开心到心里在唱歌**
 
-  * The best bits of all the top dotfile repos, vim and zsh plugins curated in one place, into a simple and cohesive way of working.
-  * More than 90 vim plugins, all under one roof, working together, each plugin researched and configured to be at its best, often with better shortcut keys.
-  * Many zsh plugins, starting with the wonderful Prezto base, and adding a few niceties on top.
-  * All things are vimized: irb, postgres command line, etc.
+  * 吸收了所有最好的dotfile源的精华，vim和zsh的插件被紧密连贯地粘合在一起。
+  * 超过90种vim插件被放在一起为您服务，每个插件都经过研究并被配置到最佳状态，且常常拥有最合理的快捷键 。
+  * 许多zsh插件完美地基于Prezto, 且在此之上叠加了一些优质特性。
+  * 一切的一切都被vim化: irb, postgres命令行等等.
 
-## Mailing List
+## 邮件列表
 
-Got questions, concerns, want to hear announcements? Join the [Google Group](https://groups.google.com/forum/#!forum/yadr-users)
+如果你有问题或者疑问又想听听我们的建议，请加入[Google Group](https://groups.google.com/forum/#!forum/yadr-users)
 
-Please use GitHub Issues for pull requests or bug reports only.
+如果是PR或者bug汇报，请一定使用Github。
 
-## Screenshot
+## 截图
 
 ![screenshot](http://i.imgur.com/3C1Ze.png)
 
-## Installation
+## 安装
 
-To get started please run:
+开始先运行:
 
 ```bash
 sh -c "`curl -fsSL https://raw.githubusercontent.com/hophacker/dotfiles/master/install.sh`"
 ```
 
-**Note:** YADR will automatically install all of its subcomponents. If you want to be asked
-about each one, use:
+**注意:** YADR会自动安装它的所有子模块。如果你需要在安装每个模块前确认一下, 使用:
 
 ```bash
 sh -c "`curl -fsSL https://raw.githubusercontent.com/hophacker/dotfiles/master/install.sh`" -s ask
 ```
 
-## Wait, you're not done! Do this:
+## 等等，还没完。这一步不能少:
 
-#### Install iTerm Solarized Colors
-YADR will install Solarized colorschemes into your iTerm. Go to Profiles => Colors => Load Presets to pick Solarized Dark.
+#### 安装 iTerm Solarized Colors
+YADR 会往iTerm里安装Solarized配色方案。进入Profiles => Colors => Load Presets，可以选择Solarized Dark。
 
-#### Remap caps-lock to escape with [Seil](https://pqrs.org/osx/karabiner/seil.html.en)
-The escape key is the single most used key in vim.  Old keyboards used to have Escape where Tab is today. Apple keyboards are the worst with their tiny Esc keys. But all this is fixed by remapping Caps to Escape.  If you're hitting a small target in the corner, you are slowing yourself down considerably, and probably damaging your hands with repetitive strain injuries.
+#### 用[Seil](https://pqrs.org/osx/karabiner/seil.html.en)来交换caps-lock和escape的位置。
+escape键是vim里最常用的键。老式键盘曾拥有Tab一样大的键，Apple键盘最差的地方就是拥有极小的Esc键。但是，
+通过交换Esc键和Caps键的位置可以修复这些问题。如果总是不停地敲击角落上的小目标，你肯定会大幅降低自己的效率，说不定还会让你的手因屡次肌肉用力产生小的创伤。
 
-#### Set up a system wide hotkey for iTerm (Keys=>Hotkey)
-Recommended Cmd-Escape, which is really Cmd-Capslock.
+#### 为iTerm设置一个系统级别的热键 (Keys=>Hotkey)
+推荐Cmd-Escape, 实际上就是Cmd-Capslock(因为键的位置互换了)。
 
-#### In iTerm, uncheck "Use Lion-style full screen" on General
-This will give you fast full screen windows that are switchable without switching to spaces.
+#### 在iTerm的General里, 取选 "Use Lion-style full screen"
+这可以给你一个可以切换却无需通过切换空间的大屏。
 
-#### in MacVim, uncheck Prefer native fullscreen under Advanced settings
-Same as iTerm. The Lion style spaces navigation slows everything down for no reason.
+#### 在MacVim的Advanced Settings里, 取消Prefer native fullscreen
+和iTerm一样。Lion风格的空间切换会毫无理由地让一切效率降低下来。
 
-## If you want to run vim in terminal
+## 如果你想在终端上运行
 
-* Make sure you install Solarized colorscheme in your terminal!
-* If you don't want to use solarized terminal, then make sure you do this:
+* 确定你的终端已经安装了Solarized配色方案！
+* 如果你不想用solarized配色的终端, 那就确认你这么做哦了:
 
       let g:yadr_using_unsolarized_terminal = 1
       # in ~/.vimrc.before
 
-* If you want to use an alternate colorcheme like Gruvbox, then in your `~/.vimrc.after` do:
+* 如果你想用一个替代的配色方案，譬如Gruvbox, 那就在你的`~/.vimrc.after` 这么做:
 
       let g:yadr_disable_solarized_enhancements = 1
       colorscheme base16-twilight
 
-### Upgrading
+### 升级
 
-Upgrading is easy.
+升级非常简单。
 
 ```bash
 cd ~/.yadr
@@ -88,40 +88,38 @@ git pull --rebase
 rake update
 ```
 
-## What's included, and how to customize?
+## 哪些东西被包括了，如何配置？
 
-Read on to learn what YADR provides!
+继续阅读，了解更多YADR给你提供的！
 
 ### [Homebrew](http://mxcl.github.com/homebrew/)
 
-Homebrew is _the missing package manager for OSX_. Installed automatically.
+Homebrew是_缺失了的OSX包管理系统_，它会被自动安装。
 
-We automatically install a few useful packages including ctags, git, macvim, hub, and the silver searcher ('ag')
-Note that our autocomplete plugin requires a MacVim that supports Lua. The installer knows how to install it, but if you had one installed before, you may need to manually remove your old MacVim.
+我们自动安装了一些常用的包，例如ctags, git, macvim, hub, 以及silver searcher ('ag')。
+注意我们的自动补全插件需要MacVim支持Lua。安装器知道如何安装，但如果你以前安装过，你需要手动删除你以前的MacVim。
 
 ### ZSH
 
-Think of Zsh as a more awesome bash without having to learn anything new.
-Automatic spell correction for your commands, syntax highlighting, and more.
-We've also provided lots of enhancements:
+把Zsh想象成一个更加牛逼的Bash，却又无需太多学习成本。它会为你写的命令行作自动拼写矫正，语法高亮，以及更多。
+我们并且还增加了很多增强性能:
 
-* Vim mode and bash style `Ctrl-R` for reverse history finder
-* `Ctrl-x,Ctrl-l` to insert output of last command
-* Fuzzy matching - if you mistype a directory name, tab completion will fix it
-* [fasd](https://github.com/clvv/fasd) integration - hit `z` and partial match for recently used directory. Tab completion enabled.
-* [Prezto - the power behind YADR's zsh](http://github.com/sorin-ionescu/prezto)
-* [How to add your own ZSH theme](doc/zsh/themes.md)
+* Vim模式和bash风格的历史反查询: `Ctrl-R`
+* 插入上一行命令的结果: `Ctrl-x,Ctrl-l`
+* 模糊匹配 - 如果你打错了文件夹名，tab补全会修正它。
+* [fasd](https://github.com/clvv/fasd) 集成 - 输入 `z` 会帮你半自动匹配最近用过的文件夹。Tab补全也开启了。
+* [Prezto - YADR's背后的zsh](http://github.com/sorin-ionescu/prezto)
+* [如何添加你自己的ZSH主题](doc/zsh/themes.md)
 
-### Aliases
+### 别名
 
-Lots of things we do every day are done with two or three character
-mnemonic aliases. Please feel free to edit them:
+大部分我们每天用的东西都可以用两到三个字符的别名完成。请自行修改他们:
 
-    ae # alias edit
-    ar # alias reload
+    ae # alias 编辑
+    ar # alias 重载
 
 
-### Git Customizations:
+### Git定制化:
 
 YADR will take over your `~/.gitconfig`, so if you want to store your usernames, please put them into `~/.gitconfig.user`
 

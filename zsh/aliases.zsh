@@ -108,6 +108,7 @@ alias gfap='git fetch --all --prune'
 alias gfch='git fetch'
 alias gd='git diff'
 alias gb='git b'
+alias gdf="git diff-tree --no-commit-id --name-only -r"
 # Staged and cached are the same thing
 alias gdc='git diff --cached -w'
 alias gds='git diff --staged -w'
@@ -211,3 +212,36 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
+
+
+# emacs
+alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
+# git alias
+git config --global alias.df "diff HEAD^ HEAD"
+git config --global alias.caa "commit -a --amend"
+alias dc=docker-compose
+alias start_dropbox='~/.dropbox-dist/dropboxd'
+alias unzip_CN="unzip -O GB18030"
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"
+alias gpo='git push origin'
+case "$OSTYPE" in
+   cygwin*)
+      alias open="cmd /c start"
+      ;;
+   linux*)
+      alias start="xdg-open"
+      alias open="xdg-open"
+      ;;
+   darwin*)
+      alias start="open"
+      ;;
+esac
+alias ssh_by_password='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
+alias ssh_copy_id_by_password='ssh-copy-id -o PreferredAuthentications=password -o PubkeyAuthentication=no'
+alias sshfab="ssh -F ~/Projects/rallets-fabric/.ssh/config"
+alias chrome_proxy="google-chrome --proxy-server='http://127.0.0.1:8118'"
+alias ls_folder_size="du -sch .[!.]* * |sort -h"
+alias top_by_memory="top -o %MEM"
