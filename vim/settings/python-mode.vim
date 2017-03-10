@@ -7,8 +7,7 @@ let g:pymode_run_bind = "<C-S-e>"
 " Override view python doc key shortcut to Ctrl-Shift-d
 let g:pymode_doc_bind = "<C-S-d>"
 let g:pymode_lint_ignore = "W0611"
-"}}}
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:pymode_options_max_line_length=120
 
 augroup filetype_python
     autocmd!
