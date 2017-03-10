@@ -166,7 +166,22 @@ map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 " ,hp = html preview
 map <silent> ,hp :!open -a Safari %<CR><CR>
 
-" Map Ctrl-x and Ctrl-z to navigate the quickfix error list (normally :cn and
-" :cp)
-nnoremap <silent> <C-x> :cn<CR>
-nnoremap <silent> <C-z> :cp<CR>
+"paste text in insertion mode
+inoremap <C-X><C-V> <esc>"+pa
+"paste text in normal mode
+nnoremap <C-X><C-V> "+p"
+
+" copy all out of vim
+nnoremap <C-X><C-A> <esc>gg"+yG
+" copy text in visual mode
+vnoremap <C-C> "+yy
+" copy all inside vim
+nnoremap <C-A> <esc>ggyG
+" edit file
+nmap <leader>ev :tabedit $MYVIMRC<cr>'tzo
+nmap <leader>em :tabedit makefile
+nmap <leader>ej :tabedit ~/.jshintrc<cr>'tzo
+
+" move around compile errors
+nnoremap <leader>n :cnext<cr>
+nnoremap <leader>p :cprevious<cr>

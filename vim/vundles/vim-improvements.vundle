@@ -1,7 +1,6 @@
 Bundle "AndrewRadev/splitjoin.vim"
 Bundle "Raimondi/delimitMate"
 Bundle "Shougo/neocomplete.git"
-Bundle "briandoll/change-inside-surroundings.vim.git"
 Bundle "godlygeek/tabular"
 Bundle "tomtom/tcomment_vim.git"
 Bundle "vim-scripts/camelcasemotion.git"
@@ -28,4 +27,5 @@ Bundle "vim-scripts/lastpos.vim"
 Bundle "vim-scripts/sudo.vim"
 Bundle "goldfeld/ctrlr.vim"
 Bundle "editorconfig/editorconfig-vim"
-
+Bundle 'majutsushi/tagbar'
+Bundle 'sirver/ultisnips'

@@ -1,0 +1,42 @@
+snippet options "bash command options" b
+while true; do
+  case "\$1" in
+    -a | --asset ) 
+      ASSET=true; shift ;;
+    -e | --environment ) 
+      case "\$2" in
+        "production" | "development") 
+          RAILS_ENV=$\2
+          ACCOUNT_ROOT=http://account.rallets.com/
+          SERVER_ROOT=http://rallets.com/
+          shift 2 
+          ;;
+        *) 
+          RAILS_ENV=development
+          ACCOUNT_ROOT=http://account.rallets.com/
+          SERVER_ROOT=http://apitest.rallets.com/
+          shift 2
+          ;;
+      esac 
+      ;;
+    -d | --delayed-job ) 
+      DELAYED_JOB=true; shift ;;
+    -- ) shift; break ;;
+    -h | --help ) 
+      echo "usage:
+  [-a | --asset] precompile assets
+  [-d | --delayed-job] run delayed job for queuing sending emails
+  [-e | --environment] provides environment which rails will run in 
+  [-h | --help] view manual
+" 
+      exit;;
+    * ) break ;;
+  esac
+done
+endsnippet
+snippet OS "Determine whether it's Mac/Linux/Windows" b
+if [ "$(uname)" == "Darwin" ]; then
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+fi
+endsnippet

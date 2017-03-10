@@ -75,6 +75,7 @@ filetype indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
+" set listchars=tab:>-
 
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
@@ -113,6 +114,10 @@ set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
+
+
+" ================ Python ===========================
+autocmd FileType python set colorcolumn=120
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim

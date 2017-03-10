@@ -1,0 +1,63 @@
+snippet react "React template" b
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
+
+class ${1:C} extends Component {
+  render () {
+  }
+}
+
+$1.propTypes = {
+  self: PropTypes.object,
+  location: PropTypes.object
+}
+
+export default connect((state, ownProps) => {
+  return {
+  }
+})($1)
+endsnippet
+
+snippet TODO "Javascript Todo" b
+// TODO: ${1:desc} `echo $USER` `!v strftime("%c")` ${2}
+endsnippet
+
+snippet connect "react redux connect" b
+export default connect((state, ownProps) => {
+  return {
+  }
+})($1)
+endsnippet
+
+snippet Card "Default Expandable Card" b
+<Card initiallyExpanded={false} className="MT-5">
+	<CardTitle showExpandableButton title="$1" />
+	<CardText expandable>
+	</CardText>
+	<CardActions expandable>
+		<RaisedButton primary label="保存" onTouchTap={$2} />
+	</CardActions>
+</Card>
+endsnippet
+
+snippet redux "redux" b
+export const SET_${1/\w/\u$0/g} = 'SET_${1/\w/\u$0/g}'
+import {store} from 'redux/store'
+import {Map} from 'immutable'
+export default function (${1} = Map({}), action) {
+  // let {$1Id} = action
+  switch (action.type) {
+    case SET_${1/\w/\u$0/g}:
+      return action.$1
+    default:
+      return $1
+  }
+}
+
+export function set${1/\w+\s*/\u$0/} ($1) {
+  store.dispatch({
+    type: SET_${1/\w/\u$0/g},
+    $1
+  })
+}
+endsnippet
