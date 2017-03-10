@@ -10,6 +10,9 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 " Default to eslint. If you need jshint, you can override this in
 " ~/.vimrc.after
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args='--ignore=F401,F403,F405,W0401'
+
 
 " I have no idea why this is not working, as it used to
 " be a part of syntastic code but was apparently removed

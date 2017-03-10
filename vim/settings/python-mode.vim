@@ -22,7 +22,4 @@ augroup filetype_python
     autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
     autocmd FileType python match Excess /\%80v.*/
     autocmd FileType python set nowrap
-    autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 augroup END
-" autocmd BufWritePost *.py call Flake8()
-"let g:flake8_cmd="/opt/strangebin/flake8000"
