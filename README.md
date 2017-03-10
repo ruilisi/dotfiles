@@ -121,94 +121,90 @@ Homebrew是_缺失了的OSX包管理系统_，它会被自动安装。
 
 ### Git定制化:
 
-YADR will take over your `~/.gitconfig`, so if you want to store your usernames, please put them into `~/.gitconfig.user`
+YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及其他设置, 请把他们放在`~/.gitconfig.user`
 
-It is recommended to use this file to set your user info. Alternately, you can set the appropriate environment variables in your `~/.secrets`.
+我们推荐在这个文件里设置你的用户信息是。另外，你可以将你的环境变量恰当地设置在你的 `~/.secrets`里。
 
-  * `git l` or `gl`- a much more usable git log
-  * `git b` or `gb`- a list of branches with summary of last commit
-  * `git r` - a list of remotes with info
-  * `git t` or `gt`- a list of tags with info
-  * `git nb` or `gnb`- a (n)ew (b)ranch - like checkout -b
-  * `git cp` or `gcp`- cherry-pick -x (showing what was cherrypicked)
-  * `git simple` - a clean format for creating changelogs
-  * `git recent-branches` - if you forgot what you've been working on
-  * `git unstage` / `guns` (remove from index) and `git uncommit` / `gunc` (revert to the time prior to the last commit - dangerous if already pushed) aliases
-  * Some sensible default configs, such as improving merge messages, push only pushes the current branch, removing status hints, and using mnemonic prefixes in diff: (i)ndex, (w)ork tree, (c)ommit and (o)bject
-  * Slightly improved colors for diff
-  * `gdmb` (g)it (d)elete (m)erged (b)ranches - Deletes all branches already merged on current branch
+  * `git l` 或 `gl`- 可用度更高的git log
+  * `git b` 或 `gb`- 含有上一个commit摘要的分支列表
+  * `git r` - 有关源列表的信息
+  * `git t` 或 `gt`- 有关标签列表的信息
+  * `git nb` 或 `gnb`- 正如checkoub -b，建立一个新的分支
+  * `git cp` 或 `gcp`- cherry-pick -x (显示那些被cherrypick过的)
+  * `git simple` - 一个更加简洁的构建changelogs的命令
+  * `git recent-branches` - 帮助告诉你最近使用过的分支
+  * `git unstage` / `guns` (从index上移除) 以及 `git uncommit` / `gunc` (撤销至上一个commit之前的时刻 - 如果代码已经push过，这个操作将会非常危险) 别名
+  * 一些合情合理的默认设置, 例如优化合并分支信息, 只推送当前分支, 删除状态提示, 以及在diff过程中使用易于记忆的前缀: (i)ndex, (w)ork tree, (c)ommit and (o)bject
+  * 微微优化了diff的颜色
+  * `gdmb` (g)it (d)elete (m)erged (b)ranches - 删除所有已经合并到当前分支的分支
 
 ### RubyGems
 
-A .gemrc is included. Never again type `gem install whatever --no-ri --no-rdoc`. `--no-ri --no-rdoc` is done by default.
+.gemrc被包含了。 再也不用输入`gem install whatever --no-ri --no-rdoc`. `--no-ri --no-rdoc`，因为默认都做好哦了。
 
-### Tmux configuration
+### Tmux 设置
 
-`tmux.conf` provides some sane defaults for tmux on Mac OS like a powerful status bar and vim keybindings.
-You can customize the configuration in `~/.tmux.conf.user`.
+`tmux.conf` 为Mac OS上的tmux提供了一些合情合理的默认设置，例如强大的状态条和VIM键盘绑定。
+你可以在`~/.tmux.conf.user`修改配置。
 
-### Vimization of everything
+### 让所有的东西都Vim风格化
 
-The provided inputrc and editrc will turn your various command line tools like mysql and irb into vim prompts. There's
-also an included Ctrl-R reverse history search feature in editrc, very useful in irb, postgres command line, and etc.
+已经提供好的inputrc和editrc将把你的很多命令行工具－例如mysql和irb－转变成vim风格的。并且editrc还包含了一个Ctrl-R反向历史搜索功能，这在irb、postgres命令行等等中非常实用。
 
-### Github Issues: [ghi gem](https://github.com/stephencelis/ghi)
+### Github 问题: [ghi gem](https://github.com/stephencelis/ghi)
 
-We include the `ghi` command. Try `ghi list` and have fun managing issues from command line!
-
-
-## Vim - What's included?
-
- * [Navigation - NERDTree, EasyMotion, CtrlP and more](doc/vim/navigation.md)
- * [Text Objects - manipulate ruby blocks, and more](doc/vim/textobjects.md)
- * [Code manipulation - rails support, comments, snippets, highlighting](doc/vim/coding.md)
- * [Utils - indents, paste buffer management, lots more](doc/vim/utils.md)
- * [General enhancements that don't add new commands](doc/vim/enhancements.md)
-
-A list of some of the most useful commands that YADR provides in vim are
-included below. This is not a comprehensive list. To get deeper knowledge,
-practice a few of these every day, and then start looking into the lists
-of plugins above to learn more.
-
-#### Navigation
-
- * `,z` - go to previous buffer (:bp)
- * `,x` - go to next buffer (:bn)
- * `Cmd-j` and `Cmd-k` to move up and down roughly by functions (`Alt` in Linux)
- * `Ctrl-o` - Old cursor position - this is a standard mapping but very useful, so included here
- * `Ctrl-i` - opposite of Ctrl-O (again, this is standard)
-
-#### Search/Code Navigation
-
- * `,f` - instantly Find definition of class (must have exuberant ctags installed)
- * `,F` - same as `,f` but in a vertical split
- * `,gf` or `Ctrl-f` - same as vim normal gf (go to file), but in a vertical split (works with file.rb:123 line numbers also)
- * `gF` - standard vim mapping, here for completeness (go to file at line number)
- * `,k` - Search the current word under the cursor and show results in quickfix window
- * `,K` - Grep the current word up to next exclamation point (useful for ruby foo! methods)
- * `Cmd-*` - highlight all occurrences of current word (similar to regular `*` except doesn't move)
- * `,hl` - toggle search highlight on and off
- * `,gg` or `,ag` - Grep command line, type between quotes. Uses Ag Silver Searcher.
- * After searching with `,gg` you can navigate the results with `Ctrl-x` and `Ctrl-z` (or standard vim `:cn` and `:cp`)
- * `,gd` - Grep def (greps for 'def [function name]') when cursor is over the function name
- * `,gcf` - Grep Current File to find references to the current file
- * `//` - clear the search
- * `,,w` (alias `,<esc>`) or `,,b` (alias `,<shift-esc>`) - EasyMotion, a vimperator style tool that highlights jump-points on the screen and lets you type to get there.
- * `,mc` - mark this word for MultiCursor (like sublime). Use `Ctrl-n` (next), `Ctrl-p` (prev), `Ctrl-x`(skip) to add more cursors, then do normal vim things like edit the word.
- * `gK` - Opens the documentation for the word under the cursor.
- * Spacebar - Sneak - type two characters to move there in a line. Kind of like vim's `f` but more accurate.
- * `:Gsearch foo` - global search, then do your normal `%s/search/replace/g` and follow up with `:Greplace` to replace across all files. When done use `:wall` to write all the files.
+我们纳入了`ghi`命令。 试试 `ghi list`，然后在使用命令行管理issues中获得快了吧！
 
 
-#### File Navigation
+## Vim - 哪些被包含了呢？
 
- * `,t` - CtrlP fuzzy file selector
- * `,b` - CtrlP buffer selector - great for jumping to a file you already have open
- * `Cmd-Shift-M` - jump to method - CtrlP tag search within current buffer
- * `,jm` jump to models. Other `,j` mappings: `,jc` for controllers, `,jh` for helpers, etc. If you think of a concept and a letter, we've got you covered.
- * `Cmd-Shift-N` - NERDTree toggle (`Alt` in Linux)
- * `Ctrl-\` - Show current file in NERDTree
- * `Cmd-Shift-P` - Clear CtrlP cache
+ * [导航 - NERDTree, EasyMotion, CtrlP 以及更多](doc/vim/navigation.md)
+ * [文本对象 - 操作ruby块, 以及更多](doc/vim/textobjects.md)
+ * [操作代码 - rails支持, 注释, 代码片, 高亮](doc/vim/coding.md)
+ * [工具 - 缩进, 粘贴缓冲区管理， 以及更多](doc/vim/utils.md)
+ * [通常的并不添加新命令行的改进](doc/vim/enhancements.md)
+
+下面列出了一些YADR提供的最有用的命令。这不是一个很全的列表。若想挖掘更多信息，每天联系其中几个，然后开始深入查看上面列表中提供的插件来学习更多。
+
+#### 导航
+
+ * `,z` - 到前一个缓冲区 (:bp)
+ * `,x` - 到下一个缓冲区 (:bn)
+ * `Cmd-j` 及 `Cmd-k` 用函数来上下粗略的移动(Linux中的`Alt`)
+ * `Ctrl-o` - 之前的光标位置 - 这是一个标准的健映射，但很有用，所以这边给出来了
+ * `Ctrl-i` - 对应于Ctrl-O(再一次, 这是标准的)
+
+#### 搜索/代码导航
+
+ * `,f` - 快速查找class的定义(exuberant ctags必须被安装过)
+ * `,F` - 类似于`,f`，但是会用垂直分割的界面显示
+ * `,gf` 或 `Ctrl-f` - 和vim中正常的gf一样 (进入文件), 但是在一个垂直分割的界面中 (碰到带有行数的，例如file.rb:123，一样能行)
+ * `gF` - 标准的vim键映射, 为了完整性而列在这里 (带有行数也行)
+ * `,k` - 搜索当前光标下的单词，然后将结果显示到quickfix窗口里
+ * `,K` - Grep当前单词一直到下一个感叹号(在ruby foo!方法中很有用)
+ * `Cmd-*` - 将所有当前单词出现的地方高亮(与正常的`*`一样，除了不移动)
+ * `,hl` - 切换搜索高亮
+ * `,gg` 或 `,ag` - 在命令行中grep，在双引号之间输入。 使用 Ag(Silver Searcher)。
+ * 在使用`,gg`搜索过，你可以用`Ctrl-x` 和 `Ctrl-z`来浏览 (或者标准vim命令 `:cn` 和 `:cp`)
+ * `,gd` - 当光标在函数名字上的时候，Grep定义 (检索'def [function name]')
+ * `,gcf` - 在当前文件搜索对当前文件的索引
+ * `//` - 清除搜索
+ * `,,w` (别名 `,<esc>`) 或者 `,,b` (别名 `,<shift-esc>`) - EasyMotion, 一个让你有种vim统治者的工具，它能将所有屏幕上所有可以跳入的地方全部高亮。
+ * `,mc` - 将该单词标记为多光标处理模式(就像sublime). 用 `Ctrl-n` (下一个), `Ctrl-p` (前一个), `Ctrl-x`(跳过) 来添加更多的光标, 然后就像正常用vim那样，例如修改单词。
+ * `gK` - 打开cursor底下这个单词的文档。
+ * Spacebar - Sneak - 在一行中通过输入两个字符来移动。就像是vim的`f`但更加精确。
+ * `:Gsearch foo` - 全局搜索, 然后使用正常的`%s/search/replace/g`紧接着用`:Greplace`来在所有的文件中作替换操作。结束后，使用`:wall`来写入所有文件。
+
+
+#### 文件导航
+
+ * `,t` - CtrlP 模糊文件选择
+ * `,b` - CtrlP 缓冲区选择 - 非常适用于想跳入一个你已经打开的文件
+ * `Cmd-Shift-M` - 跳入方法- CtrlP 在当前缓冲区里作标签化搜索
+ * `,jm` 跳入模型内。其他`,j`键映射: `,jc`控制器, `,jh`帮助集, 等等。
+ * `Cmd-Shift-N` - NERDTree toggle (Linux中的`Alt`)
+ * `Ctrl-\` - 在NERDTree中显示当前文件
+ * `Cmd-Shift-P` - 清除CtrlP缓存
 
 #### Better keystrokes for common editing commands
 
