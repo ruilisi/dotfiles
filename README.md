@@ -12,7 +12,7 @@
 
 #### sh -c "\`curl -fsSL https://raw.githubusercontent.com/hophacker/dotfiles/master/install.sh \`"
 
-**Always be sure to run `rake update` after pulling to ensure plugins are updated**
+**总是记住在拉取代码后运行`rake update`来确保插件都更新过了**
 
 ## 什么是YADR?
 
@@ -206,93 +206,92 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
  * `Ctrl-\` - 在NERDTree中显示当前文件
  * `Cmd-Shift-P` - 清除CtrlP缓存
 
-#### Better keystrokes for common editing commands
+#### 常用编辑命令更好的按键方法
 
- * Ctrl-Space to autocomplete. Tab for snipmate snippets.
- * `,#` `,"` `,'` `,]` `,)` `,}` to surround a word in these common wrappers. the # does #{ruby interpolation}. works in visual mode (thanks @cj). Normally these are done with something like `ysw#`
- * `Cmd-'`, `Cmd-"`, `Cmd-]`, `Cmd-)`, etc to change content inside those surrounding marks. You don't have to be inside them (`Alt` in Linux)
- * `,.` to go to last edit location (same as `'.`) because the apostrophe is hard on the pinky
- * `,ci` to change inside any set of quotes/brackets/etc
+ * 自动补全: Ctrl-空格。snipmate代码片段: Tab。
+ * 将一个单词用这些符号包裹住: `,#` `,"` `,'` `,]` `,)` `,}`。# 是为了 #{ruby字符串插入}。 在Visual模式下也能运行 (谢谢 @cj)。 正常地，他们通过类似`ysw#`这样的来做到。
+ * 改变包裹标签里的内容: `Cmd-'`, `Cmd-"`, `Cmd-]`, `Cmd-)`, 等等。你不需要在包裹标签里面。(Linux中的`Alt`)
+ * 进入上一个编辑位置`,.` (和`'.`一样) 因为撇号对于小指来说非常困难。
+ * `,ci`来改变任何以一个引号对/括符对等等
 
-#### Tabs, Windows, Splits
+#### 选项窗口, 窗口, 分割栏
 
- * Use `Cmd-1` thru `Cmd-9` to switch to a specific tab number (like iTerm and Chrome) - and tabs have been set up to show numbers (`Alt` in Linux)
- * `Ctrl-h,l,j,k` - to move left, right, down, up between splits. This also works between vim and tmux splits thanks to `vim-tmux-navigator`.
- * `Q` - Intelligent Window Killer. Close window `wincmd c` if there are multiple windows to same buffer, or kill the buffer `bwipeout` if this is the last window into it.
- * `vv` - vertical split (`Ctrl-w,v`)
- * `ss` - horizontal split (`Ctrl-w,s`)
- * `,qo` - open quickfix window (this is where output from Grep goes)
- * `,qc` - close quickfix
+ * 使用 `Cmd-1` 到 `Cmd-9` 来切换到任何一个特定的选项窗口(就像iTerm和Chrome) - 选项窗口必须被设置为显示号码(Linux中的`Alt`)
+ * `Ctrl-h,l,j,k` - 来移动到左、右、下、上的分割栏中。这在vim和分割栏一起的时候依然有效，感谢`vim-tmux-navigator`。
+ * `Q` - 只能窗口强杀。用`wincmd c`关闭窗口，如果同一个缓冲区有多个对应窗口, 或者当这是最后一个对应窗口时杀掉缓冲区`bwipeout`。
+ * `vv` - 垂直分割 (`Ctrl-w,v`)
+ * `ss` - 水平分割 (`Ctrl-w,s`)
+ * `,qo` - 打开quickfix窗口 (grep的输出就会到这个窗口里)
+ * `,qc` - 关闭quickfix
 
-#### Utility
+#### 工具
 
- * `Ctrl-p` after pasting - Use `p` to paste and `Ctrl-p` to cycle through previous pastes. Provided by YankRing.
- * `,yr` - view the yankring - a list of your previous copy commands. also you can paste and hit `ctrl-p` for cycling through previous copy commands
- * `crs`, `crc`, `cru` via abolish.vim, coerce to snake_case, camelCase, and UPPERCASE. There are more `:help abolish`
- * `:NR` - NarrowRgn - use this on a bit of selected text to create a new split with just that text. Do some work on it, then :wq it to get the results back.
- * `,ig` - toggle visual indentation guides
- * `,cf` - Copy Filename of current file (full path) into system (not vi) paste buffer
- * `,cn` - Copy Filename of current file (name only, no path)
- * `,yw` - yank a word from anywhere within the word (so you don't have to go to the beginning of it)
- * `,ow` - overwrite a word with whatever is in your yank buffer - you can be anywhere on the word. saves having to visually select it
- * `,ocf` - open changed files (stolen from @garybernhardt). open all files with git changes in splits
- * `,w` - strip trailing whitespaces
- * `sj` - split a line such as a hash {:foo => {:bar => :baz}} into a multiline hash (j = down)
- * `sk` - unsplit a link (k = up)
- * `,he` - Html Escape
- * `,hu` - Html Unescape
- * `,hp` - Html Preview (open in Safari)
- * `Cmd-Shift-A` - align things (type a character/expression to align by, works in visual mode or by itself) (`Alt` in Linux)
- * `:ColorToggle` - turn on #abc123 color highlighting (useful for css)
- * `:Gitv` - Git log browsers
- * `,hi` - show current Highlight group. if you don't like the color of something, use this, then use `hi! link [groupname] [anothergroupname]` in your vimrc.after to remap the color. You can see available colors using `:hi`
- * `,gt` - Go Tidy - tidy up your html code (works on a visual selection)
- * `:Wrap` - wrap long lines (e.g. when editing markdown files)
- * `Cmd-/` - toggle comments (usually gcc from tComment) (`Alt` in Linux)
- * `gcp` (comment a paragraph)
+ * `Ctrl-p` 使用 `p` 来粘贴以及用 `Ctrl-p` 来循环选择之前的可粘贴内容。 由YankRing提供。
+ * `,yr` - 查看yankring) - 你之前复制的内容列表。当然你可以粘贴后键入`ctrl-p` 来循环查看之前的复制内容。
+ * `crs`, `crc`, `cru`通过abolish.vim来迫使采用snake_case, camelCase, 和 UPPERCASE。 `:help abolish`可以查看更多内容。
+ * `:NR` - NarrowRgn - 在选择的文本上使用这个命令来创建一个就用这些文本生成的分割显示区域。试一试，然后用:wq来返回。
+ * `,ig` - 切换缩进可视化样式
+ * `,cf` - 复制当前文件的文件名(全路径)到系统(不是vi)的粘贴缓冲区
+ * `,cn` - 同上，但仅为文件名
+ * `,yw` - 从一个单词内部的任何一个地方拉取这个单词(所以你不需要到单词的起始位置)
+ * `,ow` - 用当前拉取区域的内容(即复制的内容)覆盖当前光标所在单词 - 你可以在当前单词的任何地方。为你省去可视选择的过程。
+ * `,ocf` - 打开所有改过的文件(从@garybernhardt偷过来的)。将所有git中改过的文件全部分割显示出来。
+ * `,w` - 删除尾部空白字符
+ * `sj` - 将一行例如一个一行散列{:foo => {:bar => :baz}}分割为多行的散列(j = 向下)
+ * `sk` - 撤销裂开的链接(k = 向上)
+ * `,he` - Html 字符转义
+ * `,hu` - Html 字符反转
+ * `,hp` - Html 预览 (用Safari打开)
+ * `Cmd-Shift-A` - 对其 (输入一个字符/表达式来对其, 在可视化模式或者它本身情况下都能工作) (Linux里的`Alt`)
+ * `:ColorToggle` - 打开#abc123颜色高亮(css中有效)
+ * `:Gitv` - Git记录的浏览器
+ * `,hi` - 显示当前的高亮组。如果你不喜欢什么东西的颜色, 先用这个, 然后在你的vimrc.after中`hi! link [groupname] [anothergroupname]`来重新映射颜色。你可以通过使用`:hi`来查看所有可用的颜色。
+ * `,gt` - Go Tidy - 清理你的html代码 (在可视选择情况下可用)
+ * `:Wrap` - 包裹长行(例如在编辑markdown时)
+ * `Cmd-/` - 切换注释 (通常情况下gcc中从tComment来) (Linux中是`Alt`)
+ * `gcp` (注释一段)
 
 #### Rails & Ruby
 
- * `,vv` and `,cc` to switch between view and controller - these are maps to :Rcontroller and :Rview. Explore the :R<Tab> family of commands for more fun from rails.vim!
- * `,rs` and `,rl` to run rspec or a spec line in iTerm (check iTerm window for results)
- * `,ss` and `,sl` for the same using `spring rspec` which makes your Rails specs faster by caching the Rails env (must have spring gem installed)
- * vim-ruby-refactoring - try `,rem`, `,rel` to extract methods or let statements
- * `Ctrl-s` - Open related spec in a split. Similar to :A and :AV from rails.vim but is also aware of the fast_spec dir and faster to type
- * `:Bopen [gem name]` to navigate to a gem (@tpope/vim-bundler)
- * `,gcp` - Grep Current Partial to find references to the current view partial
- * `,orb` - outer ruby block. takes you one level up from nested blocks (great for rspec)
+ * `,vv` 和 `,cc` 来在view和controller中切换 - 他们是:Rcontroller和:Rview对应的映射。探索一下:R<Tab>家族的命令可以了解更多rails.vim的乐趣!
+ * `,rs` 和 `,rl` 来在iTerm中运行rspec 或者一个 spec 行 (查看iTerm窗口来获得信息)
+ * `,ss` 和 `,sl` 来达到一样的事情，通过使用`spring rspec`，一个能将你的Rails specs变得速度更快，通过缓存Rails env (必须有spring gem安装过)
+ * vim-ruby-refactoring - 试一试 `,rem`, `,rel` 来抽取方法或者let声明
+ * `Ctrl-s` - 打开相关的spec到分割窗口中。与rails.vim中的:A 和 :AV相似，但是能够注意到fast_spec目录以及输入起来速度更快
+ * `:Bopen [gem name]` 来导航进 gem (@tpope/vim-bundler)
+ * `,gcp` - Grep当前的Partial来找到指向当前view partial的所有参考。
+ * `,orb` - 到ruby块上一层。带你从嵌套的块中到达上一个层 (对rspec非常有用)
 
 #### Vim Dev
 
- * `,vc` - (Vim Command) copies the command under your cursor and executes it in vim. Great for testing single line changes to vimrc.
- * `,vr` - (Vim Reload) source current file as a vim file
+ * `,vc` - (Vim 命令) 复制光标下的命令然后运行它。对于测试vimrc中单行的改变非常有用。
+ * `,vr` - (Vim 重新记载) 将当前文件当成vim文件来进行源加载。
 
-## Extending and overriding YADR settings
+## 扩展或者重载YADR设置
 
-* [Debugging vim keymappings](doc/vim/keymaps.md)
-* [Overriding vim settings with ~/.vimrc.after and friends](doc/vim/override.md)
-* [Adding your own vim plugins](doc/vim/manage_plugins.md)
+* [调试vim映射](doc/vim/keymaps.md)
+* [通过~/.vimrc.after或者类似文件来重载vim设置](doc/vim/override.md)
+* [添加你自己的vim插件](doc/vim/manage_plugins.md)
 
-## Misc
+## 杂项
 
-* [Credits & Thanks](doc/credits.md)
-* [Other recommended OSX productivity tools](doc/osx_tools.md)
+* [特别表扬和感谢](doc/credits.md)
+* [其他推荐的提高OSX生产力的工具](doc/osx_tools.md)
 * [Yan's Blog](http://yanpritzker.com)
 
 ### OSX Hacks
 
-The osx file is a bash script that sets up sensible defaults for devs and power users
-under osx. Read through it before running it. To use:
+osx文件是一个为开发者或者高能用户进行合理默认设置的bash脚本。在运行它之前先读一下。使用:
 
     bin/osx
 
-These hacks are Lion-centric. May not work for other OS'es. My favorite mods include:
+这些特殊技巧是以Lion为中心的。不一定在其他OS上也能行。我最喜欢的模块包括:
 
-  * Ultra fast key repeat rate (now you can scroll super quick using j/k)
-  * No disk image verification (downloaded files open quicker)
-  * Display the ~/Library folder in finder (hidden in Lion)
+  * 极快的重复击键速度(现在你可以通过j/k实现快速滚动)
+  * 无磁盘镜像验证(下载的文件打开速度更快)
+  * 在finder中显示~/Library文件夹下的内容(在Lion中隐藏的)
 
-### Macvim troubles with Lua?
+### Macvim遇到Lua的麻烦了?
 ```
 brew uninstall macvim
 brew remove macvim
@@ -300,8 +299,8 @@ brew cleanup
 brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit
 ```
 
-### Terminal Vim troubles with Lua?
-Installing terminal vim (with lua) with an RVM managed Ruby can cause the neocomplete plugin to segfault. Try uninstalling vim, then installing with system ruby:
+### 终端Vim碰到Lua的麻烦？
+通过RVM管理的Ruby来安装一个终端Vim(和lua一起)会导致neocomplete插件发生segfault。尝试卸载vim，然后使用系统ruby来卸载vim:
 
 ```
 brew uninstall vim
@@ -311,7 +310,6 @@ rvm system do brew install vim --with-lua
 
 ### [Pry](http://pry.github.com/)
 
-Pry offers a much better out of the box IRB experience with colors, tab completion, and lots of other tricks. You can also use it
-as an actual debugger by installing [pry-nav](https://github.com/nixme/pry-nav).
+Pry提供了一个更好的使用了颜色、tab补全及其他更多小技巧开包即用的IRB。你还可以通过安装[pry-nav](https://github.com/nixme/pry-nav)把它当做一个真正的调试器。
 
-[Learn more about YADR's pry customizations and how to install](doc/pry.md)
+[了解更多YADR's pry定制化以及如何安装](doc/pry.md)
