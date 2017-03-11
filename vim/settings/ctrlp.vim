@@ -18,6 +18,11 @@ endif
 " controller
 let g:ctrlp_by_filename = 1
 
+let g:ctrlp_working_path_mode = 'ra'
+
+" show even .ssh/config file
+let g:ctrlp_show_hidden = 1
+
 " Don't jump to already open window. This is annoying if you are maintaining
 " several Tab workspaces and want to open two windows into the same file.
 let g:ctrlp_switch_buffer = 0

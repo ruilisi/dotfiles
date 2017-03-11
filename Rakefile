@@ -54,6 +54,16 @@ task :update do
   #not to clobber zsh files
 end
 
+task :sync do
+  vundle_path = File.join('vim','bundle', 'vundle')
+  unless File.exists?(vundle_path)
+    run %{
+      cd $HOME/.yadr
+      git clone https://github.com/gmarik/vundle.git #{vundle_path}
+    }
+  end
+end
+
 task :submodule_init do
   unless ENV["SKIP_SUBMODULES"]
     run %{ git submodule update --init --recursive }
