@@ -2,10 +2,6 @@ require 'rake'
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
-task :try do
-  puts RUBY_PLATFORM
-end
-
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
   puts
@@ -29,6 +25,8 @@ task :install => [:submodule_init, :submodules] do
     Rake::Task["install_vundle"].execute
   end
 
+  Rake::Task["install_ycm"].execute
+
   Rake::Task["install_prezto"].execute
 
   install_fonts
@@ -43,6 +41,15 @@ end
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
+  end
+end
+
+task :install_ycm do
+  if want_to_install?('YouCompleteMe')
+    run %{
+      cd $HOME/.vim/bundle/YouCompleteMe/
+      ./install.sh
+    }
   end
 end
 
