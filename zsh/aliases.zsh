@@ -220,6 +220,7 @@ alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 git config --global alias.df "diff HEAD^ HEAD"
 git config --global alias.caa "commit -a --amend"
 alias dc=docker-compose
+alias dw='docker-compose exec web'
 alias start_dropbox='~/.dropbox-dist/dropboxd'
 alias unzip_CN="unzip -O GB18030"
 alias cnpm="npm --registry=https://registry.npm.taobao.org \

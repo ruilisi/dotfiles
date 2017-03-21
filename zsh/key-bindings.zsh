@@ -15,7 +15,6 @@ bindkey -M viins '^n'    down-line-or-history
 bindkey -M viins '^y'    yank
 bindkey -M viins '^w'    backward-kill-word
 bindkey -M viins '^u'    backward-kill-line
-bindkey -M viins '^h'    backward-delete-char
 bindkey -M viins '^?'    backward-delete-char
 bindkey -M viins '^_'    undo
 bindkey -M viins '^x^r'  redisplay

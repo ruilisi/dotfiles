@@ -82,8 +82,7 @@ function test_proxy() {
   curl www.google.com
 }
 function set_proxy() {
-  export http_proxy=http://127.0.0.1:8118/
-  export https_proxy=http://127.0.0.1:8118/
+  export all_proxy=http://127.0.0.1:8118/
   # export https_proxy=socks5://127.0.0.1:1080/
   # export http_proxy=socks5://127.0.0.1:1080/
 }
@@ -92,8 +91,7 @@ function set_ss_proxy() {
   export http_proxy=socks5://127.0.0.1:1080/
 }
 function unset_proxy() {
-  unset https_proxy
-  unset http_proxy
+  unset all_proxy
 }
 function install_jsctags {
   npm install jsctags -g

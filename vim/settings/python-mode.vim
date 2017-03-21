@@ -19,6 +19,6 @@ augroup filetype_python
     autocmd FileType python nnoremap <buffer> <localleader>c I#cesc>
     autocmd FileType python :iabbrev <buffer> iff if:<left>
     autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python match Excess /\%80v.*/
+    autocmd FileType python match Excess /\%120v.*/
     autocmd FileType python set nowrap
 augroup END
