@@ -2,6 +2,8 @@ require 'rake'
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
+# TODO install for vim_instant_markdown
+
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
   puts
@@ -47,8 +49,9 @@ end
 task :install_ycm do
   if want_to_install?('YouCompleteMe')
     run %{
+      sudo apt install cmake -y
       cd $HOME/.vim/bundle/YouCompleteMe/
-      ./install.sh
+      ./install.py
     }
   end
 end

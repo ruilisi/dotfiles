@@ -1,4 +1,5 @@
-let g:instant_markdown_slow = 0
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 1
 augroup filetype_markdown
   autocmd!
   autocmd FileType mkd setlocal spell

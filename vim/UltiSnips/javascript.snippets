@@ -1,21 +1,19 @@
-snippet react "React template" b
-import React, {Component, PropTypes} from 'react'
-import {connect} from 'react-redux'
+snippet reactComponent "React template" b
+import React, { Component } from 'react'
 
-class ${1:C} extends Component {
+export default class extends Component {
   render () {
   }
 }
+endsnippet
 
-$1.propTypes = {
-  self: PropTypes.object,
-  location: PropTypes.object
-}
+snippet reactConnect "React template" b
+import component from './component'
+import { connect } from 'react-redux'
 
-export default connect((state, ownProps) => {
-  return {
-  }
-})($1)
+export default connect((state, ownProps) => ({
+}), {
+})(component)
 endsnippet
 
 snippet TODO "Javascript Todo" b
