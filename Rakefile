@@ -4,6 +4,17 @@ require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
 # TODO install for vim_instant_markdown
 
+task :link_files do
+  install_files(Dir.glob('git/*'))
+  install_files(Dir.glob('irb/*'))
+  install_files(Dir.glob('ruby/*'))
+  install_files(Dir.glob('ctags/*'))
+  install_files(Dir.glob('tmux/*'))
+  install_files(Dir.glob('vimify/*'))
+  install_files(Dir.glob('{vim,vimrc}'))
+  Rake::Task["install_prezto"].execute
+end
+
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
   puts
