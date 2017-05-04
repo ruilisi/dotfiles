@@ -38,6 +38,8 @@ task :install => [:submodule_init, :submodules] do
     Rake::Task["install_vundle"].execute
   end
 
+  Rake::Task["install_zsh"].execute
+
   Rake::Task["install_ycm"].execute
 
   Rake::Task["install_prezto"].execute
@@ -54,6 +56,17 @@ end
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
+  end
+end
+
+task :install_zsh do
+  if want_to_install?('zsh')
+    run %{
+      which zsh
+      if [ $? != 0 ]; then
+        sudo apt install zsh -y
+      fi
+    }
   end
 end
 
