@@ -1,5 +1,7 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
+scriptencoding utf-8
+set encoding=utf-8
 set nocompatible
 
 " TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
