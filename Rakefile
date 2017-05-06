@@ -73,7 +73,7 @@ end
 task :install_ycm do
   if want_to_install?('YouCompleteMe')
     run %{
-      sudo apt install cmake -y
+      apt install cmake libpython2.7 python-dev -y
       cd $HOME/.vim/bundle/YouCompleteMe/
       ./install.py
     }
