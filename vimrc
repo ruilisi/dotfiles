@@ -119,7 +119,7 @@ set smartcase       " ...unless we type a capital
 
 
 " ================ Python ===========================
-autocmd FileType python set colorcolumn=120
+autocmd FileType python set colorcolumn=160
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim

@@ -241,10 +241,13 @@ case "$OSTYPE" in
       ;;
 esac
 alias ssh_by_password='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
-alias ssh_copy_id_by_password='ssh-copy-id -o PreferredAuthentications=password -o PubkeyAuthentication=no'
-alias ssh_="ssh -F .ssh/config"
-alias scp_="scp -F .ssh/config"
+alias ssh_copy_id='ssh-copy-id -o PreferredAuthentications=password -o PubkeyAuthentication=no'
+alias ssh_="ssh -F ~/Projects/rallets-server/rallets-fabric/.ssh/config"
+alias scp_="scp -F ~/Projects/rallets-server/rallets-fabric/.ssh/config"
 alias chrome_proxy="google-chrome --proxy-server='http://127.0.0.1:8118'"
 alias ls_folder_size="du -sch .[!.]* * |sort -h"
 alias top_by_memory="top -o %MEM"
 alias gcaa="gia .; gcF"
+alias ror_ctags="ctags -R --languages=ruby --exclude=.git --exclude=log . \$(bundle list --paths)"
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+

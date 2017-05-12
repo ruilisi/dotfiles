@@ -11,8 +11,8 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 " ~/.vimrc.after
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args='--ignore=F401,F403,F405,W0401'
-" let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:syntastic_python_flake8_args='--ignore=F401,F403,F405,W0401,E501'
+let g:syntastic_python_pylint_post_args="--max-line-length=160"
 
 
 " I have no idea why this is not working, as it used to
