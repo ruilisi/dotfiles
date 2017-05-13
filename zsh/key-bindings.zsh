@@ -13,6 +13,8 @@ bindkey -M viins '^s'    history-incremental-pattern-search-forward
 bindkey -M viins '^p'    up-line-or-history
 bindkey -M viins '^n'    down-line-or-history
 bindkey -M viins '^y'    yank
+bindkey -M viins '^f'    forward-char
+bindkey -M viins '^b'    backward-char
 bindkey -M viins '^w'    backward-kill-word
 bindkey -M viins '^u'    backward-kill-line
 bindkey -M viins '^?'    backward-delete-char
@@ -35,6 +37,8 @@ bindkey -M vicmd '^s'    history-incremental-pattern-search-forward
 bindkey -M vicmd '^p'    up-line-or-history
 bindkey -M vicmd '^n'    down-line-or-history
 bindkey -M vicmd '^y'    yank
+bindkey -M vicmd '^f'    forward-char
+bindkey -M vicmd '^b'    backward-char
 bindkey -M vicmd '^w'    backward-kill-word
 bindkey -M vicmd '^u'    backward-kill-line
 bindkey -M vicmd '/'     vi-history-search-forward

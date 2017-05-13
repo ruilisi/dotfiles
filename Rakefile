@@ -2,6 +2,19 @@ require 'rake'
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
+# TODO install for vim_instant_markdown
+
+task :link_files do
+  install_files(Dir.glob('git/*'))
+  install_files(Dir.glob('irb/*'))
+  install_files(Dir.glob('ruby/*'))
+  install_files(Dir.glob('ctags/*'))
+  install_files(Dir.glob('tmux/*'))
+  install_files(Dir.glob('vimify/*'))
+  install_files(Dir.glob('{vim,vimrc}'))
+  Rake::Task["install_prezto"].execute
+end
+
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
   puts
@@ -25,6 +38,8 @@ task :install => [:submodule_init, :submodules] do
     Rake::Task["install_vundle"].execute
   end
 
+  Rake::Task["install_zsh"].execute
+
   Rake::Task["install_ycm"].execute
 
   Rake::Task["install_prezto"].execute
@@ -44,11 +59,23 @@ task :install_prezto do
   end
 end
 
+task :install_zsh do
+  if want_to_install?('zsh')
+    run %{
+      which zsh
+      if [ $? != 0 ]; then
+        sudo apt install zsh -y
+      fi
+    }
+  end
+end
+
 task :install_ycm do
   if want_to_install?('YouCompleteMe')
     run %{
+      apt install cmake libpython2.7 python-dev -y
       cd $HOME/.vim/bundle/YouCompleteMe/
-      ./install.sh
+      ./install.py
     }
   end
 end

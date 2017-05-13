@@ -185,3 +185,5 @@ nmap <leader>ej :tabedit ~/.jshintrc<cr>'tzo
 " move around compile errors
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>p :cprevious<cr>
+
+nnoremap <leader>l :redraw!<cr>
