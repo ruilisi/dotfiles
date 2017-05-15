@@ -8,11 +8,11 @@
     # Yet Another Dotfile Repo v1.1
     # Now with Prezto and Vundle!
 
-[![Join the chat at https://gitter.im/hophacker/dotfiles](https://badges.gitter.im/hophacker/dotfiles.svg)](https://gitter.im/hophacker/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Join the chat at https://gitter.im/hophacker/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hophacker/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/rallets-network/dotfiles](https://badges.gitter.im/rallets-network/dotfiles.svg)](https://gitter.im/rallets-network/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/rallets-network/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rallets-network/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
-#### sh -c "\`curl -fsSL https://raw.githubusercontent.com/hophacker/dotfiles/master/install.sh \`"
+#### sh -c "\`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/master/install.sh \`"
 
 **总是记住在拉取代码后运行`rake update`来确保插件都更新过了**
 
@@ -40,13 +40,13 @@
 开始先运行:
 
 ```bash
-sh -c "`curl -fsSL https://raw.githubusercontent.com/hophacker/dotfiles/master/install.sh`"
+sh -c "`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/master/install.sh`"
 ```
 
 **注意:** YADR会自动安装它的所有子模块。如果你需要在安装每个模块前确认一下, 使用:
 
 ```bash
-sh -c "`curl -fsSL https://raw.githubusercontent.com/hophacker/dotfiles/master/install.sh`" -s ask
+sh -c "`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/master/install.sh`" -s ask
 ```
 
 ## 等等，还没完。这一步不能少:
