@@ -220,10 +220,8 @@ alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 git config --global alias.df "diff HEAD^ HEAD"
 git config --global alias.caa "commit -a --amend"
 
-alias dc=docker-compose
-alias ds='dc exec server'
-alias dc_dev='dc -f docker-compose.yml -f docker-compose-dev.yml'
-alias ds_dev='dc_dev exec server'
+alias dc='docker-compose -f docker-compose-dev.yml'
+alias ds='dc_dev exec server'
 
 alias start_dropbox='~/.dropbox-dist/dropboxd'
 alias unzip_CN="unzip -O GB18030"
