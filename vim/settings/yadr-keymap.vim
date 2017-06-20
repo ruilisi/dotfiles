@@ -187,3 +187,4 @@ nnoremap <leader>n :cnext<cr>
 nnoremap <leader>p :cprevious<cr>
 
 nnoremap <leader>l :redraw!<cr>
+imap <leader>cb 『』
