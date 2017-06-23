@@ -140,6 +140,14 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
   * 微微优化了diff的颜色
   * `gdmb` (g)it (d)elete (m)erged (b)ranches - 删除所有已经合并到当前分支的分支
 
+  * `Gdiff`显示代码前后更改
+
+##### vim-gitgutter
+  * `]h` 下一个hunk(更改点)
+  * `[h` 上一个hunk
+  * `<Leader>ha` 将该hunk放进state区域保存
+  * `<Leader>hr` 撤销该hunk
+
 ### RubyGems
 
 .gemrc被包含了。 再也不用输入`gem install whatever --no-ri --no-rdoc`. `--no-ri --no-rdoc`，因为默认都做好哦了。

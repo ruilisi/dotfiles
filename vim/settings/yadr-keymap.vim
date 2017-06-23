@@ -188,3 +188,5 @@ nnoremap <leader>p :cprevious<cr>
 
 nnoremap <leader>l :redraw!<cr>
 imap <leader>cb 『』
+nnoremap <leader>n :cn<cr>
+nnoremap <leader>p :cp<cr>
