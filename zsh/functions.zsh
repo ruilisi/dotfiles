@@ -144,7 +144,10 @@ function recursive_replace {
     echo "recursive_replace \"FILE_PATTERN\" BEFORE AFTER"
     return
   fi
-  find -iregex $1 -print0 | xargs -0 sed -i "s/$2/$3/g"
+  print "Filename's regex pattern is: $1"
+  print "String to be replaced: $2"
+  print "String replaced to: $3"
+  find -iregex $1 -type f -exec sed -i "s/$2/$3/g" {} +
 }
 function git-change-module-remote() {
   git config --file=.gitmodules submodule.$1.url $2
