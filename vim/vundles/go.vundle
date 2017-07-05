@@ -1,0 +1,1 @@
+Bundle 'fatih/vim-go'
