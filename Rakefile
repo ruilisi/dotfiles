@@ -2,17 +2,14 @@ require 'rake'
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
-# TODO install for vim_instant_markdown
-
+# this has all the runcoms from this directory.
 task :link_files do
-  install_files(Dir.glob('git/*'))
-  install_files(Dir.glob('irb/*'))
-  install_files(Dir.glob('ruby/*'))
-  install_files(Dir.glob('ctags/*'))
-  install_files(Dir.glob('tmux/*'))
-  install_files(Dir.glob('vimify/*'))
-  install_files(Dir.glob('{vim,vimrc}'))
-  Rake::Task["install_prezto"].execute
+  install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
+  install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
+  install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
+  install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
+  install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
+  install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
 end
 
 desc "Hook our dotfiles into system-standard positions."
@@ -26,13 +23,7 @@ task :install => [:submodule_init, :submodules] do
   install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
   install_rvm_binstubs
 
-  # this has all the runcoms from this directory.
-  install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
-  install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
-  install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
-  install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
-  install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
-  install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
+  Rake::Task["link_files"].execute
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
