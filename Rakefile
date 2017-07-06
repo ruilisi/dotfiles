@@ -10,6 +10,9 @@ task :link_files do
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
+  run %{
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  }
 end
 
 desc "Hook our dotfiles into system-standard positions."
