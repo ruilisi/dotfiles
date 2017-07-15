@@ -252,4 +252,4 @@ alias top_by_memory="top -o %MEM"
 alias gcaa="gia .; gcF"
 alias ror_ctags="ctags -R --languages=ruby --exclude=.git --exclude=log . \$(bundle list --paths)"
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
-
+alias vimgo='vim -u ~/.vimrc.go'
