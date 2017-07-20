@@ -247,9 +247,10 @@ alias ssh_copy_id='ssh-copy-id -o PreferredAuthentications=password -o PubkeyAut
 alias ssh_="ssh -F ~/Projects/rallets-fabric/.ssh/config"
 alias scp_="scp -F ~/Projects/rallets-fabric/.ssh/config"
 alias chrome_proxy="google-chrome --proxy-server='http://127.0.0.1:8118'"
-alias ls_folder_size="du -sch .[!.]* * |sort -h"
+alias ls_folder_size="du -sch .[!.]* * | sort -h"
 alias top_by_memory="top -o %MEM"
 alias gcaa="gia .; gcF"
 alias ror_ctags="ctags -R --languages=ruby --exclude=.git --exclude=log . \$(bundle list --paths)"
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias vimgo='vim -u ~/.vimrc.go'
+alias find_large_files="sudo find / -xdev -type f -size +50M"
