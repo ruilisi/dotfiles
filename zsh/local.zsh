@@ -1,0 +1,54 @@
+# Vim
+export EDITOR=vim
+
+#### Android
+export ANDROID_HOME=$HOME/Android/sdk
+export ANDROID_SDK_ROOT=$HOME/Android/sdk
+export ANDROID_SDK_HOME=$HOME/Android/sdk
+export ANDROID_NDK_HOME=$HOME/android-ndk-r14-beta2
+#export NDK_PROJECT_PATH=$HOME/Projects/rallets-android/src/main
+export NDK_PROJECT_PATH=src/main
+export PATH=$PATH:$HOME/Android/sdk/platform-tools:$HOME/Android/sdk/tools/
+
+#### Qiniu
+QINIU_ACCESS_KEY=l6Rf0LgQDgpSwjdXr_MgsCynhsofRM7W2dwvIOXO
+
+#### nvm
+export NVM_DIR="$HOME/.nvm"
+export NODE_ENV=development
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use $NVM_VERSION
+export PATH="$PATH:$HOME/.nvm/versions/node/$NVM_VERSION/bin"
+
+#### Java
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+if [ "$(uname)" = "Darwin" ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+fi
+
+#### Proxy Settings
+unset all_proxy ALL_PROXY
+
+#### Character Set
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Golang
+export GOROOT_BOOTSTRAP=/usr/local/go
+export GOPATH=$HOME/gocode
+PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
+
+if [[ "$(uname)" == "Darwin" ]]; then
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+    # Do something under GNU/Linux platform
+elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
+    # Do something under Windows NT platform
+fi
+
+if [ -e ~/Projects/rallets-hub/bin/rancher_setup.sh ]; then
+  source ~/Projects/rallets-hub/bin/rancher_setup.sh
+fi
+
+if [ -e ~/.myzshrc ]; then
+  source ~/.myzshrc
+fi
