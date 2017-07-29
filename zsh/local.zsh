@@ -22,7 +22,7 @@ export PATH="$PATH:$HOME/.nvm/versions/node/$NVM_VERSION/bin"
 #### Java
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 if [ "$(uname)" = "Darwin" ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
 fi
 
