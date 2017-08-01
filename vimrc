@@ -12,15 +12,27 @@ endif
 
 " ================ General Config ====================
 
+set foldcolumn=0                " Make sure that extra margin on left is removed
 set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set so=999                      " Make sure that coursor is always vertically centered on j/k moves
+set magic
+set lazyredraw                  " Don't redraw while executing macros (good performance config)
+set showcmd                     " Show (partial) commands (or size of selection in Visual mode) in the status line
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -59,7 +71,7 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
-" ================ Indentation ======================
+" ================ Text, Tab, Indentation ======================
 
 set autoindent
 set smartindent
@@ -68,6 +80,8 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+set ai "Auto indent
+set si "Smart indent
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -117,6 +131,7 @@ set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
+set infercase                   " Allow smarter completion by infering the case
 
 
 " ================ Python ===========================
@@ -124,3 +139,21 @@ autocmd FileType python set colorcolumn=160
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.go :call DeleteTrailingWS()
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
