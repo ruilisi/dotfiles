@@ -171,6 +171,11 @@ inoremap <C-X><C-V> <esc>"+pa
 "paste text in normal mode
 nnoremap <C-X><C-V> "+p"
 
+"------------------------------------------------------------------------------
+" Misc
+"------------------------------------------------------------------------------
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
 " copy all out of vim
 nnoremap <C-X><C-A> <esc>gg"+yG
 " copy text in visual mode
@@ -198,13 +203,16 @@ vmap <Leader>w <ESC><ESC>:w<CR>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+if !exists(':W')
+  command W w !sudo tee % > /dev/null
+endif
 
 " Highlight current line - allows you to track cursor position more easily
 set cursorline
 
 " map CTRL-L to piece-wise copying of the line above the current one
 imap <C-L> @@@<esc>hhkywjl?@@@<CR>P/@@@<cr>3s
+
 
 " Allow to copy/paste between VIM instances
 "copy the current visual selection to ~/.vbuf
@@ -216,9 +224,67 @@ vmap <leader>y :.w! ~/.vbuf<cr>
 "paste the contents of the buffer file
 nmap <leader>p :r ~/.vbuf<cr>
 
+"------------------------------------------------------------------------------
+" Moving around, tabs, windows and buffers
+"------------------------------------------------------------------------------
 " Switch between the last two files
 nnoremap <leader><leader> <C-^>
 
 " easy way to edit reload .vimrc
 nmap <leader>V :source $MYVIMRC<cr>
 nmap <leader>v :vsp $MYVIMRC<cr>
+
+" Quickly open a buffer for scribble
+map <leader>q :e ~/buffer<cr>
+
+" Quickly open a markdown buffer for scribble
+map <leader>x :e ~/buffer.md<cr>
+
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+"------------------------------------------------------------------------------
+" Spell checking
+"------------------------------------------------------------------------------
+
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+" Close the current buffer (w/o closing the current window)
+map <leader>bd :bd<cr>
+
+" Close all the buffers
+map <leader>bda :1,1000 bd!<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+map <leader>tj :tabnext
+map <leader>tk :tabprevious
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+"------------------------------------------------------------------------------
+" Visual mode related
+"------------------------------------------------------------------------------
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
