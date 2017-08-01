@@ -1,11 +1,11 @@
-"mark syntax errors with :signs
-let g:syntastic_enable_signs=1
-"automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
-"show the error list automatically
-let g:syntastic_auto_loc_list=1
-"don't care about warnings
-let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_enable_signs=1                "mark syntax errors with :signs
+let g:syntastic_auto_jump=0                   "automatically jump to the error when saving the file
+let g:syntastic_auto_loc_list=1               "show the error list automatically
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_quiet_messages = {'level': 'warnings'}  "don't care about warnings
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Default to eslint. If you need jshint, you can override this in
 " ~/.vimrc.after
@@ -14,6 +14,10 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args='--ignore=F401,F403,F405,W0401,E501'
 let g:syntastic_python_pylint_post_args="--max-line-length=160"
 
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " I have no idea why this is not working, as it used to
 " be a part of syntastic code but was apparently removed
