@@ -190,3 +190,35 @@ nnoremap <leader>l :redraw!<cr>
 imap <leader>cb 『』
 nnoremap <leader>n :cn<cr>
 nnoremap <leader>p :cp<cr>
+
+" Fast Saving
+map <Leader>w :w<CR>
+imap <Leader>w <ESC>:w<CR>
+vmap <Leader>w <ESC><ESC>:w<CR>
+
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+" Highlight current line - allows you to track cursor position more easily
+set cursorline
+
+" map CTRL-L to piece-wise copying of the line above the current one
+imap <C-L> @@@<esc>hhkywjl?@@@<CR>P/@@@<cr>3s
+
+" Allow to copy/paste between VIM instances
+"copy the current visual selection to ~/.vbuf
+vmap <leader>y :w! ~/.vbuf<cr>
+
+"copy the current line to the buffer file if no visual selection
+vmap <leader>y :.w! ~/.vbuf<cr>
+
+"paste the contents of the buffer file
+nmap <leader>p :r ~/.vbuf<cr>
+
+" Switch between the last two files
+nnoremap <leader><leader> <C-^>
+
+" easy way to edit reload .vimrc
+nmap <leader>V :source $MYVIMRC<cr>
+nmap <leader>v :vsp $MYVIMRC<cr>
