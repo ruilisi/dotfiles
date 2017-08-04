@@ -133,10 +133,6 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 set infercase                   " Allow smarter completion by infering the case
 
-
-" ================ Python ===========================
-autocmd FileType python set colorcolumn=160
-
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
 
@@ -146,7 +142,6 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-autocmd BufWrite *.go :call DeleteTrailingWS()
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 

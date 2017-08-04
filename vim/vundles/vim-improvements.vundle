@@ -27,3 +27,4 @@ Bundle "goldfeld/ctrlr.vim"
 Bundle "editorconfig/editorconfig-vim"
 Bundle 'majutsushi/tagbar'
 Bundle 'sirver/ultisnips'
+Bundle 'jiangmiao/auto-pairs'

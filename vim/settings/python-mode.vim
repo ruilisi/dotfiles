@@ -1,4 +1,5 @@
 " Override go-to.definition key shortcut to Ctrl-]
+autocmd FileType python set colorcolumn=160
 let g:pymode_rope_goto_definition_bind = "<C-]>"
 
 " Override run current python file key shortcut to Ctrl-Shift-e
