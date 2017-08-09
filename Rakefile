@@ -58,7 +58,11 @@ task :install_zsh do
     run %{
       which zsh
       if [ $? != 0 ]; then
-        sudo apt install zsh -y
+        if [ "$(uname)" == "Darwin" ]; then
+          brew install zsh
+        elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+          apt install zsh -y
+        fi
       fi
     }
   end
@@ -304,7 +308,7 @@ def install_prezto
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
 
   # The prezto runcoms are only going to be installed if zprezto has never been installed
-  install_files(Dir.glob('zsh/prezto/runcoms/z*'), :symlink)
+  install_files(Dir.glob('zsh/prezto/runcoms/z*').concat(['zsh/zshrc']), :symlink)
 
   puts
   puts "Overriding prezto ~/.zpreztorc with YADR's zpreztorc to enable additional modules..."
