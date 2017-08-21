@@ -155,6 +155,17 @@ task :install_vundle do
   end
 
   Vundle::update_vundle
+  Rake::Task["vim_tern_setup"].execute
+end
+
+task :vim_tern_setup do
+  run %{
+      npm -v &> /dev/null;
+      if [[ $? == "0"  ]]; then
+        cd $HOME/.yadr/vim/bundle/tern_for_vim
+        npm install
+      fi
+  }
 end
 
 task :default => 'install'
