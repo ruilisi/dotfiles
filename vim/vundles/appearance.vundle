@@ -1,4 +1,4 @@
-Bundle "chrisbra/color_highlight.git"
+Bundle "ap/vim-css-color"
 Bundle "itchyny/lightline.vim"
 Bundle "jby/tmux.vim.git"
 Bundle "morhetz/gruvbox"
