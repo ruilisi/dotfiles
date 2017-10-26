@@ -1,17 +1,3 @@
-     _     _           _
-    | |   | |         | |
-    | |___| |_____  __| | ____
-    |_____  (____ |/ _  |/ ___)
-     _____| / ___ ( (_| | |
-    (_______\_____|\____|_|
-
-    # Yet Another Dotfile Repo v1.1
-    # Now with Prezto and Vundle!
-
-[![Join the chat at https://gitter.im/rallets-network/dotfiles](https://badges.gitter.im/rallets-network/dotfiles.svg)](https://gitter.im/rallets-network/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Join the chat at https://gitter.im/rallets-network/dotfiles](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rallets-network/dotfiles?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
 #### sh -c "\`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/master/install.sh \`"
 
 **总是记住在拉取代码后运行`rake update`来确保插件都更新过了**
@@ -175,6 +161,18 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
  * [通常的并不添加新命令行的改进](doc/vim/enhancements.md)
 
 下面列出了一些YADR提供的最有用的命令。这不是一个很全的列表。若想挖掘更多信息，每天联系其中几个，然后开始深入查看上面列表中提供的插件来学习更多。
+#### Tmux
+* `h`(jkl): 左(下上右)移窗格
+* `c-a c`: 创建一个新的窗区
+* `c-a s`: 上下分割窗格
+* `c-a v`: 左右分割窗格
+* `c-a x`: 删除窗格
+* `c-a H`(JKL): 左(下上右)移分割线
+* `c-a ,`: 输入Tmux命令行模式
+* `c-a d`: 退出Session
+* `c-a D`: 选择退出Session
+* `c-a 1`(23456789): 进入窗区1(23456789)
+
 
 #### 导航
 
