@@ -42,6 +42,7 @@ fi
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
+alias lp='ls --hide="*.pyc"'
 
 # Alias Editing
 TRAPHUP() {
