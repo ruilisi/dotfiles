@@ -139,15 +139,12 @@ function strip_color() {
 function docker_rm_all() {
   docker rm -f `docker ps --no-trunc -aq`
 }
-function recursive_replace {
-  if [ "$#" -ne 3 ]; then
-    echo "recursive_replace \"FILE_PATTERN\" BEFORE AFTER"
-    return
+function Replace {
+  if [ "$#" -eq 3 ]; then
+    ag $2 -l -G $1 | xargs sed -i '' s/$2/$3/g
+  elif [ "$#" -eq 2 ]; then
+    ag $1 -l | xargs sed -i '' s/$1/$2/g
   fi
-  print "Filename's regex pattern is: $1"
-  print "String to be replaced: $2"
-  print "String replaced to: $3"
-  find -iregex $1 -type f -exec sed -i "s/$2/$3/g" {} +
 }
 function git-change-module-remote() {
   git config --file=.gitmodules submodule.$1.url $2
