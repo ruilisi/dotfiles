@@ -28,36 +28,6 @@ function ssh_exec_by_file () {
   ssh -t $1 "bash -s" -- < $2
 }
 
-function ss_connect () {
-  (killall sslocal 2>&1) >/dev/null
-  IP=$(getIP $1)
-  SERVER_PORT=${2:-443}
-  METHOD=${4:-'aes-256-cfb'}
-  if [ "$3" != "" ]; then
-    SERVER_PASS=$3
-  else
-    SERVER_PASS=$SS_PASS
-  fi
-  cat > /tmp/config.json << EOT
-  {
-    "server" : "$IP",
-    "server_port": $SERVER_PORT,
-    "local_port": 1080,
-    "password" : "$SERVER_PASS",
-    "timeout": 600,
-    "method" : "$METHOD"
-  }
-EOT
-  shadowsocks-local -c /tmp/config.json
-}
-#A=("one" "two" "three four")
-#if [ $(contains "${A[@]}" "one") == "y" ]; then
-  #echo "contains one"
-#fi
-#if [ $(contains "${A[@]}" "three") == "y" ]; then
-  #echo "contains three"
-#fi
-
 function cp_container() {
   sourceName=$1
   targetName=$2
@@ -66,20 +36,6 @@ function cp_container() {
   mv ${sourceName}.scss ${targetName}.scss
   mv ${sourceName}.js ${targetName}.js
   cd ..
-}
-function sync(){
-  server=$1
-  branch=$2
-  if [ "$branch" = "" ]; then
-    branch=master
-  fi
-  git checkout $branch
-  git add .; gca! --no-edit;
-  gpu $branch --force;
-  ssh $server "cd /root/No.497-H5-yuejian; git checkout -f $branch; git fetch upstream $branch; git reset upstream/$branch --hard;"
-}
-function test_proxy() {
-  curl www.google.com
 }
 function set_proxy() {
   export all_proxy=http://127.0.0.1:8123/
@@ -92,11 +48,6 @@ function set_ss_proxy() {
 }
 function unset_proxy() {
   unset all_proxy
-}
-function install_jsctags {
-  npm install jsctags -g
-  # https://github.com/mozilla/doctorjs/issues/52
-  # gsed -i '51i tags: [],' ./node_modules/jsctags/jsctags/ctags/index.js
 }
 function post {
   curl -H "Content-Type: application/json" -X POST -d $1 $2
@@ -139,11 +90,19 @@ function strip_color() {
 function docker_rm_all() {
   docker rm -f `docker ps --no-trunc -aq`
 }
-function Replace {
-  if [ "$#" -eq 3 ]; then
-    ag $2 -l -G $1 | xargs sed -i '' s/$2/$3/g
-  elif [ "$#" -eq 2 ]; then
-    ag $1 -l | xargs sed -i '' s/$1/$2/g
+function Replace () {
+	if [ "$(uname)" == "Darwin" ]; then
+		if [ "$#" -eq 3 ]; then
+			ag $2 -l -G $1 | xargs sed -i '' s/$2/$3/g
+		elif [ "$#" -eq 2 ]; then
+			ag $1 -l | xargs sed -i '' s/$1/$2/g
+		fi
+	elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+		if [ "$#" -eq 3 ]; then
+			ag $2 -l -G $1 | xargs sed -i s/$2/$3/g
+		elif [ "$#" -eq 2 ]; then
+			ag $1 -l | xargs sed -i s/$1/$2/g
+		fi
   fi
 }
 function git-change-module-remote() {
