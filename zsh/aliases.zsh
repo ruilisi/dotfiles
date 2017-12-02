@@ -224,6 +224,8 @@ git config --global alias.caa "commit -a --amend"
 alias dc='docker-compose -f docker-compose-dev.yml'
 alias ds='dc exec server'
 
+alias rs='rancher exec -it rallets-server-1'
+
 alias start_dropbox='~/.dropbox-dist/dropboxd'
 alias unzip_CN="unzip -O GB18030"
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
