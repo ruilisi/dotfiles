@@ -294,3 +294,4 @@ noremap <Up> :echo '戒黄赌毒及上下左右键！'<CR>
 noremap <Down> :echo '戒黄赌毒及上下左右键！'<CR>
 noremap <Left> :echo '戒黄赌毒及上下左右键！'<CR>
 noremap <Right> :echo '戒黄赌毒及上下左右键！'<CR>
+inoremap <leader>fn <C-R>=expand("%:t")<CR>
