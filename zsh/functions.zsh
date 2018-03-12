@@ -93,7 +93,7 @@ function docker_rm_all() {
 function Replace () {
 	if [[ "$(uname)" == "Darwin" ]]; then
 		if [ "$#" -eq 3 ]; then
-			ag $2 -l -G $1 | xargs sed -i '' s/$2/$3/g
+			ag $2 -l -G "$1" | xargs sed -i '' s/$2/$3/g
 		elif [ "$#" -eq 2 ]; then
 			ag $1 -l | xargs sed -i '' s/$1/$2/g
 		fi
