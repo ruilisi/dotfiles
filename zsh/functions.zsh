@@ -38,9 +38,7 @@ function cp_container() {
   cd ..
 }
 function set_proxy() {
-  export all_proxy=http://127.0.0.1:8123/
-  # export https_proxy=socks5://127.0.0.1:1080/
-  # export http_proxy=socks5://127.0.0.1:1080/
+  export all_proxy=http://127.0.0.1:1087/
 }
 function set_ss_proxy() {
   export https_proxy=socks5://127.0.0.1:1080/
