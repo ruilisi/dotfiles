@@ -217,7 +217,7 @@ alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 git config --global alias.df "diff HEAD^ HEAD"
 git config --global alias.caa "commit -a --amend"
 
-alias dc='docker-compose -f docker-compose-dev.yml'
+alias dc='docker-compose -f ~/Projects/rallets-hub/docker-compose-dev.yml'
 alias ds='dc exec server'
 
 alias rs='rancher exec -it rallets-server-1'
