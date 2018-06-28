@@ -15,4 +15,13 @@ for fpath in split(globpath(vimsettings, '*.vim'), '\n')
 endfor
 
 
-set shell=/usr/local/bin/zsh
+
+if has("unix")
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin"
+		set shell=/usr/local/bin/zsh
+  else
+		set shell=/usr/bin/zsh
+  endif
+endif
+
