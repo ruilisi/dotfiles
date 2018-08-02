@@ -87,6 +87,10 @@ set si "Smart indent
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
+" Refresh all files
+nnoremap R :bufdo edit<CR>
+
+
 filetype plugin on
 filetype indent on
 
