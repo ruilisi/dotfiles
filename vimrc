@@ -88,7 +88,8 @@ nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
 " Refresh all files
-nnoremap R :bufdo edit<CR>
+nnoremap <LocalLeader>r :bufdo edit<CR>
+nnoremap <LocalLeader>t :tabo<CR>
 
 
 filetype plugin on
