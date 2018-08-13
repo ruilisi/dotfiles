@@ -1,3 +1,26 @@
+snippet reactConnectedRoute "React template" b
+import React from 'react'
+import { connect } from 'react-redux'
+import { isLogin } from 'utils/self'
+import { Redirect, Route } from 'react-router-dom'
+
+export default connect((state, ownProps) => {
+  const { self } = state
+  return { self }
+})(({ component: Component, ...rest }) => {
+  const { self } = rest
+  return <Route
+    {...rest}
+    render={props => isLogin(self) ? <Component {...props} /> : <Redirect
+			to={{
+				pathname: '/login',
+				state: { from: props.location }
+			}} />
+    }
+  />
+})
+endsnippet
+
 snippet reactComponent "React template" b
 import React, { Component } from 'react'
 
