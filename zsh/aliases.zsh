@@ -252,3 +252,4 @@ alias gcaa="gia .; gcF"
 alias ror_ctags="ctags -R --languages=ruby --exclude=.git --exclude=log . \$(bundle list --paths)"
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias find_large_files="sudo find / -xdev -type f -size +50M"
+alias vim_plain="vim -u NONE"

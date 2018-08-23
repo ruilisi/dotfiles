@@ -87,9 +87,12 @@ set si "Smart indent
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
+" shortcuts defined by rallets
 " Refresh all files
 nnoremap <LocalLeader>r :bufdo edit<CR>
 nnoremap <LocalLeader>t :tabo<CR>
+nnoremap <LocalLeader>f :let @" = expand("%")<cr>
+
 
 
 filetype plugin on
