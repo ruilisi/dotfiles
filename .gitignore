@@ -16,3 +16,4 @@ bin/subl
 tags
 .idea
 git/gitconfig
+.DS_Store
