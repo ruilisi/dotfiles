@@ -219,6 +219,7 @@ git config --global alias.caa "commit -a --amend"
 
 alias dc='docker-compose -f ~/Projects/rallets-hub/docker-compose-dev.yml'
 alias ds='dc exec server'
+alias drspec='dc exec sidekiq rspec'
 
 alias rs='rancher exec -it rallets-server-1'
 
