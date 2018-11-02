@@ -70,6 +70,7 @@ alias ve='vim ~/.vimrc'
 alias ze='vim ~/.zshrc'
 
 # Git Aliases
+alias gl='git l'
 alias gs='git status'
 alias gstsh='git stash'
 alias gst='git stash'
@@ -213,11 +214,8 @@ alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune &&
 
 # emacs
 alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
-# git alias
-git config --global alias.df "diff HEAD^ HEAD"
-git config --global alias.caa "commit -a --amend"
 
-alias dc='docker-compose -f ~/Projects/rallets-hub/docker-compose-dev.yml'
+alias dc='docker-compose -f docker-compose-dev.yml'
 alias ds='dc exec server'
 alias drspec='dc exec sidekiq rspec'
 
