@@ -125,3 +125,7 @@ function swap() {
     mv $TMPFILE "$2"
   fi
 }
+
+function init_db() {
+  dc exec $1 rails db:drop db:create db:migrate db:seed
+}
