@@ -92,6 +92,7 @@ nnoremap P P=`]<C-o>
 nnoremap <LocalLeader>r :bufdo edit<CR>
 nnoremap <LocalLeader>t :tabo<CR>
 nnoremap <LocalLeader>f :let @" = expand("%")<cr>
+nnoremap <Leader>sv :source ~/.vimrc<cr>
 
 
 
