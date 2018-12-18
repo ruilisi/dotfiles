@@ -185,7 +185,6 @@ nnoremap <C-A> <esc>ggyG
 " edit file
 nmap <leader>ev :tabedit $MYVIMRC<cr>'tzo
 nmap <leader>em :tabedit makefile
-nmap <leader>ej :tabedit ~/.jshintrc<cr>'tzo
 
 " move around compile errors
 nnoremap <leader>n :cnext<cr>

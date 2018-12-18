@@ -1,4 +1,2 @@
 Bundle 'moll/vim-node'
-Bundle 'Shutnik/jshint2.vim'
 Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
