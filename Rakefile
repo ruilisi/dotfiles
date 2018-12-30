@@ -57,10 +57,10 @@ task :install_zsh do
   if want_to_install?('zsh')
     run %{
       which zsh
-      if [ $? != 0 ]; then
-        if [ "$(uname)" == "Darwin" ]; then
+      if [ $? -ne 0 ]; then
+        if [ "$(uname)" = "Darwin" ]; then
           brew install zsh
-        elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
           apt install zsh -y
         fi
       fi
@@ -158,7 +158,6 @@ task :install_vundle do
 end
 
 task :default => 'install'
-
 
 private
 def run(cmd)
