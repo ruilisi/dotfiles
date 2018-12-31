@@ -32,6 +32,8 @@ task :install => [:submodule_init, :submodules] do
     Rake::Task["install_vundle"].execute
   end
 
+  Rake::Task["install_utilities"].execute
+
   Rake::Task["install_zsh"].execute
 
   Rake::Task["install_ycm"].execute
@@ -51,6 +53,16 @@ task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
   end
+end
+
+task :install_utilities do
+  run %{
+    if [ "$(uname)" = "Darwin" ]; then
+      brew install git
+    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+      apt install git fc-cache -y
+    fi
+  }
 end
 
 task :install_zsh do
