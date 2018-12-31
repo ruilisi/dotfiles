@@ -1,28 +1,31 @@
-#!/bin/sh
+#!/bin/bash
 
 exists () {
   which $1 &> /dev/null; echo $?
 }
 
-declare -a tools=("zsh" "git" "rake")
-
-for tool in "${tools[@]}"; do
-  if [ `exists $tool` != "0" ]; then
+install () {
+  pkg=$1
+  cmd=$2
+  if [ -z "$2" ]; then
+    cmd=$pkg
+  fi
+  if [ `exists $cmd` != "0" ]; then
     if [ "$(uname)" = "Darwin" ]; then
-      brew install $tool
+      brew install $pkg
     elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
-      apt $tool -y
+      sudo apt install $pkg -y
     fi
   fi
+}
+
+
+install fontconfig fc-cache
+tools=("zsh" "git" "rake")
+for tool in "${tools[@]}"; do
+  install $tool
 done
 
-if [ `exists fc-cache` != "0" ]; then
-  if [ "$(uname)" = "Darwin" ]; then
-    brew install fontconfig
-  elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
-    apt fc-cache -y
-  fi
-fi
 
 if [ ! -d "$HOME/.yadr" ]; then
     echo "Installing YADR for the first time"
