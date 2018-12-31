@@ -21,7 +21,7 @@ install () {
 
 
 install fontconfig fc-cache
-tools=("zsh" "git" "rake")
+tools=("zsh" "git" "rake" "tmux")
 for tool in "${tools[@]}"; do
   install $tool
 done
