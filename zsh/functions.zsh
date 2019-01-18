@@ -129,3 +129,8 @@ function swap() {
 function init_db() {
   dc exec $1 rails db:drop db:create db:migrate db:seed
 }
+
+function githublog() {
+  repo=`git remote get-url origin | sed -E 's/.*:(.*)\.git/\1/'`
+  git log --pretty="[%an - %s](https://github.com/$repo/commit/%H)"
+}
