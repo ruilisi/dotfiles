@@ -132,5 +132,6 @@ function init_db() {
 
 function githublog() {
   repo=`git remote get-url origin | sed -E 's/.*:(.*)\.git/\1/'`
-  git log --pretty="[%an - %s](https://github.com/$repo/commit/%H)"
+  project_name=`echo $repo | sed -E 's/.*\/(.*)/\1/'`
+  git log --pretty="* [$project_name](https://github.com/$repo/commit/%H) %an: **%s**"
 }
