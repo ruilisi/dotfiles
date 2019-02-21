@@ -130,8 +130,22 @@ function init_db() {
   dc exec $1 rails db:drop db:create db:migrate db:seed
 }
 
-function githublog() {
+function gitcopy() {
+  n=1
+  while getopts "c:n:" o; do
+      case "${o}" in
+          c)
+              commit=${OPTARG}
+              ;;
+          n)
+              n=${OPTARG}
+              ;;
+          *)
+              usage
+              ;;
+      esac
+  done
   repo=`git remote get-url origin | sed -E 's/.*:(.*)\.git/\1/'`
   project_name=`echo $repo | sed -E 's/.*\/(.*)/\1/'`
-  git log --pretty="* [$project_name](https://github.com/$repo/commit/%H) %an: **%s**"
+  git log $commit --pretty="* [$project_name](https://github.com/$repo/commit/%H) %an: **%s**" | head -n $n | tee | pbcopy
 }
