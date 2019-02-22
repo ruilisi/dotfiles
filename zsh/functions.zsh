@@ -147,5 +147,5 @@ function gitcopy() {
   done
   repo=`git remote get-url origin | sed -E 's/.*:(.*)\.git/\1/'`
   project_name=`echo $repo | sed -E 's/.*\/(.*)/\1/'`
-  git log $commit --pretty="* [$project_name](https://github.com/$repo/commit/%H) %an: **%s**" | head -n $n | tee | pbcopy
+  git log $commit --pretty="* [$project_name](https://github.com/$repo/commit/%H) %an: **%s**" | head -n $n | tee >(pbcopy)
 }
