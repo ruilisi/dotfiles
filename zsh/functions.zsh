@@ -145,7 +145,7 @@ function gitcopy() {
               ;;
       esac
   done
-  repo=`git remote get-url origin | sed -E 's/.*:(.*)\.git/\1/'`
-  project_name=`echo $repo | sed -E 's/.*\/(.*)/\1/'`
-  git log $commit --pretty="* [$project_name](https://github.com/$repo/commit/%H) %an: **%s**" | head -n $n | tee >(pbcopy)
+  prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
+  project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
+  git log $commit --pretty="* [$project_name]($prefix/commit/%H) %an: **%s**" | head -n $n | tee >(pbcopy)
 }
