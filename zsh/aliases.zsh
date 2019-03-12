@@ -254,3 +254,4 @@ alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true 
 alias find_large_files="sudo find / -xdev -type f -size +50M"
 alias vim_plain="vim -u NONE"
 alias edit_alias="vim $yadr_zsh/aliases.zsh $yadr_zsh/functions.zsh -p"
+alias k="kubectl"
