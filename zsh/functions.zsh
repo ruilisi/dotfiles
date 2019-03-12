@@ -149,3 +149,7 @@ function gitcopy() {
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
   git log $commit --pretty="* [$project_name]($prefix/commit/%H) %an: **%s**" | head -n $n | tee >(pbcopy)
 }
+
+function h() {
+  helm $* --tls
+}
