@@ -153,3 +153,8 @@ function gitcopy() {
 function h() {
   helm $* --tls
 }
+function kexec {
+  POD_NAME=`k get pods | grep wechat | awk '{print $1}'`
+  shift 1
+  kubectl exec -it $POD_NAME $@
+}
