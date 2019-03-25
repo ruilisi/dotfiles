@@ -154,7 +154,14 @@ function h() {
   helm $* --tls
 }
 function kexec {
-  POD_NAME=`k get pods | grep wechat | awk '{print $1}'`
+  TEXT=$1
+  POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
   shift 1
   kubectl exec -it $POD_NAME $@
+}
+
+function klogs {
+  TEXT=$1
+  POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
+  kubectl logs -f $POD_NAME
 }
