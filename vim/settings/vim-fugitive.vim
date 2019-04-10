@@ -3,7 +3,7 @@
 " parent directory. Here’s a mapping of .. to the above command, but
 " only for buffers containing a git blob or tree
 autocmd User fugitive
-  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \ get(b:, 'fugitive_type', '') =~# '^\%(tree\|blob\)$' |
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
@@ -12,9 +12,3 @@ autocmd User fugitive
 " fugitive buffers. This prevents this from becomming an issue:
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
-
-" fugitive.git
-" ========================================
-" For fugitive.git, dp means :diffput. Define dg to mean :diffget
-nnoremap <silent> ,dg :diffget<CR>
-nnoremap <silent> ,dp :diffput<CR>
