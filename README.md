@@ -86,7 +86,7 @@ rake update
 
 Homebrew是_缺失了的OSX包管理系统_，它会被自动安装。
 
-我们自动安装了一些常用的包，例如ctags, git, macvim, hub, 以及silver searcher ('ag')。
+我们自动安装了一些常用的包，例如ctags, git, macvim, hub, 以及RipGrep ('rg')。
 注意我们的自动补全插件需要MacVim支持Lua。安装器知道如何安装，但如果你以前安装过，你需要手动删除你以前的MacVim。
 
 ### ZSH
@@ -194,7 +194,7 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
  * `,K` - Grep当前单词一直到下一个感叹号(在ruby foo!方法中很有用)
  * `Cmd-*` - 将所有当前单词出现的地方高亮(与正常的`*`一样，除了不移动)
  * `,hl` - 切换搜索高亮
- * `,gg` 或 `,ag` - 在命令行中grep，在双引号之间输入。 使用 Ag(Silver Searcher)。
+ * `,gg` 或 `,ag` - 在命令行中grep，在双引号之间输入。 使用RipGrep。
  * 在使用`,gg`搜索过，你可以用`Ctrl-x` 和 `Ctrl-z`来浏览 (或者标准vim命令 `:cn` 和 `:cp`)
  * `,gd` - 当光标在函数名字上的时候，Grep定义 (检索'def [function name]')
  * `,gcf` - 在当前文件搜索对当前文件的索引
