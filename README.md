@@ -42,7 +42,7 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/
 #### 安装 iTerm Solarized Colors
 YADR 会往iTerm里安装Solarized配色方案。进入Profiles => Colors => Load Presets，可以选择Solarized Dark。
 
-#### 用[Seil](https://pqrs.org/osx/karabiner/seil.html.en)来交换caps-lock和escape的位置。
+#### 用[Karabiner-Elements](https://pqrs.org/osx/karabiner/index.html)来交换caps-lock和escape的位置。
 escape键是vim里最常用的键。老式键盘曾拥有Tab一样大的键，Apple键盘最差的地方就是拥有极小的Esc键。但是，
 通过交换Esc键和Caps键的位置可以修复这些问题。如果总是不停地敲击角落上的小目标，你肯定会大幅降低自己的效率，说不定还会让你的手因屡次肌肉用力产生小的创伤。
 
