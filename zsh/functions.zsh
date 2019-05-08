@@ -165,3 +165,10 @@ function klogs {
   POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
   kubectl logs -f $POD_NAME
 }
+
+function rgm {
+  args=("${(@s/,/)1}")
+  regex=${(j:.*\n.*:)args}
+  echo "Rip Search with $regex..."
+  rg -U $regex
+}
