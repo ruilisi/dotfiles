@@ -216,7 +216,6 @@ alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 # emacs
 alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 
-alias dc='docker-compose -f docker-compose-dev.yml'
 alias ds='dc exec server'
 alias drspec='dc exec sidekiq rspec'
 alias psetup='dc exec sidekiq rake parallel:setup'

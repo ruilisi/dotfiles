@@ -172,3 +172,12 @@ function rgm {
   echo "Rip Search with $regex..."
   rg -U $regex
 }
+
+function dc {
+  if [ -e ./docker-compose-dev.yml ]; then
+    docker_file_path=./docker-compose-dev.yml
+  else
+    docker_file_path=~/Projects/rallets-hub/docker-compose-dev.yml
+  fi
+  docker-compose -f $docker_file_path $@
+}
