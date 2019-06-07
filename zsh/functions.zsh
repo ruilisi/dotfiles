@@ -155,7 +155,17 @@ function h() {
 }
 function kexec {
   TEXT=$1
-  POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
+  echo 'waiting...'
+  while true; do
+    POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
+    array=("${(f)POD_NAME}")
+    echo ${array[@]}
+    if [ ${#array[@]} -ne 1 ];then
+      sleep 2
+    else
+      break
+    fi
+  done
   shift 1
   kubectl exec -it $POD_NAME $@
 }
