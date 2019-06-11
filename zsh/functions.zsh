@@ -158,16 +158,45 @@ function kexec {
   echo 'waiting...'
   while true; do
     POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
-    array=("${(f)POD_NAME}")
-    echo ${array[@]}
-    if [ ${#array[@]} -ne 1 ];then
-      sleep 2
-    else
+    POD_NAMES=("${(f)POD_NAME}")
+    echo ${POD_NAMES[@]}
+    RUNNING_PODS=()
+    for i in $POD_NAMES; do
+      READY=`k get pods $i | grep $TEXT | awk '{print $2}'`
+      READYS=("${(@s|/|)READY}")
+      STATE=`k get pods $i | grep $TEXT | awk '{print $3}'`
+      if [[ ${READYS[1]} -gt 0 && "${STATE}" -eq "Running" ]]; then
+        RUNNING_PODS+=($i)
+      fi
+    done
+    if [ ${#RUNNING_PODS[@]} -eq 1 ];then
+      shift 1
+      kubectl exec -it $RUNNING_PODS[1] $@
       break
+    elif [ ${#RUNNING_PODS[@]} -gt 1 ];then
+      echo 'Pods:'
+      INDEX=1
+      for i in $RUNNING_PODS;do
+        echo "[$INDEX] $i"
+        let INDEX=${INDEX}+1
+      done
+      echo "select option to execute: "
+      while true;do
+        read input
+        if [[ $input -gt 0 && $input -le ${#RUNNING_PODS[@]} ]];then
+          break
+        else
+          echo 'invalid option...'
+        fi
+      done
+      shift 1
+      kubectl exec -it $RUNNING_PODS[$input] $@
+      break
+    else
+      echo 'there is no pod in running, please wait for a moment...'
+      sleep 2
     fi
   done
-  shift 1
-  kubectl exec -it $POD_NAME $@
 }
 
 function klogs {
