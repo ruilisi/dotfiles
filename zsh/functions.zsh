@@ -154,25 +154,45 @@ function h() {
   helm $* --tls
 }
 function kexec {
-  TEXT=$1
+  RAN=false
+  while getopts ":rp:" opt; do
+    case "${opt}" in
+      r)
+        RAN=true
+        ;;
+      p)
+        PROJECT=$OPTARG
+        ;;
+      *)
+        echo "Usage: cmd [-h]"
+        return
+        ;;
+    esac
+  done
+  shift $(($OPTIND - 1))
+
   echo 'waiting...'
   while true; do
-    POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
+    POD_NAME=`k get pods | grep $PROJECT | awk '{print $1}'`
     POD_NAMES=("${(f)POD_NAME}")
     echo ${POD_NAMES[@]}
     OK=true
     for i in $POD_NAMES; do
-      READY=`k get pods $i | grep $TEXT | awk '{print $2}'`
+      READY=`k get pods $i | grep $PROJECT | awk '{print $2}'`
       READYS=("${(@s|/|)READY}")
-      STATE=`k get pods $i | grep $TEXT | awk '{print $3}'`
+      STATE=`k get pods $i | grep $PROJECT | awk '{print $3}'`
       if [[ ${READYS[1]} -eq 0 || "${STATE}" -ne "Running" ]]; then
         OK=false
         break
       fi
     done
-    if (( $OK = false ));then
+    if [[ $OK == 'false' ]];then
       sleep 2
       continue
+    fi
+    if [[ $RAN == 'true' ]];then
+      input=`shuf -i 1-${#POD_NAMES[@]} -n 1`
+      break
     fi
     if [ ${#POD_NAMES[@]} -eq 1 ];then
       input=1
@@ -196,7 +216,7 @@ function kexec {
       break
     fi
   done
-  shift 1
+  echo "executing pod $POD_NAMES[$input]..."
   kubectl exec -it $POD_NAMES[$input] $@
 }
 
