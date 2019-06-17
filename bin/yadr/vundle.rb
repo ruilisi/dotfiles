@@ -29,6 +29,9 @@ module Vundle
     system "vim --noplugin -u #{ENV['HOME']}/.vim/vundles.vim -N \"+set hidden\" \"+syntax on\" +BundleClean +BundleInstall! +qall"
   end
 
+  def self.plugin_sync
+    system "vim \"+set hidden\" \"+syntax on\" +PluginClean +PluginInstall +qall"
+  end
 
   private
   def self.contains_vundle?(vundle_name)

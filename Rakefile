@@ -140,8 +140,8 @@ task :install_vundle do
   Vundle::update_vundle
 end
 
-task :update_vundle do
-  Vundle::update_vundle
+task :plugin_sync do
+  Vundle::plugin_sync
 end
 
 task :default => 'install'
