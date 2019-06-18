@@ -132,22 +132,28 @@ function init_db() {
 
 function gitcopy() {
   n=1
-  while getopts "c:n:" o; do
-      case "${o}" in
-          c)
-              commit=${OPTARG}
-              ;;
-          n)
-              n=${OPTARG}
-              ;;
-          *)
-              usage
-              ;;
-      esac
+  while getopts "c:n:t:" o; do
+    case "${o}" in
+      c)
+        commit=${OPTARG}
+        ;;
+      n)
+        n=${OPTARG}
+        ;;
+      t)
+        trelloCardName=${OPTARG}
+        ;;
+      *)
+        usage
+        ;;
+    esac
   done
   prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
   git log $commit --pretty="* [$project_name]($prefix/commit/%H) %an: **%s**" | head -n $n | tee >(pbcopy)
+  if [[ "$trelloCardName" != '' ]]; then
+    ruby ~/Projects/rallets-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$(pbpaste)"
+  fi
 }
 
 function h() {
