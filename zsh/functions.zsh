@@ -150,9 +150,13 @@ function gitcopy() {
   done
   prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
-  git log $commit --pretty="* [$project_name]($prefix/commit/%H) %an: **%s**" | head -n $n | tee >(pbcopy)
+  commits=`git log $commit --pretty="* [$project_name]($prefix/commit/%H) %an: **%s**" | head -n $n`
+  which pbcopy
+  if [[ $? == '0' ]]; then
+    echo $commits | pbcopy
+  fi
   if [[ "$trelloCardName" != '' ]]; then
-    ruby ~/Projects/rallets-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$(pbpaste)"
+    ruby ~/Projects/rallets-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$commits"
   fi
 }
 
