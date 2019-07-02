@@ -132,7 +132,7 @@ function init_db() {
 
 function gitcopy() {
   n=1
-  while getopts "c:n:t:" o; do
+  while getopts "c:n:t:T" o; do
     case "${o}" in
       c)
         commit=${OPTARG}
@@ -142,6 +142,9 @@ function gitcopy() {
         ;;
       t)
         trelloCardName=${OPTARG}
+        ;;
+      T)
+        trelloCardName=`git log $commit --pretty="%s" | head -n $n`
         ;;
       *)
         usage
