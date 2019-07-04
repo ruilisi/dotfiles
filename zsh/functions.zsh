@@ -144,7 +144,7 @@ function gitcopy() {
         trelloCardName=${OPTARG}
         ;;
       T)
-        trelloCardName=`git log $commit --pretty="%s" | head -n $n`
+        trelloCardName=`git log $commit --pretty="✔️  %s" | head -n $n`
         ;;
       *)
         usage
