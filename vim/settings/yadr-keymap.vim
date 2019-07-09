@@ -294,3 +294,15 @@ noremap <Down> :echo '戒黄赌毒及上下左右键！'<CR>
 noremap <Left> :echo '戒黄赌毒及上下左右键！'<CR>
 noremap <Right> :echo '戒黄赌毒及上下左右键！'<CR>
 inoremap <leader>fn <C-R>=expand("%:t")<CR>
+
+
+function! TogglePaste()
+  if &paste
+    setlocal nopaste
+  else
+    setlocal paste
+  endif
+endfunction
+
+" set paste
+nnoremap <localleader>p :call TogglePaste()<cr>
