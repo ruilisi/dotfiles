@@ -153,7 +153,8 @@ function gitcopy() {
   done
   prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
-  commits=`git log $commit -n $n --stat --pretty="* [$project_name]($prefix/commit/%H) %an: **%s**"`
+  commits=`git log $commit -n $n --stat --pretty="
+* [$project_name]($prefix/commit/%H) %an: **%s**" | sed 's/^[^*]/> /'`
   which pbcopy &> /dev/null
   if [[ $? == '0' ]]; then
     echo $commits | pbcopy
