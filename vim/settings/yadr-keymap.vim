@@ -304,5 +304,15 @@ function! TogglePaste()
   endif
 endfunction
 
+function! ToggleRspecTest()
+  let l:line=getline('.')
+  if l:line =~? ',\s*now:\s.*true'
+    call setline('.', substitute(l:line, "\,\\s*now:\\s*true", "", ""))
+  else
+    call setline('.', substitute(l:line, "\\(['\"]\\)\\s*do", "\\1, now: true do", ""))
+  endif
+endfunction
+
 " set paste
-nnoremap <localleader>p :call TogglePaste()<cr>
+nnoremap <localleader>tp :call TogglePaste()<cr>
+nnoremap <localleader>tt :call ToggleRspecTest()<cr>
