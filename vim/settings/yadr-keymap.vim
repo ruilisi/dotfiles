@@ -309,7 +309,7 @@ function! ToggleRspecTest()
   if l:line =~? ',\s*now:\s.*true'
     call setline('.', substitute(l:line, "\,\\s*now:\\s*true", "", ""))
   else
-    call setline('.', substitute(l:line, "\\(['\"]\\)\\s*do", "\\1, now: true do", ""))
+    call setline('.', substitute(l:line, "\\([^\\s]\\)\\s*do", "\\1, now: true do", ""))
   endif
 endfunction
 
