@@ -161,7 +161,7 @@ function gitcopy() {
     echo $commits | pbcopy
   fi
   if [[ "$trelloCardName" != '' ]]; then
-    ruby ~/Projects/stellar-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$commits"
+    ruby ~/Projects/paiyou-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$commits"
   fi
 }
 
@@ -252,7 +252,7 @@ function dc {
   if [ -e ./docker-compose-dev.yml ]; then
     docker_file_path=./docker-compose-dev.yml
   else
-    docker_file_path=~/Projects/stellar-hub/docker-compose-dev.yml
+    docker_file_path=~/Projects/paiyou-hub/docker-compose-dev.yml
   fi
   docker-compose -f $docker_file_path $@
 }
