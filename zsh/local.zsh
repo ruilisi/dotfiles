@@ -45,8 +45,8 @@ elif [[ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
     # Do something under Windows NT platform
 fi
 
-if [ -e ~/Projects/rallets-hub/bin/rancher_setup.sh ]; then
-  source ~/Projects/rallets-hub/bin/rancher_setup.sh
+if [ -e ~/Projects/paiyou-hub/bin/rancher_setup.sh ]; then
+  source ~/Projects/paiyou-hub/bin/rancher_setup.sh
 fi
 
 if [ -e ~/.myzshrc ]; then
