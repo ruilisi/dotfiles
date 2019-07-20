@@ -1,1 +1,2 @@
 Bundle "vim-ruby/vim-ruby.git"
+Bundle "ngmy/vim-rubocop"
