@@ -154,14 +154,14 @@ function gitcopy() {
   prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
   commits=`git log $commit -n $n --stat --pretty="
-* [$project_name]($prefix/commit/%H) %an: **%s**" | sed 's/^[^*]/            /'`
+* [$project_name]($prefix/commit/%H) %an: **%s**" | sed 's/^[^*]/> /'`
   echo $commits
   which pbcopy &> /dev/null
   if [[ $? == '0' ]]; then
     echo $commits | pbcopy
   fi
   if [[ "$trelloCardName" != '' ]]; then
-    ruby ~/Projects/paiyou-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$commits"
+    ruby ~/Projects/paiyou-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$commits" -l `git config user.name`
   fi
 }
 
