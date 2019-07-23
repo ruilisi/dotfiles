@@ -130,6 +130,26 @@ function init_db() {
   dc exec $1 rails db:drop db:create db:migrate db:seed
 }
 
+function qiniu_uploader() {
+  bucket=''
+  filepath=''
+  while getopts "b:f:" o; do
+    case "${o}" in
+      b)
+        bucket=${OPTARG}
+        ;;
+      f)
+        filepath=${OPTARG}
+        ;;
+      *)
+        echo "Usage: -b BUCKET -f FILEPATH"
+        return
+        ;;
+    esac
+  done
+  ruby ~/Projects/paiyou-hub/bin/qiniu_uploader.rb -b $bucket -f $filepath
+}
+
 function gitcopy() {
   n=1
   while getopts "c:n:t:T" o; do
