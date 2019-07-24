@@ -297,6 +297,8 @@ function rgm {
 function dc {
   if [ -e ./docker-compose-dev.yml ]; then
     docker_file_path=./docker-compose-dev.yml
+  elif [ -e ./docker-compose.yml ]; then
+    docker_file_path=./docker-compose.yml
   else
     docker_file_path=~/Projects/paiyou-hub/docker-compose-dev.yml
   fi
