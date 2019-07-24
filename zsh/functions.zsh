@@ -129,11 +129,25 @@ function swap() {
 function init_db() {
   dc exec $1 rails db:drop db:create db:migrate db:seed
 }
-
-function qiniu_uploader() {
-  bucket=''
-  filepath=''
-  while getopts "b:f:" o; do
+function cmd_exists() {
+  cmd=$1
+  $cmd &> /dev/null;
+  if [[ $? == 0 ]]; then
+    echo Y
+  else
+    echo N
+  fi
+}
+function qshell_setup() {
+  if [[ $(cmd_exists qshell) == 'N' ]]; then
+    curl https://raw.githubusercontent.com/paiyou-network/scripts/master/install-qshell.sh | bash
+  fi
+  ~/Projects/paiyou-hub/bin/setup-qshell-account.sh
+}
+function qshell_upload() {
+  qshell_setup
+  bucket=assets
+  while getopts "b:f:k:t" o; do
     case "${o}" in
       b)
         bucket=${OPTARG}
@@ -141,13 +155,25 @@ function qiniu_uploader() {
       f)
         filepath=${OPTARG}
         ;;
+      k)
+        key=${OPTARG}
+        ;;
+      t)
+        timestamp=true
+        ;;
       *)
-        echo "Usage: -b BUCKET -f FILEPATH"
+        echo "Usage: qshell_upload [-b BUCKET] -f FILEPATH [-k KEY] [-t]"
         return
         ;;
     esac
   done
-  ruby ~/Projects/paiyou-hub/bin/qiniu_uploader.rb -b $bucket -f $filepath
+  if [[ $key == '' ]]; then
+    key=$(basename $filepath)
+  fi
+  if [[ $timestamp == 'true' ]];then
+    key=`date +%Y%m%dT%H%M%S`_${key}
+  fi
+  qshell rput $bucket $key $filepath
 }
 
 function gitcopy() {
