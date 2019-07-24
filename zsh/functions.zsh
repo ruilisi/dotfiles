@@ -135,8 +135,7 @@ function init_db() {
   dc exec $1 rails db:drop db:create db:migrate db:seed
 }
 function cmd_exists() {
-  cmd=$1
-  $cmd &> /dev/null;
+  $* &> /dev/null
   if [[ $? == 0 ]]; then
     echo Y
   else
@@ -179,6 +178,19 @@ function qshell_upload() {
     key=`date +%Y%m%dT%H%M%S`_${key}
   fi
   qshell rput $bucket $key $filepath
+}
+
+function gitr() {
+  args=$*
+  for dir in `ls`; do
+    if [[ -d "$dir" && -d "$dir/.git" ]]; then
+      pushd .
+      echo "${GREEN}$(basename $dir)${NC}"
+      cd $dir
+      git $args
+      popd
+    fi
+  done
 }
 
 function gitcopy() {
