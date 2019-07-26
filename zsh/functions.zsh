@@ -316,8 +316,6 @@ function dc {
     docker_file_path=./docker-compose-dev.yml
   elif [ -e ./docker-compose.yml ]; then
     docker_file_path=./docker-compose.yml
-  else
-    docker_file_path=~/Projects/paiyou-hub/docker-compose-dev.yml
   fi
   docker-compose -f $docker_file_path $@
 }
