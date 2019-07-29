@@ -224,7 +224,7 @@ function gitcopy() {
     echo $commits | pbcopy
   fi
   if [[ "$trelloCardName" != '' ]]; then
-    ruby ~/Projects/paiyou-hub/bin/create_trello_todo_card.rb -n $trelloCardName -d "$commits" -l `git config user.name`
+    ruby ~/Projects/paiyou-hub/bin/trello_action.rb -n $trelloCardName -d "$commits" -l `git config user.name`
   fi
 }
 
