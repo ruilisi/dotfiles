@@ -61,6 +61,18 @@ task :install_ycm do
   end
 end
 
+task :install_tools do
+  if macos?
+    run %{
+      brew install proxychains-ng
+    }
+  else
+    run %{
+      apt install proxychains
+    }
+  end
+end
+
 desc 'Updates the installation'
 task :update do
   Rake::Task["vundle_migration"].execute if needs_migration_to_vundle?
