@@ -2,6 +2,14 @@ require 'rake'
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
+def macos?
+  RUBY_PLATFORM.downcase.include?("darwin")
+end
+
+def linux?
+  RUBY_PLATFORM.downcase.include?("linux")
+end
+
 # this has all the runcoms from this directory.
 task :link_files do
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
@@ -23,7 +31,7 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts
 
-  install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
+  install_homebrew if macos?
   install_rvm_binstubs
 
   Rake::Task["link_files"].execute
@@ -32,13 +40,13 @@ task :install => [:submodule_init, :submodules] do
     Rake::Task["install_vundle"].execute
   end
 
+  Rake::Task["install_tools"].execute
   Rake::Task["install_ycm"].execute
-
   Rake::Task["install_prezto"].execute
 
   install_fonts
 
-  install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
+  install_term_theme if macos?
 
   run_bundle_config
 
@@ -61,6 +69,7 @@ task :install_ycm do
   end
 end
 
+desc 'Install tools which are necessary for developers'
 task :install_tools do
   if macos?
     run %{
@@ -165,7 +174,7 @@ def run(cmd)
 end
 
 def number_of_cores
-  if RUBY_PLATFORM.downcase.include?("darwin")
+  if macos?
     cores = run %{ sysctl -n hw.ncpu }
   else
     cores = run %{ nproc }
@@ -226,8 +235,8 @@ def install_fonts
   puts "======================================================"
   puts "Installing patched fonts for Powerline/Lightline."
   puts "======================================================"
-  run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if RUBY_PLATFORM.downcase.include?("darwin")
-  run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if RUBY_PLATFORM.downcase.include?("linux")
+  run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if macos?
+  run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if linux?
   puts
 end
 
