@@ -257,3 +257,4 @@ alias k="kubectl"
 alias rubocop='rubocop --require rubocop-performance  --format progress'
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
 alias init_server_db='ds rails db:create db:migrate db:seed'
+alias zsh_with_git_proxy='PROXYCHAINS_SOCKS5=25 proxychains zsh'
