@@ -227,9 +227,10 @@ function gitcopy() {
     ruby ~/Projects/paiyou-hub/bin/trello_action.rb -n $trelloCardName -d "$commits" -l `git config user.name`
   fi
 }
-
+alias k="kubectl"
 function h() {
-  helm $* --tls --tls-ca-cert ~/Projects/paiyou-hub/kube/helm/ca.cert.pem --tls-cert ~/Projects/paiyou-hub/kube/helm/helm.cert.pem --tls-key ~/Projects/paiyou-hub/kube/helm/helm.key.pem
+  helm $*
+  #helm $* --tls
 }
 function kexec {
   RAN=false
