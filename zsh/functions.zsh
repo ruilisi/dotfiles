@@ -229,7 +229,7 @@ function gitcopy() {
 }
 
 function h() {
-  helm $* --tls
+  helm $* --tls --tls-ca-cert ~/Projects/paiyou-hub/kube/helm/ca.cert.pem --tls-cert ~/Projects/paiyou-hub/kube/helm/helm.cert.pem --tls-key ~/Projects/paiyou-hub/kube/helm/helm.key.pem
 }
 function kexec {
   RAN=false
