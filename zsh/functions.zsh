@@ -94,18 +94,18 @@ function docker_rm_all() {
   docker rm -f `docker ps --no-trunc -aq`
 }
 function Replace () {
-	if [[ "$(uname)" == "Darwin" ]]; then
-		if [ "$#" -eq 3 ]; then
-			ag $2 -l -G "$1" | xargs sed -i '' s/$2/$3/g
-		elif [ "$#" -eq 2 ]; then
-			ag $1 -l | xargs sed -i '' s/$1/$2/g
-		fi
-	elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-		if [ "$#" -eq 3 ]; then
-			ag $2 -l -G $1 | xargs sed -i s/$2/$3/g
-		elif [ "$#" -eq 2 ]; then
-			ag $1 -l | xargs sed -i s/$1/$2/g
-		fi
+  if [[ "$(uname)" == "Darwin" ]]; then
+    if [ "$#" -eq 3 ]; then
+      ag $2 -l -G "$1" | xargs sed -i '' s/$2/$3/g
+    elif [ "$#" -eq 2 ]; then
+      ag $1 -l | xargs sed -i '' s/$1/$2/g
+    fi
+  elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+    if [ "$#" -eq 3 ]; then
+      ag $2 -l -G $1 | xargs sed -i s/$2/$3/g
+    elif [ "$#" -eq 2 ]; then
+      ag $1 -l | xargs sed -i s/$1/$2/g
+    fi
   fi
 }
 function git-change-module-remote() {
@@ -227,10 +227,38 @@ function gitcopy() {
     ruby ~/Projects/paiyou-hub/bin/trello_action.rb -n $trelloCardName -d "$commits" -l `git config user.name`
   fi
 }
-alias k="kubectl"
+function k() {
+  CONTEXT=gcloud
+  while getopts ":c:" opt; do
+    case ${opt} in
+      c)
+        CONTEXT=$OPTARG
+        shift; shift
+        ;;
+      \?) echo "Usage: h [-c CONTEXT]"
+        ;;
+    esac
+  done
+  kubectl $* --kubeconfig=$HOME/.kube/${CONTEXT}_config
+}
 function h() {
-  helm $*
-  #helm $* --tls
+  CONTEXT=gcloud
+  while getopts ":c:" opt; do
+    case ${opt} in
+      c)
+        CONTEXT=$OPTARG
+        shift; shift
+        ;;
+      \?) echo "Usage: h [-c CONTEXT]"
+        ;;
+    esac
+  done
+  TLS=""
+  case $CONTEXT in
+    gcloud)
+      TLS="--tls"
+  esac
+  helm $* $TLS --kubeconfig $HOME/.kube/${CONTEXT}_config
 }
 function kexec {
   RAN=false
