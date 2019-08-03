@@ -348,3 +348,6 @@ function dc {
   fi
   docker-compose -f $docker_file_path $@
 }
+function get_ip_of_ssh_hostname {
+  ssh -G $1 | awk '/^hostname / { print $2  }'
+}
