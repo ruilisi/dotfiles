@@ -233,12 +233,12 @@ function k() {
     case ${opt} in
       c)
         CONTEXT=$OPTARG
-        shift; shift
         ;;
       \?) echo "Usage: h [-c CONTEXT]"
         ;;
     esac
   done
+  shift $((OPTIND-1))
   kubectl $* --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
 function h() {
@@ -262,8 +262,12 @@ function h() {
 }
 function kexec {
   RAN=false
-  while getopts ":rp:" opt; do
+  CONTEXT=gcloud
+  while getopts ":c:rp:" opt; do
     case "${opt}" in
+      c)
+        CONTEXT=$OPTARG
+        ;;
       r)
         RAN=true
         ;;
@@ -280,14 +284,14 @@ function kexec {
 
   echo 'waiting...'
   while true; do
-    POD_NAME=`k get pods | grep $PROJECT | awk '{print $1}'`
+    POD_NAME=`k -c $CONTEXT get pods | grep $PROJECT | awk '{print $1}'`
     POD_NAMES=("${(f)POD_NAME}")
     echo ${POD_NAMES[@]}
     OK=true
     for i in $POD_NAMES; do
-      READY=`k get pods $i | grep $PROJECT | awk '{print $2}'`
+      READY=`k -c $CONTEXT get pods $i | grep $PROJECT | awk '{print $2}'`
       READYS=("${(@s|/|)READY}")
-      STATE=`k get pods $i | grep $PROJECT | awk '{print $3}'`
+      STATE=`k -c $CONTEXT get pods $i | grep $PROJECT | awk '{print $3}'`
       if [[ ${READYS[1]} -eq 0 || "${STATE}" -ne "Running" ]]; then
         OK=false
         break
@@ -324,7 +328,7 @@ function kexec {
     fi
   done
   echo "executing pod $POD_NAMES[$input]..."
-  kubectl exec -it $POD_NAMES[$input] $@
+  k -c $CONTEXT exec -it $POD_NAMES[$input] $@
 }
 
 function klogs {
