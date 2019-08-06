@@ -181,13 +181,12 @@ function qshell_upload() {
 }
 
 function gitr() {
-  args=$*
   for dir in `ls`; do
     if [[ -d "$dir" && -d "$dir/.git" ]]; then
       pushd .
       echo "${GREEN}$(basename $dir)${NC}"
       cd $dir
-      git $args
+      git $*
       popd
     fi
   done
@@ -354,4 +353,30 @@ function dc {
 }
 function get_ip_of_ssh_hostname {
   ssh -G $1 | awk '/^hostname / { print $2  }'
+}
+function gcn {
+  while true;do
+    typeset -A users
+    users=('1' 'hophacker' '2' 'zhcalvin' '6' 'wsq')
+    for k in "${(@k)users}"; do
+      echo "$k || $users[$k]"
+    done
+    read input
+    if [[ ! -z $users[$input] ]];then
+      name=$users[$input]
+      break
+    else
+      for k in "${(@k)users}"; do
+        if [[ $input == $users[$k] ]];then
+          name=$input
+          break 2
+        fi
+      done
+      echo 'invalid option...'
+    fi
+  done
+  typeset -A emails
+  emails=('hophacker' 'j' 'zhcalvin' 'c' 'wsq' 'wsq')
+  set -x
+  git commit --amend --author="$name<$emails[$name]@paiyou.co>" $*
 }
