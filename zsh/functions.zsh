@@ -350,29 +350,35 @@ function dc {
 function get_ip_of_ssh_hostname {
   ssh -G $1 | awk '/^hostname / { print $2  }'
 }
-function gcn {
+unalias gc
+unalias gcm
+function gc {
   while true;do
-    typeset -A users
-    users=('1' 'hophacker' '2' 'zhcalvin' '6' 'wsq')
-    for k in "${(@k)users}"; do
-      echo "$k || $users[$k]"
+    users=($GIT_USERS)
+    for ((i=1; i<=${#users[@]}; i++)) do
+      echo "$i | $users[$i]"
     done
+    echo 'please input your number or name:'
     read input
-    if [[ ! -z $users[$input] ]];then
-      name=$users[$input]
-      break
-    else
-      for k in "${(@k)users}"; do
-        if [[ $input == $users[$k] ]];then
-          name=$input
+    for ((i=1; i<=${#users[@]}; i++)) do
+      if [[ $input == $users[$i] ]];then
+        name=$input
+        index=$i
+        break 2
+      elif [[ "$input" =~ '^[0-9]+$' ]];then
+        if [[ $input -gt 0 && $input -le ${#users[@]} ]];then
+          name=$users[$input]
+          index=$input
           break 2
         fi
-      done
-      echo 'invalid option...'
-    fi
+      fi
+    done
+    echo 'invalid option...'
   done
-  typeset -A emails
-  emails=('hophacker' 'j' 'zhcalvin' 'c' 'wsq' 'wsq')
-  set -x
-  git commit --amend --author="$name<$emails[$name]@paiyou.co>" $*
+  emails=($GIT_EMAILS)
+  (git commit --verbose $*) || return
+  (git commit --amend --author="$name <$emails[$index]>") || return
+}
+function gcm {
+  (gc --message $*) || return
 }
