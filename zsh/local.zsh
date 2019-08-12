@@ -49,6 +49,5 @@ if [ -e ~/Projects/paiyou-hub/bin/rancher_setup.sh ]; then
   source ~/Projects/paiyou-hub/bin/rancher_setup.sh
 fi
 
-if [ -e ~/.myzshrc ]; then
-  source ~/.myzshrc
-fi
+[ -e ~/Projects/paiyou-hub/.myzshrc ] && source ~/Projects/paiyou-hub/.myzshrc
+
