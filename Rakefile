@@ -64,6 +64,7 @@ task :install_ycm do
     run %{
       apt install cmake libpython2.7 python-dev -y
       cd $HOME/.vim/bundle/YouCompleteMe/
+      git submodule update --init --recursive
       ./install.py
     }
   end
