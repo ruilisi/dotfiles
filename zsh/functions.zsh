@@ -132,7 +132,19 @@ function swap() {
 }
 
 function init_db() {
-  dc exec $1 rails db:drop db:create db:migrate db:seed
+  SERVICE=server
+  while getopts ":s:" o; do
+    case "${o}" in
+      s)
+        SERVICE=${OPTARG}
+        ;;
+      *)
+        echo "Usage: init_db [-s SERVICE]"
+        return
+        ;;
+    esac
+  done
+  dc exec $SERVICE rails db:drop db:create db:migrate db:seed
 }
 function cmd_exists() {
   $* &> /dev/null

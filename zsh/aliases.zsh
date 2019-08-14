@@ -255,4 +255,4 @@ alias vim_plain="vim -u NONE"
 alias edit_alias="vim $yadr_zsh/aliases.zsh $yadr_zsh/functions.zsh -p"
 alias rubocop='rubocop --require rubocop-performance  --format progress'
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
-alias init_server_db='ds rails db:create db:migrate db:seed'
+alias pzsh='proxychains zsh'
