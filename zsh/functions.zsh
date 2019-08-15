@@ -206,7 +206,6 @@ function gitr() {
 
 function gitcopy() {
   n=1
-  trelloCardName=`git log $commit --pretty="✔️  %s" | head -n $n`
   while getopts "c:n:t" o; do
     case "${o}" in
       c)
@@ -225,6 +224,7 @@ function gitcopy() {
   done
   prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
+  trelloCardName=`git log$commit -n $n --pretty="✔️  %s"`
   commits=`git log $commit -n $n --stat --pretty="
 * [$project_name]($prefix/commit/%H) %an: **%s**" | sed 's/^[^*]/> /'`
   echo $commits
@@ -233,7 +233,7 @@ function gitcopy() {
     echo $commits | pbcopy
   fi
   if [[ "$trelloCardName" != '' ]]; then
-    ruby ~/Projects/paiyou-hub/bin/trello_action.rb -n $trelloCardName -d "$commits" -l `git config user.name`
+    ruby ~/Projects/paiyou-hub/bin/trello_action.rb -n $trelloCardName -d "$commits" -u `git config user.name`
   fi
 }
 function k() {
