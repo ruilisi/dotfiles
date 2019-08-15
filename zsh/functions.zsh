@@ -224,7 +224,7 @@ function gitcopy() {
   done
   prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
-  trelloCardName=`git log$commit -n $n --pretty="✔️  %s"`
+  trelloCardName=`git log $commit -n $n --pretty="✔️  %s"`
   commits=`git log $commit -n $n --stat --pretty="
 * [$project_name]($prefix/commit/%H) %an: **%s**" | sed 's/^[^*]/> /'`
   echo $commits
