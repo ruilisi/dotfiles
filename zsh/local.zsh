@@ -35,7 +35,7 @@ export LC_ALL=en_US.UTF-8
 
 # Golang
 export GOROOT_BOOTSTRAP=/usr/local/go
-export GOPATH=$HOME/gocode
+export GOPATH=$HOME/go
 PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 if [[ "$(uname)" == "Darwin" ]]; then
