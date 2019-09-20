@@ -257,4 +257,4 @@ alias dsrubocop='ds rubocop --require rubocop/formatter/junit_formatter \
                        --require rubocop-performance \
                        --format progress'
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
-alias pzsh='proxychains zsh'
+alias pzsh='USING_PROXYCHAINS=true proxychains zsh'
