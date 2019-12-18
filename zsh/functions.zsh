@@ -388,6 +388,8 @@ function gc {
     echo 'invalid option...'
   done
   emails=($GIT_EMAILS)
+  git config user.name $name
+  git config user.email $emails[$index]
   (git commit --verbose $*) || return
   (git commit --amend --author="$name <$emails[$index]>") || return
 }
