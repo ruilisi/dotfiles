@@ -250,6 +250,7 @@ function k() {
   shift $((OPTIND-1))
   kubectl $* --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
+alias kg="k -c qcloud"
 function h() {
   CONTEXT=gcloud
   while getopts ":c:" opt; do
@@ -267,6 +268,7 @@ function h() {
   esac
   helm $* $TLS --kubeconfig $HOME/.kube/${CONTEXT}_config
 }
+alias hg="h -c qcloud"
 function kexec {
   RAN=false
   CONTEXT=gcloud
