@@ -258,3 +258,4 @@ alias dsrubocop='ds rubocop --require rubocop/formatter/junit_formatter \
                        --format progress'
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
 alias pzsh='USING_PROXYCHAINS=true proxychains zsh'
+alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn"
