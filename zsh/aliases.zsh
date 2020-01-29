@@ -219,7 +219,10 @@ alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 # docker
 alias ds='dc exec server'
 alias ds_setup='ds rails db:reset db:seed RAILS_ENV=test'
-alias ds_rspec='ds rspec'
+alias ds_rubocop='ds rubocop --require rubocop/formatter/junit_formatter \
+                       --require rubocop-performance \
+                       --format progress'
+alias ds_rspec='ds sh -c "rspec && rubocop --require rubocop/formatter/junit_formatter --require rubocop-performance -a"'
 alias dsidekiq_rspec='dc exec sidekiq rspec'
 alias psetup='dc exec sidekiq rake parallel:setup'
 alias prspec='dc exec sidekiq rake parallel:spec'
@@ -256,9 +259,6 @@ alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true 
 alias find_large_files="sudo find / -xdev -type f -size +50M"
 alias vim_plain="vim -u NONE"
 alias edit_alias="vim $yadr_zsh/aliases.zsh $yadr_zsh/functions.zsh -p"
-alias dsrubocop='ds rubocop --require rubocop/formatter/junit_formatter \
-                       --require rubocop-performance \
-                       --format progress'
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
 alias pzsh='USING_PROXYCHAINS=true proxychains zsh'
 alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn"
