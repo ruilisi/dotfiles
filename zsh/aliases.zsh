@@ -216,8 +216,11 @@ alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 # emacs
 alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 
+# docker
 alias ds='dc exec server'
-alias drspec='dc exec sidekiq rspec'
+alias ds_setup='ds rails db:reset db:seed RAILS_ENV=test'
+alias ds_rspec='ds rspec'
+alias dsidekiq_rspec='dc exec sidekiq rspec'
 alias psetup='dc exec sidekiq rake parallel:setup'
 alias prspec='dc exec sidekiq rake parallel:spec'
 
