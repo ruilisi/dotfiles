@@ -372,10 +372,24 @@ function kexec {
   k -c $CONTEXT exec -it $POD_NAMES[$input] $@
 }
 
-function klogs {
-  TEXT=$1
-  POD_NAME=`k get pods | grep $TEXT | awk '{print $1}'`
-  kubectl logs -f $POD_NAME
+function k_logs {
+  CONTEXT=gcloud
+  while getopts ":c:p:" opt; do
+    case "${opt}" in
+      c)
+        CONTEXT=$OPTARG
+        ;;
+      p)
+        PROJECT=$OPTARG
+        ;;
+      *)
+        echo "Usage: cmd [-h]"
+        return
+        ;;
+    esac
+  done
+  shift $(($OPTIND - 1))
+  k -c $CONTEXT logs -f deployment/$PROJECT-chart --all-containers=true --since=5s --pod-running-timeout=2s "$@"
 }
 
 function rgm {
