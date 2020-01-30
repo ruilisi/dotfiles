@@ -236,19 +236,51 @@ function gitcopy() {
     ruby ~/Projects/paiyou-hub/bin/trello_action.rb -n $trelloCardName -d "$commits" -u `git config user.name`
   fi
 }
-function k() {
+function kubectl() {
   CONTEXT=gcloud
-  while getopts ":c:" opt; do
-    case ${opt} in
-      c)
-        CONTEXT=$OPTARG
+  finalopts=()
+  while [[ $@ != "" ]] do
+    case $1 in
+      -c)
+        CONTEXT="$2"
+        shift
+        shift
         ;;
-      \?) echo "Usage: h [-c CONTEXT]"
+      --context=*)
+        CONTEXT="${i#*=}"
+        shift
+        ;;
+      *)
+        finalopts+=($1)
+        shift
         ;;
     esac
   done
-  shift $((OPTIND-1))
-  kubectl $* --kubeconfig=$HOME/.kube/${CONTEXT}_config
+  echo "kubectl $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config"
+  command kubectl $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config
+}
+function stern {
+  CONTEXT=gcloud
+  finalopts=()
+  while [[ $@ != "" ]] do
+    case $1 in
+      -c)
+        CONTEXT="$2"
+        shift
+        shift
+        ;;
+      --context=*)
+        CONTEXT="${i#*=}"
+        shift
+        ;;
+      *)
+        finalopts+=($1)
+        shift
+        ;;
+    esac
+  done
+  echo "stern $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config"
+  command stern $finalopts -t --since 10m --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
 alias kg="k -c qcloud"
 function h() {
