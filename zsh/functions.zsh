@@ -325,20 +325,11 @@ function kexec {
 
   echo 'waiting...'
   while true; do
-    POD_NAME=`k -c $CONTEXT get pods | grep $PROJECT | awk '{print $1}'`
-    POD_NAMES=("${(f)POD_NAME}")
-    echo ${POD_NAMES[@]}
-    OK=true
-    for i in $POD_NAMES; do
-      READY=`k -c $CONTEXT get pods $i | grep $PROJECT | awk '{print $2}'`
-      READYS=("${(@s|/|)READY}")
-      STATE=`k -c $CONTEXT get pods $i | grep $PROJECT | awk '{print $3}'`
-      if [[ ${READYS[1]} -eq 0 || "${STATE}" -ne "Running" ]]; then
-        OK=false
-        break
-      fi
-    done
-    if [[ $OK == 'false' ]];then
+    OUTPUT=`kubectl -c $CONTEXT get pods`
+    echo $OUTPUT
+    local POD_NAMES=()
+    POD_NAMES=($(echo $OUTPUT | egrep "$PROJECT.* ?1/[0-9]? *Running" | awk '{print $1}'))
+    if  [[ ${#POD_NAMES[@]} == 0 ]]; then
       sleep 2
       continue
     fi
@@ -369,7 +360,7 @@ function kexec {
     fi
   done
   echo "executing pod $POD_NAMES[$input]..."
-  k -c $CONTEXT exec -it $POD_NAMES[$input] $@
+  kubectl -c $CONTEXT exec -it $POD_NAMES[$input] $@
 }
 
 function k_logs {
