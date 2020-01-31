@@ -222,7 +222,8 @@ alias ds_setup='ds rails db:reset db:seed RAILS_ENV=test'
 alias ds_rubocop='ds rubocop --require rubocop/formatter/junit_formatter \
                        --require rubocop-performance \
                        --format progress'
-alias ds_rspec='ds sh -c "rspec && rubocop --require rubocop/formatter/junit_formatter --require rubocop-performance -a"'
+alias ds_rspec='ds rspec'
+alias ds_test='ds sh -c "rspec && rubocop --require rubocop/formatter/junit_formatter --require rubocop-performance -a"'
 alias dsidekiq_rspec='dc exec sidekiq rspec'
 alias psetup='dc exec sidekiq rake parallel:setup'
 alias prspec='dc exec sidekiq rake parallel:spec'
