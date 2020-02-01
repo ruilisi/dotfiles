@@ -1,8 +1,4 @@
 autoload colors; colors;
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-YELLOW="\033[1;33m"
-NC="\033[0m" # No Color
 
 function secure_source () {
   if [ -e $1 ]; then
@@ -197,7 +193,7 @@ function gitr() {
   for dir in `ls`; do
     if [[ -d "$dir" && -d "$dir/.git" ]]; then
       pushd .
-      echo "${GREEN}$(basename $dir)${NC}"
+      echo "$fg[green]$(basename $dir)$reset_color"
       cd $dir
       git $*
       popd
@@ -330,7 +326,7 @@ function kexec {
     echo $fg[green]"All Pods:"$reset_color
     echo $ALL_PODS
     if  [[ ${#ALL_PODS[@]} == 0 ]]; then
-      echo $fg[RED]"Pod not found for $PROJECT"$reset_color
+      echo $fg[red]"Pod not found for $PROJECT"$reset_color
       break
     fi
     RUNNING_PODS=($(echo $ALL_PODS | egrep "$PROJECT.* ?1/[0-9]? *Running" | awk '{print $1}'))
