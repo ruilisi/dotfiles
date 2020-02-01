@@ -1,3 +1,4 @@
+autoload colors; colors;
 RED="\033[0;31m"
 GREEN="\033[0;32m"
 YELLOW="\033[1;33m"
@@ -323,34 +324,43 @@ function kexec {
   done
   shift $(($OPTIND - 1))
 
-  echo 'waiting...'
+  RUNNING_POD_INDEX=-1
   while true; do
-    OUTPUT=`kubectl -c $CONTEXT get pods`
-    echo $OUTPUT
-    local POD_NAMES=()
-    POD_NAMES=($(echo $OUTPUT | egrep "$PROJECT.* ?1/[0-9]? *Running" | awk '{print $1}'))
-    if  [[ ${#POD_NAMES[@]} == 0 ]]; then
+    ALL_PODS=$(kubectl -c $CONTEXT get pods | grep "$PROJECT")
+    echo $fg[green]"All Pods:"$reset_color
+    echo $ALL_PODS
+    if  [[ ${#ALL_PODS[@]} == 0 ]]; then
+      echo $fg[RED]"Pod not found for $PROJECT"$reset_color
+      break
+    fi
+    RUNNING_PODS=($(echo $ALL_PODS | egrep "$PROJECT.* ?1/[0-9]? *Running" | awk '{print $1}'))
+    if [[ `echo $ALL_PODS | wc -l` != ${#RUNNING_PODS[@]} ]]; then
       sleep 2
+      echo $fg[red]'Pods are not ready, wait...'$reset_color
       continue
     fi
-    if [[ $RAN == 'true' ]];then
-      input=`shuf -i 1-${#POD_NAMES[@]} -n 1`
+    if [[ ${#RUNNING_PODS[@]} == 0 ]]; then
+      echo "Pod not found for $PROJECT"
       break
     fi
-    if [ ${#POD_NAMES[@]} -eq 1 ];then
-      input=1
+    if [[ $RAN == 'true' ]];then
+      RUNNING_POD_INDEX=`shuf -i 1-${#RUNNING_PODS[@]} -n 1`
       break
-    elif [ ${#POD_NAMES[@]} -gt 1 ];then
-      echo 'Pods:'
+    fi
+    if [ ${#RUNNING_PODS[@]} -eq 1 ];then
+      RUNNING_POD_INDEX=1
+      break
+    elif [ ${#RUNNING_PODS[@]} -gt 1 ];then
+      echo $fg[green]'Running Pods:'$reset_color
       INDEX=1
-      for i in $POD_NAMES;do
+      for i in $RUNNING_PODS;do
         echo "[$INDEX] $i"
         let INDEX=${INDEX}+1
       done
-      echo "select option to execute: "
+      echo $fg[green]'Select option of pod to execute:'$reset_color
       while true;do
-        read input
-        if [[ $input -gt 0 && $input -le ${#POD_NAMES[@]} ]];then
+        read RUNNING_POD_INDEX
+        if [[ $RUNNING_POD_INDEX -gt 0 && $RUNNING_POD_INDEX -le ${#RUNNING_PODS[@]} ]];then
           break
         else
           echo 'invalid option...'
@@ -359,8 +369,10 @@ function kexec {
       break
     fi
   done
-  echo "executing pod $POD_NAMES[$input]..."
-  kubectl -c $CONTEXT exec -it $POD_NAMES[$input] $@
+  if [[ $RUNNING_POD_INDEX != -1 ]]; then
+    echo "executing pod $fg[green]$RUNNING_PODS[$RUNNING_POD_INDEX]$reset_color"
+    kubectl -c $CONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $@
+  fi
 }
 
 function k_logs {
