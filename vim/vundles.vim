@@ -20,20 +20,6 @@ Bundle "gmarik/vundle"
 " YADR's vundles are split up by category into smaller files
 " This reduces churn and makes it easier to fork. See
 " ~/.vim/vundles/ to edit them:
-runtime ruby.vundle
-runtime languages.vundle
-runtime markdown.vundle
-runtime git.vundle
-runtime appearance.vundle
-runtime textobjects.vundle
-runtime search.vundle
-runtime project.vundle
-runtime vim-improvements.vundle
-runtime go.vundle
-runtime sls.vundle
-runtime python.vundle
-runtime javascript.vundle
-
 " The plugins listed in ~/.vim/.vundles.local will be added here to
 " allow the user to add vim plugins to yadr without the need for a fork.
 if filereadable(expand("~/.yadr/vim/.vundles.local"))

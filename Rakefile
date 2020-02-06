@@ -48,7 +48,7 @@ task install: %i[submodule_init submodules] do
 
   Rake::Task['link_files'].execute
   if want_to_install?('vim configuration (highly recommended)')
-    install_files(Dir.glob('{vim,vimrc}'))
+    install_files(Dir.glob('{vim}'))
     Rake::Task['install_vundle'].execute
   end
 

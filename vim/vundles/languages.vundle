@@ -1,8 +1,0 @@
-Bundle 'sheerun/vim-polyglot'
-Bundle 'garbas/vim-snipmate.git'
-Bundle 'honza/vim-snippets'
-Bundle 'skwp/vim-html-escape'
-Bundle 'chr4/nginx.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'w0rp/ale'
-Bundle 'jparise/vim-graphql'
