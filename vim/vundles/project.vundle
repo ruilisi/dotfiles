@@ -5,4 +5,3 @@ Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'junegunn/fzf'
 Bundle "xolox/vim-misc"
 Bundle "xolox/vim-session"
-Bundle "ycm-core/YouCompleteMe"
