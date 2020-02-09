@@ -17,7 +17,9 @@ function prompt_skwp_precmd {
   unsetopt XTRACE KSH_ARRAYS
 
   # Get Git repository information.
-  if (( $+functions[git-info] )); then
+  if [[ $DISABLE_GIT_INFO == 1 ]]; then
+    git-info off
+  elif [[ $+functions[git-info] ]]; then
     git-info on
     git-info
   fi
@@ -72,4 +74,6 @@ function prompt_skwp_setup {
   RPROMPT='%F{blue}${ruby_info[version]}'
 }
 
+alias disable_git_info='DISABLE_GIT_INFO=1'
+alias enable_git_info='DISABLE_GIT_INFO=0'
 prompt_skwp_setup "$@"
