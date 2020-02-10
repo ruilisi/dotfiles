@@ -68,6 +68,15 @@ task :install_prezto do
   install_prezto if want_to_install?('zsh enhancements & prezto')
 end
 
+desc 'install spacevim and related config files'
+task :install_spacevim do
+  run %(
+    curl -sLf https://spacevim.org/install.sh | bash
+    rm -rf ~/.SpaceVim.d
+    ln -s $(pwd)/SpaceVim.d ~/.SpaceVim.d
+  )
+end
+
 desc 'Install tools which are necessary for developers'
 task :install_tools do
   if macos?
