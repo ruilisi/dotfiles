@@ -48,6 +48,7 @@ task install: %i[submodule_init submodules] do
   Rake::Task['link_files'].execute
   Rake::Task['install_tools'].execute
   Rake::Task['install_prezto'].execute
+  Rake::Task['install_spacevim'].execute
 
   install_fonts
 
