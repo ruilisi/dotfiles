@@ -1,4 +1,4 @@
-#### bash -c "\`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/master/install.sh \`"
+#### bash -c "\`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh \`"
 
 **总是记住在拉取代码后运行`rake update`来确保插件都更新过了**
 
@@ -28,13 +28,13 @@
 开始先运行:
 
 ```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/master/install.sh`"
+bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`"
 ```
 
 **注意:** YADR会自动安装它的所有子模块。如果你需要在安装每个模块前确认一下, 使用:
 
 ```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/rallets-network/dotfiles/master/install.sh`" -s ask
+bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`" -s ask
 ```
 
 ## 等等，还没完。这一步不能少:
