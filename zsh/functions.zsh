@@ -77,7 +77,7 @@ function set_anonymous {
   '
 }
 function genAndroidKeystore {
-keytool -genkey -v -keystore /tmp/.keystore -alias rallets -keyalg RSA -keysize 2048 -validity 10000
+  keytool -genkey -v -keystore /tmp/.keystore -alias rallets -keyalg RSA -keysize 2048 -validity 10000
 }
 function delete_except_latest {
   total=`ll | wc -l`

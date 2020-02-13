@@ -216,19 +216,12 @@ alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 # emacs
 alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 
-# docker
-alias ds='dc exec server'
-alias ds_setup='ds rails db:reset db:seed RAILS_ENV=test'
-alias ds_rubocop='ds rubocop --require rubocop/formatter/junit_formatter \
-                       --require rubocop-performance \
-                       --format progress'
-alias ds_rspec='ds rspec'
-alias ds_test='ds sh -c "rspec && rubocop --require rubocop/formatter/junit_formatter --require rubocop-performance -a"'
-alias dsidekiq_rspec='dc exec sidekiq rspec'
-alias psetup='dc exec sidekiq rake parallel:setup'
-alias prspec='dc exec sidekiq rake parallel:spec'
-
-alias rs='rancher exec -it rallets-server-1'
+# rails
+alias rails_setup_test='rails db:reset db:seed RAILS_ENV=test'
+alias rubocop='rubocop --require rubocop/formatter/junit_formatter --require rubocop-performance --format progress'
+alias rails_test='rspec && rubocop'
+alias psetup='rake parallel:setup'
+alias prspec='rake parallel:spec'
 
 alias start_dropbox='~/.dropbox-dist/dropboxd'
 alias unzip_CN="unzip -O GB18030"
