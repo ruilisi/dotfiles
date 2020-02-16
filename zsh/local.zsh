@@ -33,11 +33,6 @@ unset all_proxy ALL_PROXY
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Golang
-export GOROOT_BOOTSTRAP=/usr/local/go
-export GOPATH=$HOME/go
-PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
-
 if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     # Do something under GNU/Linux platform
