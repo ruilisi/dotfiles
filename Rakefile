@@ -2,6 +2,7 @@
 
 require 'rake'
 require 'fileutils'
+require 'English'
 
 def macos?
   RUBY_PLATFORM.downcase.include?('darwin')
