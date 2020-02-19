@@ -240,8 +240,7 @@ function kubectl() {
     case $1 in
       -c)
         CONTEXT="$2"
-        shift
-        shift
+        shift; shift
         ;;
       --context=*)
         CONTEXT="${i#*=}"
@@ -263,8 +262,7 @@ function stern {
     case $1 in
       -c)
         CONTEXT="$2"
-        shift
-        shift
+        shift; shift
         ;;
       --context=*)
         CONTEXT="${i#*=}"
@@ -279,14 +277,22 @@ function stern {
   echo "stern $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config"
   command stern $finalopts -t --since 10m --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
-alias kg="k -c qcloud"
-function h() {
+function helm() {
   CONTEXT=gcloud
-  while getopts ":c:" opt; do
-    case ${opt} in
-      c)
-        CONTEXT=$OPTARG
+  finalopts=()
+  while [[ $@ != "" ]] do
+    case $1 in
+      -c)
+        CONTEXT="$2"
         shift; shift
+        ;;
+      --context=*)
+        CONTEXT="${i#*=}"
+        shift
+        ;;
+      *)
+        finalopts+=($1)
+        shift
         ;;
     esac
   done
@@ -295,9 +301,9 @@ function h() {
     gcloud)
       TLS="--tls"
   esac
-  helm $* $TLS --kubeconfig $HOME/.kube/${CONTEXT}_config
+  echo "helm $finalopts $TLS --kubeconfig=$HOME/.kube/${CONTEXT}_config"
+  command helm $finalopts $TLS --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
-alias hg="h -c qcloud"
 function kexec {
   RAN=false
   CONTEXT=gcloud

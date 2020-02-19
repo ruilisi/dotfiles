@@ -324,4 +324,3 @@ endfunction
 " set paste
 nnoremap <localleader>tp :call TogglePaste()<cr>
 nnoremap <localleader>tt :call ToggleRspecTest()<cr>
-
