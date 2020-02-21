@@ -235,6 +235,7 @@ function gitcopy() {
 }
 function kubectl() {
   CONTEXT=gcloud
+  DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
@@ -246,13 +247,17 @@ function kubectl() {
         CONTEXT="${i#*=}"
         shift
         ;;
+      --debug)
+        DEBUG=true
+        shift
+        ;;
       *)
         finalopts+=($1)
         shift
         ;;
     esac
   done
-  echo "kubectl $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config"
+  [[ $DEBUG == "true" ]] && echo "kubectl $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config"
   command kubectl $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
 function stern {
@@ -279,6 +284,7 @@ function stern {
 }
 function helm() {
   CONTEXT=gcloud
+  DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
@@ -288,6 +294,11 @@ function helm() {
         ;;
       --context=*)
         CONTEXT="${i#*=}"
+        shift
+        ;;
+      --debug)
+        DEBUG=true
+        finalopts+=($1)
         shift
         ;;
       *)
@@ -301,7 +312,7 @@ function helm() {
     gcloud)
       TLS="--tls"
   esac
-  echo "helm $finalopts $TLS --kubeconfig=$HOME/.kube/${CONTEXT}_config"
+  [[ $DEBUG == "true" ]] && echo "helm $finalopts $TLS --kubeconfig=$HOME/.kube/${CONTEXT}_config"
   command helm $finalopts $TLS --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
 function kexec {
