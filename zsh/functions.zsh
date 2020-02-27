@@ -234,7 +234,7 @@ function gitcopy() {
   fi
 }
 function kubectl() {
-  CONTEXT=gcloud
+  CONTEXT=${CONTEXT:-gcloud}
   DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
@@ -283,7 +283,7 @@ function stern {
   command stern $finalopts -t --since 10m --kubeconfig=$HOME/.kube/${CONTEXT}_config
 }
 function helm() {
-  CONTEXT=gcloud
+  CONTEXT=${CONTEXT:-gcloud}
   DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
