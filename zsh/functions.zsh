@@ -234,17 +234,17 @@ function gitcopy() {
   fi
 }
 function kubectl() {
-  CONTEXT=${CONTEXT:-gcloud}
+  KCONTEXT=${KCONTEXT:-gcloud}
   DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
       -c)
-        CONTEXT="$2"
+        KCONTEXT="$2"
         shift; shift
         ;;
       --context=*)
-        CONTEXT="${i#*=}"
+        KCONTEXT="${i#*=}"
         shift
         ;;
       --debug)
@@ -257,20 +257,20 @@ function kubectl() {
         ;;
     esac
   done
-  [[ $DEBUG == "true" ]] && echo "kubectl $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config"
-  command kubectl $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config
+  [[ $DEBUG == "true" ]] && echo "kubectl $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
+  command kubectl $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
 function stern {
-  CONTEXT=gcloud
+  KCONTEXT=${KCONTEXT:-gcloud}
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
       -c)
-        CONTEXT="$2"
+        KCONTEXT="$2"
         shift; shift
         ;;
       --context=*)
-        CONTEXT="${i#*=}"
+        KCONTEXT="${i#*=}"
         shift
         ;;
       *)
@@ -279,21 +279,21 @@ function stern {
         ;;
     esac
   done
-  echo "stern $finalopts --kubeconfig=$HOME/.kube/${CONTEXT}_config"
-  command stern $finalopts -t --since 10m --kubeconfig=$HOME/.kube/${CONTEXT}_config
+  echo "stern $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
+  command stern $finalopts -t --since 10m --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
 function helm() {
-  CONTEXT=${CONTEXT:-gcloud}
+  KCONTEXT=${KCONTEXT:-gcloud}
   DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
       -c)
-        CONTEXT="$2"
+        KCONTEXT="$2"
         shift; shift
         ;;
       --context=*)
-        CONTEXT="${i#*=}"
+        KCONTEXT="${i#*=}"
         shift
         ;;
       --debug)
@@ -308,20 +308,20 @@ function helm() {
     esac
   done
   TLS=""
-  case $CONTEXT in
+  case $KCONTEXT in
     gcloud)
       TLS="--tls"
   esac
-  [[ $DEBUG == "true" ]] && echo "helm $finalopts $TLS --kubeconfig=$HOME/.kube/${CONTEXT}_config"
-  command helm $finalopts $TLS --kubeconfig=$HOME/.kube/${CONTEXT}_config
+  [[ $DEBUG == "true" ]] && echo "helm $finalopts $TLS --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
+  command helm $finalopts $TLS --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
 function kexec {
   RAN=false
-  CONTEXT=gcloud
+  KCONTEXT=${KCONTEXT:-gcloud}
   while getopts ":c:rp:" opt; do
     case "${opt}" in
       c)
-        CONTEXT=$OPTARG
+        KCONTEXT=$OPTARG
         ;;
       r)
         RAN=true
@@ -339,7 +339,7 @@ function kexec {
 
   RUNNING_POD_INDEX=-1
   while true; do
-    ALL_PODS=$(kubectl -c $CONTEXT get pods | grep "$PROJECT")
+    ALL_PODS=$(kubectl -c $KCONTEXT get pods | grep "$PROJECT")
     echo $fg[green]"All Pods:"$reset_color
     echo $ALL_PODS
     if  [[ ${#ALL_PODS[@]} == 0 ]]; then
@@ -384,7 +384,7 @@ function kexec {
   done
   if [[ $RUNNING_POD_INDEX != -1 ]]; then
     echo "executing pod $fg[green]$RUNNING_PODS[$RUNNING_POD_INDEX]$reset_color"
-    kubectl -c $CONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $@
+    kubectl -c $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $@
   fi
 }
 
@@ -411,8 +411,8 @@ function klogs {
         ;;
     esac
   done
-  shift $(($OPTIND - 1))
-  k -c $CONTEXT logs -f deployment/$PROJECT-chart --all-containers=true --since=5s --pod-running-timeout=2s "$@"
+
+  kubectl -c $KCONTEXT logs -f deployment/$PROJECT --all-containers=true --since=5s --pod-running-timeout=2s $finalopts
 }
 
 function rgm {
