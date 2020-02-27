@@ -318,28 +318,40 @@ function helm() {
 function kexec {
   RAN=false
   KCONTEXT=${KCONTEXT:-gcloud}
-  while getopts ":c:rp:" opt; do
-    case "${opt}" in
-      c)
-        KCONTEXT=$OPTARG
+  NAMESPACE=default
+  finalopts=()
+  while [[ $@ != "" ]] do
+    case $1 in
+      -c)
+        KCONTEXT="$2"
+        shift; shift
         ;;
-      r)
+      --context=*)
+        KCONTEXT="${i#*=}"
+        shift
+        ;;
+      -r)
         RAN=true
+        shift
         ;;
-      p)
-        PROJECT=$OPTARG
+      -p)
+        PROJECT="$2"
+        shift; shift
+        ;;
+      -n)
+        NAMESPACE="$2"
+        shift; shift
         ;;
       *)
-        echo "Usage: cmd [-h]"
-        return
+        finalopts+=($1)
+        shift
         ;;
     esac
   done
-  shift $(($OPTIND - 1))
 
   RUNNING_POD_INDEX=-1
   while true; do
-    ALL_PODS=$(kubectl -c $KCONTEXT get pods | grep "$PROJECT")
+    ALL_PODS=$(kubectl -c $KCONTEXT -n $NAMESPACE get pods | grep "$PROJECT")
     echo $fg[green]"All Pods:"$reset_color
     echo $ALL_PODS
     if  [[ ${#ALL_PODS[@]} == 0 ]]; then
@@ -383,8 +395,8 @@ function kexec {
     fi
   done
   if [[ $RUNNING_POD_INDEX != -1 ]]; then
-    echo "executing pod $fg[green]$RUNNING_PODS[$RUNNING_POD_INDEX]$reset_color"
-    kubectl -c $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $@
+    echo "kubectl -c $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts"
+    kubectl -n $NAMESPACE -c $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts
   fi
 }
 
