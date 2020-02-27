@@ -388,19 +388,26 @@ function kexec {
   fi
 }
 
-function k_logs {
-  CONTEXT=gcloud
-  while getopts ":c:p:" opt; do
-    case "${opt}" in
-      c)
-        CONTEXT=$OPTARG
+function klogs {
+  KCONTEXT=${KCONTEXT:-gcloud}
+  finalopts=()
+  while [[ $@ != "" ]] do
+    case $1 in
+      -c)
+        KCONTEXT="$2"
+        shift; shift
         ;;
-      p)
-        PROJECT=$OPTARG
+      --context=*)
+        KCONTEXT="${i#*=}"
+        shift
+        ;;
+      -p)
+        PROJECT="$2"
+        shift; shift
         ;;
       *)
-        echo "Usage: cmd [-h]"
-        return
+        finalopts+=($1)
+        shift
         ;;
     esac
   done
