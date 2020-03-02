@@ -4,6 +4,7 @@ function! paiyou#after() abort
         \   'ruby': ['rubocop'],
         \}
   let g:ale_fix_on_save = 1
+  let g:ctrlp_max_files=0
 endfunction
 
 " ========================================
