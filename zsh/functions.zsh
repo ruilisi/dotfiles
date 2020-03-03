@@ -254,14 +254,18 @@ function kubectl() {
         DEBUG=true
         shift
         ;;
+      --)
+        finalopts+=("$@")
+        break
+        ;;
       *)
         finalopts+=($1)
         shift
         ;;
     esac
   done
-  [[ $DEBUG == "true" ]] && echo "kubectl $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
-  command kubectl $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config
+  [[ $DEBUG == "true" ]] && echo "kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts"
+  command kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts
 }
 function stern {
   KCONTEXT=${KCONTEXT:-gcloud}
