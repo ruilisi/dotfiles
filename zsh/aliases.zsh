@@ -254,5 +254,4 @@ alias find_large_files="sudo find / -xdev -type f -size +50M"
 alias vim_plain="vim -u NONE"
 alias edit_alias="vim $yadr_zsh/aliases.zsh $yadr_zsh/functions.zsh -p"
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
-alias pzsh='USING_PROXYCHAINS=true proxychains zsh'
 alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn"

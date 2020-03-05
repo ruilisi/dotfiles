@@ -70,10 +70,20 @@ function prompt_skwp_setup {
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
 
   PROMPT="${__PROMPT_SKWP_COLORS[3]}%n%f ${__PROMPT_SKWP_COLORS[5]}%~%f "'$git_info[prompt]'"$ "
-  [[ $USING_PROXYCHAINS == 'true'  ]] && PROMPT="🔗 $PROMPT"
+  [[ "$KCONTEXT" != ""  ]] && PROMPT="%F{blue}$KCONTEXT💡 $PROMPT"
   RPROMPT='%F{blue}${ruby_info[version]}'
 }
 
 alias disable_git_info='DISABLE_GIT_INFO=1'
 alias enable_git_info='DISABLE_GIT_INFO=0'
+function set_k8s_context {
+  C=$1
+  if [[ "$C" == "" ]]; then
+    echo "Select your context:"
+    ls ~/.kube/*_config | xargs -n 1 basename | sed s/_config//g
+    read C
+  fi
+  export KCONTEXT=$C
+  prompt_skwp_setup
+}
 prompt_skwp_setup "$@"

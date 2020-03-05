@@ -237,7 +237,6 @@ function gitcopy() {
   fi
 }
 function kubectl() {
-  KCONTEXT=${KCONTEXT:-gcloud}
   DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
@@ -268,7 +267,6 @@ function kubectl() {
   command kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts
 }
 function stern {
-  KCONTEXT=${KCONTEXT:-gcloud}
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
@@ -290,7 +288,6 @@ function stern {
   command stern $finalopts -t --since 10m --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
 function helm() {
-  KCONTEXT=${KCONTEXT:-gcloud}
   DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
@@ -324,7 +321,6 @@ function helm() {
 }
 function kexec {
   RAN=false
-  KCONTEXT=${KCONTEXT:-gcloud}
   NAMESPACE=default
   finalopts=()
   while [[ $@ != "" ]] do
@@ -408,7 +404,6 @@ function kexec {
 }
 
 function klogs {
-  KCONTEXT=${KCONTEXT:-gcloud}
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
