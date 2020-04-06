@@ -76,3 +76,9 @@ name = "lang#markdown"
 
 [[layers]]
 name = "lang#go"
+
+[[layers]]
+name = "lang#c"
+
+[[layers]]
+name = "format"

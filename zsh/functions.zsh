@@ -51,6 +51,8 @@ function set_ss_proxy() {
 }
 function unset_proxy() {
   unset all_proxy
+  unset http_proxy
+  unset https_proxy
 }
 function post {
   curl -H "Content-Type: application/json" -X POST -d $1 $2
