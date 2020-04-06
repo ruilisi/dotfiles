@@ -241,10 +241,6 @@ function kubectl() {
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
-      -c)
-        KCONTEXT="$2"
-        shift; shift
-        ;;
       --context=*)
         KCONTEXT="${i#*=}"
         shift
@@ -270,10 +266,6 @@ function stern {
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
-      -c)
-        KCONTEXT="$2"
-        shift; shift
-        ;;
       --context=*)
         KCONTEXT="${i#*=}"
         shift
@@ -292,10 +284,6 @@ function helm() {
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
-      -c)
-        KCONTEXT="$2"
-        shift; shift
-        ;;
       --context=*)
         KCONTEXT="${i#*=}"
         shift
@@ -325,10 +313,6 @@ function kexec {
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
-      -c)
-        KCONTEXT="$2"
-        shift; shift
-        ;;
       --context=*)
         KCONTEXT="${i#*=}"
         shift
@@ -354,7 +338,7 @@ function kexec {
 
   RUNNING_POD_INDEX=-1
   while true; do
-    ALL_PODS=$(kubectl -c $KCONTEXT -n $NAMESPACE get pods | grep "$PROJECT")
+    ALL_PODS=$(kubectl --context $KCONTEXT -n $NAMESPACE get pods | grep "$PROJECT")
     echo $fg[green]"All Pods:"$reset_color
     echo $ALL_PODS
     if  [[ ${#ALL_PODS[@]} == 0 ]]; then
@@ -398,8 +382,8 @@ function kexec {
     fi
   done
   if [[ $RUNNING_POD_INDEX != -1 ]]; then
-    echo "kubectl -c $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts"
-    kubectl -n $NAMESPACE -c $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts
+    echo "kubectl --context $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts"
+    kubectl -n $NAMESPACE --context $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts
   fi
 }
 
@@ -407,10 +391,6 @@ function klogs {
   finalopts=()
   while [[ $@ != "" ]] do
     case $1 in
-      -c)
-        KCONTEXT="$2"
-        shift; shift
-        ;;
       --context=*)
         KCONTEXT="${i#*=}"
         shift
@@ -426,7 +406,7 @@ function klogs {
     esac
   done
 
-  kubectl -c $KCONTEXT logs -f deployment/$PROJECT --all-containers=true --since=5s --pod-running-timeout=2s $finalopts
+  kubectl --context $KCONTEXT logs -f deployment/$PROJECT --all-containers=true --since=5s --pod-running-timeout=2s $finalopts
 }
 
 function rgm {
