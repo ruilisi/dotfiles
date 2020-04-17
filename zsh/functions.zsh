@@ -40,7 +40,7 @@ function cp_container() {
   cd ..
 }
 function set_proxy() {
-  export http_proxy=http://127.0.0.1:8119;export https_proxy=http://127.0.0.1:8119;
+  export http_proxy=http://127.0.0.1:8668;export https_proxy=http://127.0.0.1:8668;
 }
 function set_vagrant_proxy() {
   export http_proxy=http://127.0.0.1:9119;export https_proxy=http://127.0.0.1:9119;
