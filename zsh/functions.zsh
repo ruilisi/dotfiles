@@ -216,9 +216,6 @@ function gitcopy() {
       n)
         n=${OPTARG}
         ;;
-      t)
-        trelloCardName=${OPTARG}
-        ;;
       *)
         usage
         ;;
@@ -226,16 +223,12 @@ function gitcopy() {
   done
   prefix=`git remote get-url origin | sed -E 's/git@github.com:/https:\/\/github.com\//g' | sed -E 's/(.*)\.git/\1/'`
   project_name=`echo $prefix | sed -E 's/.*\/(.*)/\1/'`
-  trelloCardName=`git log $commit -n $n --pretty="✔️  %s"`
   commits=`git log $commit -n $n --stat --pretty="
 * [$project_name]($prefix/commit/%H) %an: **%s**" | sed 's/^[^*]/> /'`
   echo $commits
   which pbcopy &> /dev/null
   if [[ $? == '0' ]]; then
     echo $commits | pbcopy
-  fi
-  if [[ "$trelloCardName" != '' ]]; then
-    ruby ~/Projects/paiyou-hub/bin/trello_action.rb -n $trelloCardName -d "$commits" -u `git config user.name`
   fi
 }
 function kubectl() {
