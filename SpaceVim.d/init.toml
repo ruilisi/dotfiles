@@ -33,6 +33,7 @@
     enable_neomake = false
     enable_ale = true
     bootstrap_after = "paiyou#after"
+    project_rooter_automatically = 0
 
 # Enable autocomplete layer
 [[layers]]
