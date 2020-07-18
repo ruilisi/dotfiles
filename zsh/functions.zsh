@@ -294,13 +294,8 @@ function helm() {
         ;;
     esac
   done
-  TLS=""
-  case $KCONTEXT in
-    gcloud)
-      TLS="--tls"
-  esac
-  [[ $DEBUG == "true" ]] && echo "helm $finalopts $TLS --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
-  command helm $finalopts $TLS --kubeconfig=$HOME/.kube/${KCONTEXT}_config
+  [[ $DEBUG == "true" ]] && echo "helm $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
+  command helm $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
 function kexec {
   RAN=false
