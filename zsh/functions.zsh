@@ -389,6 +389,10 @@ function klogs {
         PROJECT="$2"
         shift; shift
         ;;
+      -i)
+        INSTANCE="$2"
+        shift; shift
+        ;;
       *)
         finalopts+=($1)
         shift
@@ -396,7 +400,11 @@ function klogs {
     esac
   done
 
-  kubectl --context $KCONTEXT logs -f deployment/$PROJECT --all-containers=true --since=5s --pod-running-timeout=2s $finalopts
+  if [[ "$PROJECT" != "" ]]; then
+    kubectl --context $KCONTEXT logs -f deployment/$PROJECT --all-containers=true --since=5s --pod-running-timeout=2s $finalopts
+  elif  [[ "$INSTANCE" != "" ]]; then
+    kubectl --context $KCONTEXT logs -f --max-log-requests=10 -l app.kubernetes.io/instance=$INSTANCE
+  fi
 }
 
 function rgm {
