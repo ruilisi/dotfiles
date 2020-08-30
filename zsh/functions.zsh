@@ -328,7 +328,8 @@ function kexec {
 
   RUNNING_POD_INDEX=-1
   while true; do
-    ALL_PODS=$(kubectl --context $KCONTEXT -n $NAMESPACE get pods | grep "$PROJECT")
+    echo "kubectl -n $NAMESPACE get pods | grep $PROJECT"
+    ALL_PODS=$(kubectl -n $NAMESPACE get pods | grep "$PROJECT")
     echo $fg[green]"All Pods:"$reset_color
     echo $ALL_PODS
     if  [[ ${#ALL_PODS[@]} == 0 ]]; then
@@ -372,8 +373,8 @@ function kexec {
     fi
   done
   if [[ $RUNNING_POD_INDEX != -1 ]]; then
-    echo "kubectl --context $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts"
-    kubectl -n $NAMESPACE --context $KCONTEXT exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts
+    echo "kubectl exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts"
+    kubectl -n $NAMESPACE exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts
   fi
 }
 
