@@ -16,7 +16,7 @@ for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GOPATH=$HOME/go
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export HELM_HOME="$HOME/.helm"
 
