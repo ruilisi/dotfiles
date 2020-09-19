@@ -13,8 +13,6 @@ let vimsettings = '~/.yadr/SpaceVim.d/autoload/settings'
 let uname = system("uname -s")
 
 for fpath in split(globpath(vimsettings, '*.vim'), '\n')
-  echom fpath
-
   if (fpath == expand(vimsettings) . "/yadr-keymap-mac.vim") && uname[:4] ==? "linux"
     continue " skip mac mappings for linux
   endif
