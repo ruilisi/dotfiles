@@ -216,6 +216,10 @@ alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 # emacs
 alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 
+# k8s
+alias kpg="kubectl get pods | grep"
+alias ksg="kubectl get service | grep"
+
 # rails
 alias rails_setup='rails db:reset; rails db:seed RAILS_ENV=test'
 alias rails_test='rspec && rubocop'
