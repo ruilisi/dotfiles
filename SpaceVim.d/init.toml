@@ -82,4 +82,7 @@ name = "lang#go"
 name = "lang#c"
 
 [[layers]]
+name = "lang#swift"
+
+[[layers]]
 name = "format"
