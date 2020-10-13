@@ -415,6 +415,15 @@ function rgm {
   rg -U $regex
 }
 
+function git_tag_delete() {
+  git tag -d $1; git push --delete origin $1
+}
+
+function git_tag_add() {
+  git tag -a $1 -m "$1"
+  gpc --tags
+}
+
 function dc {
   if [ -e ./docker-compose-dev.yml ]; then
     docker_file_path=./docker-compose-dev.yml
