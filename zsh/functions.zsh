@@ -300,31 +300,29 @@ function helm() {
 function kexec {
   RAN=true
   NAMESPACE=default
-  finalopts=()
-  while [[ $@ != "" ]] do
-    case $1 in
-      --context=*)
-        KCONTEXT="${i#*=}"
-        shift
-        ;;
-      -R)
-        RAN=false
-        shift
-        ;;
-      -p)
-        PROJECT="$2"
-        shift; shift
-        ;;
-      -n)
-        NAMESPACE="$2"
-        shift; shift
-        ;;
-      *)
-        finalopts+=($1)
-        shift
-        ;;
+  function usage ()
+  {
+    echo "Usage :  $0 [options] [--]
+    Options:
+    -C            kubectl context
+    -R            not randomly select pod
+    -n NAMESPACE
+    -p PROJECT
+    -h            Display this message"
+  }
+  while getopts ":hvC:Rp:" opt
+  do
+    case $opt in
+    C)  KCONTEXT=$OPTARG  ;;
+    R)  RAN=false         ;;
+    h)  usage; return 0   ;;
+    n)  NAMESPACE=$OPTARG ;;
+    p)  PROJECT=$OPTARG   ;;
+    *)  echo -e "\n  Option does not exist : $OPTARG\n"
+        usage; return 1   ;;
     esac
   done
+  shift $(($OPTIND-1))
 
   RUNNING_POD_INDEX=-1
   while true; do
@@ -373,8 +371,8 @@ function kexec {
     fi
   done
   if [[ $RUNNING_POD_INDEX != -1 ]]; then
-    echo "kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $finalopts"
-    kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $finalopts
+    echo "kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $@"
+    kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $@
   fi
 }
 
