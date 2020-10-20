@@ -298,7 +298,7 @@ function helm() {
   command helm $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
 function kexec {
-  RAN=false
+  RAN=true
   NAMESPACE=default
   finalopts=()
   while [[ $@ != "" ]] do
@@ -307,8 +307,8 @@ function kexec {
         KCONTEXT="${i#*=}"
         shift
         ;;
-      -r)
-        RAN=true
+      -R)
+        RAN=false
         shift
         ;;
       -p)
@@ -373,8 +373,8 @@ function kexec {
     fi
   done
   if [[ $RUNNING_POD_INDEX != -1 ]]; then
-    echo "kubectl exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts"
-    kubectl -n $NAMESPACE exec -it $RUNNING_PODS[$RUNNING_POD_INDEX] $finalopts
+    echo "kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $finalopts"
+    kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $finalopts
   fi
 }
 
