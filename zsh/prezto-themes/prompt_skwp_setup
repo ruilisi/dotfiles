@@ -86,3 +86,4 @@ function set_k8s_context {
   export KCONTEXT=$C
   prompt_skwp_setup
 }
+prompt_skwp_setup
