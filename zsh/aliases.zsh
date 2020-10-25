@@ -261,3 +261,6 @@ alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
 alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn"
 alias vim="nvim"
 alias k="kubectl"
+
+## source files
+alias ss="source ~/.yadr/zsh/functions.zsh; source ~/.yadr/zsh/aliases.zsh"

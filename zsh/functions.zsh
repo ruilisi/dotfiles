@@ -17,7 +17,7 @@ function contains() {
   echo "n"
   return 1
 }
-
+pp() { ps aux | grep "$1\|USER" | grep -v "grep" }
 function getIP () {
   echo $(grep $1 ~/.ssh/config -A 1 | tail -1 | tr -s ' ' | cut -d ' ' -f 3)
 }
@@ -433,8 +433,6 @@ function dc {
 function get_ip_of_ssh_hostname {
   ssh -G $1 | awk '/^hostname / { print $2  }'
 }
-unalias gc
-unalias gcm
 function gc {
   while true;do
     users=($GIT_USERS)
