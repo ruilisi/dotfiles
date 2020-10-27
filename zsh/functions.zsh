@@ -304,22 +304,22 @@ function kexec {
   {
     echo "Usage :  $0 [options] [--]
     Options:
-    -C            kubectl context
+    -K            kubectl context
     -R            not randomly select pod
     -n NAMESPACE
     -p PROJECT
     -h            Display this message"
   }
-  while getopts ":hvC:Rp:" opt
+  while getopts ":hvK:Rp:" opt
   do
     case $opt in
-    C)  KCONTEXT=$OPTARG  ;;
-    R)  RAN=false         ;;
-    h)  usage; return 0   ;;
-    n)  NAMESPACE=$OPTARG ;;
-    p)  PROJECT=$OPTARG   ;;
-    *)  echo -e "\n  Option does not exist : $OPTARG\n"
-        usage; return 1   ;;
+    R) RAN=false         ;;
+    h) usage; return 0   ;;
+    n) NAMESPACE=$OPTARG ;;
+    p) PROJECT=$OPTARG   ;;
+    K) KCONTEXT=$OPTARG  ;;
+    *) echo -e "\n  Option does not exist: $OPTARG\n"
+       usage; return 1   ;;
     esac
   done
   shift $(($OPTIND-1))
@@ -433,6 +433,8 @@ function dc {
 function get_ip_of_ssh_hostname {
   ssh -G $1 | awk '/^hostname / { print $2  }'
 }
+unalias gc 2>/dev/null
+unalias gcm 2>/dev/null
 function gc {
   while true;do
     users=($GIT_USERS)
