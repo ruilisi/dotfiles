@@ -492,7 +492,7 @@ SpaceVim的界面元素以[SPC] t或[SPC] T开头，可以通过在vim窗口内�
 - `:nohlsearch` - 取消高亮
 - `:set hls is` - 高亮显示查询结果
 - `:set ic` - 忽略大小写
-## 
+##
 ## 扩展或者重载YADR设置
 
 
@@ -561,3 +561,14 @@ Pry提供了一个更好的使用了颜色、tab补全及其他更多小技巧�
 
 
 [了解更多YADR's pry定制化以及如何安装](doc/pry.md)
+
+## 语言支持
+#### Typescript
+fix SpaceVim Unknown function: TSOnBufEnter
+* 主要参考
+  * https://github.com/SpaceVim/SpaceVim/issues/1800
+  * https://github.com/SpaceVim/SpaceVim/issues/3221
+* 解决步骤
+  * 删除cache   rm ~/.cache/vimfiles/.cache
+  * 打开vim  运行`:CheckHealth` 查看当前vim状态，有啥报错修复啥
+  * 重新打开vim 再运行`:UpdateRemotePlugins`
