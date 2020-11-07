@@ -32,7 +32,14 @@ Shortcut | Function |
 :-------:|:--------:|
 C-v      | Enter visual mode |
 C-x C-v  | Paste text from system clipboard |
-
+o        |insert a new line below|
+S-O      |insert a new line above|
+0        |go to the beginning of the line|
+$        |go to the end of the line|
+v        |enter character selection mode|
+V        |enter line selection mode|
+y        |copy selected content|
+p        |paste copied content|
 
 #### 安装 iTerm Solarized Colors
 
