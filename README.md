@@ -1,63 +1,17 @@
-# README
-
-#### bash -c "`curl -fsSL [https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh](https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh) `"
+# Ruilisi dotfiles
 
 
-**总是记住在拉取代码后运行`rake update`来确保插件都更新过了**
+## Requirements
+`zsh`, `tmux`, `vim`, `ag` are installed and zsh is set as your login shell:
+```sh
+chsh -s $(which zsh)
+```
 
+## Install
 
-**请确保已安装：`zsh`, `tmux`, `vim`, `ag`**
-
-
-## 什么是YADR?
-
-
-**YADR 是一个具有偏向性的dotfile源，它会让开心到心里在唱歌**
-
-
-- 吸收了所有最好的dotfile源的精华，vim和zsh的插件被紧密连贯地粘合在一起。
-- 超过90种vim插件被放在一起为您服务，每个插件都经过研究并被配置到最佳状态，且常常拥有最合理的快捷键 。
-- 许多zsh插件完美地基于Prezto, 且在此之上叠加了一些优质特性。
-- 一切的一切都被vim化: irb, postgres命令行等等.
-
-
-
-## 邮件列表
-
-
-如果你有问题或者疑问又想听听我们的建议，请加入[Google Group](https://groups.google.com/forum/#!forum/yadr-users)
-
-
-如果是PR或者bug汇报，请一定使用Github。
-
-
-## 截图
-
-
-![](http://i.imgur.com/3C1Ze.png#align=left&display=inline&height=445&margin=%5Bobject%20Object%5D&originHeight=445&originWidth=842&status=done&style=none&width=842)
-
-
-## 安装
-
-
-开始先运行:
-
-
-```bash
+```sh
 bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`"
 ```
-
-
-**注意:** YADR会自动安装它的所有子模块。如果你需要在安装每个模块前确认一下, 使用:
-
-
-```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`" -s ask
-```
-
-
-## 等等，还没完。这一步不能少:
-
 
 #### 安装 iTerm Solarized Colors
 
