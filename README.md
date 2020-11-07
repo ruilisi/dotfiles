@@ -13,6 +13,27 @@ chsh -s $(which zsh)
 bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`"
 ```
 
+## Shortcuts
+
+#### Tmux
+Prefix is defined as `C-A`(`PRE` for short)
+
+**Scroll Mode**
+
+`PRE [`: Enter Scroll Mode
+Shortcut | Function |
+:-------:|:--------:|
+S-V      | Select Text       |
+Enter    | Copy Text         |
+]        | Paste text copied from scroll mode |
+
+#### Vim
+Shortcut | Function |
+:-------:|:--------:|
+C-v      | Enter visual mode |
+C-x C-v  | Paste text from system clipboard |
+
+
 #### 安装 iTerm Solarized Colors
 
 
