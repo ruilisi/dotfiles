@@ -41,6 +41,11 @@ V        |enter line selection mode|
 y        |copy selected content|
 p        |paste copied content|
 
+#### vim && markdown
+* Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
+* Open vim and enter command: `:SPUPdate`
+
+
 #### 安装 iTerm Solarized Colors
 
 
