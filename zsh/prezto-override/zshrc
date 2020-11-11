@@ -24,3 +24,7 @@ export HELM_HOME="$HOME/.helm"
 if [[ "$OSTYPE" != "darwin"* ]]; then
   export PATH="$PATH:$HOME/.rvm/bin"
 fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  source $(brew --prefix nvm)/nvm.sh
+fi
