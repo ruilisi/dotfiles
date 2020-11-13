@@ -45,7 +45,7 @@ Ctrl+u   |page up|
 Ctrl+d   |page down|
 :w       |save file|
 :q       |quit vim|
-/ keyword|search|
+:/ keyword|search|
 n        |go to the next content|
 S-N      |go to the previous content|
 w        |move forward one word|
