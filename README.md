@@ -37,9 +37,24 @@ S-O      |insert a new line above|
 0        |go to the beginning of the line|
 $        |go to the end of the line|
 v        |enter character selection mode|
+x        |delete selected content|
 V        |enter line selection mode|
 y        |copy selected content|
 p        |paste copied content|
+Ctrl+u   |page up|
+Ctrl+d   |page down|
+:w       |save file|
+:q       |quit vim|
+/ keyword|search|
+n        |go to the next content|
+S-N      |go to the previous content|
+w        |move forward one word|
+b        |move back one word|
+gg       |move to the top of the file|
+S-G      |move to the bottom of the file|
+Ctrl+\   |show(hide) the Buffers|
+[spc] c l|(un)comment the selected line|
+%s key1/key2/g|replace Key1 with Key2|
 
 #### vim && markdown
 * Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
