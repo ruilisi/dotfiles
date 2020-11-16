@@ -60,6 +60,10 @@ Ctrl+\   |show(hide) the Buffers|
 * Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
 * Open vim and enter command: `:SPUPdate`
 
+## Q&A
+
+#### How to edit command line in vim
+During editing command line, press `esc` to enter normal mode, then press `C-x C-e` to edit current command line in vim.
 
 #### 安装 iTerm Solarized Colors
 
