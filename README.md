@@ -273,48 +273,20 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
 #### 导航
 
 
-- `,z` - 到前一个缓冲区 (:bp)
-- `,x` - 到下一个缓冲区 (:bn)
-- `Cmd-j` 及 `Cmd-k` 用函数来上下粗略的移动(Linux中的`Alt`)
-- `Ctrl-o` - 之前的光标位置 - 这是一个标准的健映射，但很有用，所以这边给出来了
-- `Ctrl-i` - 对应于Ctrl-O(再一次, 这是标准的)
 
 
 
 #### 搜索/代码导航
 
 
-- `,f` - 快速查找class的定义(exuberant ctags必须被安装过)
-- `,F` - 类似于`,f`，但是会用垂直分割的界面显示
-- `,gf` 或 `Ctrl-f` - 和vim中正常的gf一样 (进入文件), 但是在一个垂直分割的界面中 (碰到带有行数的，例如file.rb:123，一样能行)
-- `gF` - 标准的vim键映射, 为了完整性而列在这里 (带有行数也行)
-- `,k` - 搜索当前光标下的单词，然后将结果显示到quickfix窗口里
-- `,K` - Grep当前单词一直到下一个感叹号(在ruby foo!方法中很有用)
-- `Cmd-*` - 将所有当前单词出现的地方高亮(与正常的`*`一样，除了不移动)
-- `,hl` - 切换搜索高亮
-- `,gg` 或 `,ag` - 在命令行中grep，在双引号之间输入。 使用RipGrep。
-- 在使用`,gg`搜索过，你可以用`Ctrl-x` 和 `Ctrl-z`来浏览 (或者标准vim命令 `:cn` 和 `:cp`)
-- `,gd` - 当光标在函数名字上的时候，Grep定义 (检索'def [function name]')
-- `,gcf` - 在当前文件搜索对当前文件的索引
-- `//` - 清除搜索
-- `,,w` (别名 `,<esc>`) 或者 `,,b` (别名 `,<shift-esc>`) - EasyMotion, 一个让你有种vim统治者的工具，它能将所有屏幕上所有可以跳入的地方全部高亮。
-- `,mc` - 将该单词标记为多光标处理模式(就像sublime). 用 `Ctrl-n` (下一个), `Ctrl-p` (前一个), `Ctrl-x`(跳过) 来添加更多的光标, 然后就像正常用vim那样，例如修改单词。
-- `gK` - 打开cursor底下这个单词的文档。
-- Spacebar - Sneak - 在一行中通过输入两个字符来移动。就像是vim的`f`但更加精确。
-- `:Gsearch foo` - 全局搜索, 然后使用正常的`%s/search/replace/g`紧接着用`:Greplace`来在所有的文件中作替换操作。结束后，使用`:wall`来写入所有文件。
+
 
 
 
 #### 文件导航
 
 
-- `,t` - CtrlP 模糊文件选择
-- `,b` - CtrlP 缓冲区选择 - 非常适用于想跳入一个你已经打开的文件
-- `Cmd-Shift-M` - 跳入方法- CtrlP 在当前缓冲区里作标签化搜索
-- `,jm` 跳入模型内。其他`,j`键映射: `,jc`控制器, `,jh`帮助集, 等等。
-- `Cmd-Shift-N` - NERDTree toggle (Linux中的`Alt`)
-- `Ctrl-\` - 在NERDTree中显示当前文件
-- `Cmd-Shift-P` - 清除CtrlP缓存
+
 
 
 
@@ -377,6 +349,7 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
 
 - `,vv` 和 `,cc` 来在view和controller中切换 - 他们是:Rcontroller和:Rview对应的映射。探索一下:R家族的命令可以了解更多rails.vim的乐趣!
 - `,rs` 和 `,rl` 来在iTerm中运行rspec 或者一个 spec 行 (查看iTerm窗口来获得信息)
+- `,tt` 给spec文件的某个block添加`now: true`tag, 然后可以通过`rspec --tag=now`来测试该block
 - `,ss` 和 `,sl` 来达到一样的事情，通过使用`spring rspec`，一个能将你的Rails specs变得速度更快，通过缓存Rails env (必须有spring gem安装过)
 - vim-ruby-refactoring - 试一试 `,rem`, `,rel` 来抽取方法或者let声明
 - `Ctrl-s` - 打开相关的spec到分割窗口中。与rails.vim中的:A 和 :AV相似，但是能够注意到fast_spec目录以及输入起来速度更快
@@ -394,6 +367,42 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
 
 
 
+
+#### zsh function
+
+
+- ##### tips: $number is the argument
+- `secure_source` -source `~/.yadr/zsh/function.zsh` file, let `function.zsh` modify work immediately in current window
+- `pp $1` -useage:`pp xx`, grep process by name
+- `set_proxy` -set terminal proxy use http proxy
+- `set_vagrant_proxy` -set terminal proxy use vagrant http proxy
+- `set_ss_proxy` -set terminal proxy use socks proxy
+- `unset_proxy` -cancel all proxy
+- `post $1 $2` -curl POST with application/json
+- `git-set-remote $1` -set project git remote url
+- `gem_source_to_taobao` -set ruby gem source to taobao
+- `docker_rm_all` -delete all docker images
+- `Replace $1 $2` -replcae all text under current path
+- `swap $1 $2` -`swap file1 file2`
+- `init_db` -init rails project database
+- `kexec` -execute k8s pod by regex pod name
+- `klog` -show k8s pod log by regex pod name
+- `git_tag_delete` -delete gtihub tag
+- `git_tag_add` -add gtihub tag
+- `dc` -alias of docker-compose
+
+
+
+
+#### some alias define
+
+
+
+- you can find detail in `~/.yadr/zsh/aliases.zsh`
+
+
+
+
 #### SpaceVim界面元素：
 SpaceVim的界面元素以[SPC] t或[SPC] T开头，可以通过在vim窗口内按下[SPC]键查看二级指令，同理，再按下所需要的二级指令后可以再对三级指令进行查看。
 
@@ -403,6 +412,14 @@ SpaceVim的界面元素以[SPC] t或[SPC] T开头，可以通过在vim窗口内�
 - `SPC T m` - 显示/隐藏菜单栏（没看出区别）
 - `SPC T t` - 显示/隐藏工具栏（没看出区别）
 - `SPC [1-9]` - 跳到指定的窗口
+- `SPC f t` - Open file tree
+- `SPC p f` - find files in current project
+- `SPC f y` - show and copy current file absolute path in the cmdline
+- `SPC f S` - save all files
+- `SPC f o` - Find current file in file tree
+- `SPC f D` - delete a file and the associated buffer with confirmation
+- `SPC f p` - search word in current project
+- `SPC p /` - fuzzy search for text in current project
 
 
 
