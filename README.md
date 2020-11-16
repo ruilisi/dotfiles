@@ -28,12 +28,22 @@ Enter    | Copy Text         |
 ]        | Paste text copied from scroll mode |
 
 #### Vim
+* `<L>`: Short for `<localleader>`, which is `\` in our setup
+
+**Defined by Us**
+
 Shortcut | Function |
 :-------:|:--------:|
 C-v      | Enter visual mode |
 C-x C-v  | Paste text from system clipboard |
+\<L\>tp  |toggle paste|
+
+**Defined by Vim**
+
+Shortcut | Function |
+:-------:|:--------:|
 o        |insert a new line below|
-S-O      |insert a new line above|
+S-o      |insert a new line above|
 0        |go to the beginning of the line|
 $        |go to the end of the line|
 v        |enter character selection mode|
