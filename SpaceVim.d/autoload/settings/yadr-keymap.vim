@@ -315,6 +315,6 @@ endfunction
 
 " set paste
 nnoremap <localleader>tp :call TogglePaste()<cr>
-nnoremap <localleader>tt :call ToggleRspecTest()<cr>
+nnoremap ,tt :call ToggleRspecTest()<cr>
 
 vmap <localleader>js :!python -m json.tool<cr>
