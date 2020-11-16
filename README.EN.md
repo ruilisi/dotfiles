@@ -303,39 +303,39 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 
 
 
-#### 常用编辑命令更好的按键方法
+#### A better way to press keys for common editing commands
 
 
-- 自动补全: Ctrl-空格。snipmate代码片段: Tab。
-- 将一个单词用这些符号包裹住: `,#` `,"` `,'` `,]` `,)` `,}`。# 是为了 #{ruby字符串插入}。 在Visual模式下也能运行 (谢谢 @cj)。 正常地，他们通过类似`ysw#`这样的来做到。
-- 改变包裹标签里的内容: `Cmd-'`, `Cmd-"`, `Cmd-]`, `Cmd-)`, 等等。你不需要在包裹标签里面。(Linux中的`Alt`)
-- 进入上一个编辑位置`,.` (和`'.`一样) 因为撇号对于小指来说非常困难。
-- `,ci`来改变任何以一个引号对/括符对等等
-
-
-
-#### 选项窗口, 窗口, 分割栏
-
-
-- 使用 `Cmd-1` 到 `Cmd-9` 来切换到任何一个特定的选项窗口(就像iTerm和Chrome) - 选项窗口必须被设置为显示号码(Linux中的`Alt`)
-- `Ctrl-h,l,j,k` - 来移动到左、右、下、上的分割栏中。这在vim和分割栏一起的时候依然有效，感谢`vim-tmux-navigator`。
-- `Q` - 只能窗口强杀。用`wincmd c`关闭窗口，如果同一个缓冲区有多个对应窗口, 或者当这是最后一个对应窗口时杀掉缓冲区`bwipeout`。
-- `vv` - 垂直分割 (`Ctrl-w,v`)
-- `ss` - 水平分割 (`Ctrl-w,s`)
-- `,qo` - 打开quickfix窗口 (grep的输出就会到这个窗口里)
-- `,qc` - 关闭quickfix
+- Autocomplete: Ctrl-[SPC]. snipmate code block: Tab。
+- Wrap a word with these symbols: `,#` `,"` `,'` `,]` `,)` `,}`。# Is for #{ruby string insertion}. It can also run in Visual mode (thanks @cj). Normally, they do it through something like `ysw#`.
+- Change the content of the tag: `Cmd-'`, `Cmd-"`, `Cmd-]`, `Cmd-)` ... You don’t need to be in the tag。(`Alt` in Linux)
+- Go to the previous editing position`,.` (just like `'.`) Because `'` is very difficult for the little finger.
+- `,ci`To change anything with a pair of quotes/parentheses, etc.
 
 
 
-#### 工具
+#### Option window, window, split bar
 
 
-- `Ctrl-p` 使用 `p` 来粘贴以及用 `Ctrl-p` 来循环选择之前的可粘贴内容。 由YankRing提供。
-- `,yr` - 查看yankring) - 你之前复制的内容列表。当然你可以粘贴后键入`ctrl-p` 来循环查看之前的复制内容。
-- `crs`, `crc`, `cru`通过abolish.vim来迫使采用snake_case, camelCase, 和 UPPERCASE。 `:help abolish`可以查看更多内容。
-- `:NR` - NarrowRgn - 在选择的文本上使用这个命令来创建一个就用这些文本生成的分割显示区域。试一试，然后用:wq来返回。
-- `,ig` - 切换缩进可视化样式
-- `,cf` - 复制当前文件的文件名(全路径)到系统(不是vi)的粘贴缓冲区
+- Use `Cmd-1` to `Cmd-9` to switch to any specific option window(like iTerm and Chrome) - the option window must be set to the display number(`Alt` in Linux)
+- `Ctrl-h,l,j,k` - use to move to left、right、top、bottom commpartment. This is still valid when vim and the split bar are together, thanks to `vim-tmux-navigator`。
+- `Q` - Only force kill the window.Close window by `wincmd c`, if the same buffer has multiple corresponding windows, or kill the buffer when this is the last corresponding window`bwipeout`。
+- `vv` - Vertical separation (`Ctrl-w,v`)
+- `ss` - Horizontal separation (`Ctrl-w,s`)
+- `,qo` - Open quickfix window (The output of grep will go to this window)
+- `,qc` - close quickfix
+
+
+
+#### Tools
+
+
+- `Ctrl-p` Use `p` to paste and `Ctrl-p` to cycle through the previous pasteable content. Provided by YankRing.
+- `,yr` - View yankring-the list of content you copied earlier. Of course, you can type `ctrl-p` after pasting to cycle through the previously copied content.
+- `crs`, `crc`, `cru`use abolish.vim to force the use of snake_case, camelCase, and UPPERCASE. `:help abolish` can view more content.
+- `:NR` - NarrowRgn - Use this command on the selected text to create a segmented display area generated from the text. Try it, and then use `:wq` to return.
+- `,ig` - Toggle indentation visualization style
+- `,cf` - Copy the file name (full path) of the current file to the paste buffer of the system (not vi)
 - `,cn` - 同上，但仅为文件名
 - `,yw` - 从一个单词内部的任何一个地方拉取这个单词(所以你不需要到单词的起始位置)
 - `,ow` - 用当前拉取区域的内容(即复制的内容)覆盖当前光标所在单词 - 你可以在当前单词的任何地方。为你省去可视选择的过程。
@@ -360,139 +360,137 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 #### Rails & Ruby
 
 
-- `,vv` 和 `,cc` 来在view和controller中切换 - 他们是:Rcontroller和:Rview对应的映射。探索一下:R家族的命令可以了解更多rails.vim的乐趣!
-- `,rs` 和 `,rl` 来在iTerm中运行rspec 或者一个 spec 行 (查看iTerm窗口来获得信息)
-- `,ss` 和 `,sl` 来达到一样的事情，通过使用`spring rspec`，一个能将你的Rails specs变得速度更快，通过缓存Rails env (必须有spring gem安装过)
-- vim-ruby-refactoring - 试一试 `,rem`, `,rel` 来抽取方法或者let声明
-- `Ctrl-s` - 打开相关的spec到分割窗口中。与rails.vim中的:A 和 :AV相似，但是能够注意到fast_spec目录以及输入起来速度更快
-- `:Bopen [gem name]` 来导航进 gem (@tpope/vim-bundler)
-- `,gcp` - Grep当前的Partial来找到指向当前view partial的所有参考。
-- `,orb` - 到ruby块上一层。带你从嵌套的块中到达上一个层 (对rspec非常有用)
+- `,vv` & `,cc` to switch between view and controller-they are the mappings corresponding to :Rcontroller and :Rview. Explore: R family commands can learn more about the fun of rails.vim!
+- `,rs` & `,rl` to run rspec or a spec line in iTerm (check the iTerm window for information).
+- `,ss` & `,sl` To achieve the same thing, by using `spring rspec`, one can make your Rails specs faster, by caching `Rails env` (must have spring gem installed).
+- vim-ruby-refactoring - Try `,rem`, `,rel` to extract method or let statement
+- `Ctrl-s` - open the relevant spec to the split window. Similar to :A and :AV in rails.vim, but it is faster to notice the fast_spec directory and input.
+- `:Bopen [gem name]` navigate into the gem (@tpope/vim-bundler).
+- `,gcp` - Grep the current Partial to find all references to the current view partial.
+- `,orb` - Go to the ruby block one level. Take you from the nested block to the previous level (very useful for rspec)
 
 
 
 #### Vim Dev
 
 
-- `,vc` - (Vim 命令) 复制光标下的命令然后运行它。对于测试vimrc中单行的改变非常有用。
-- `,vr` - (Vim 重新记载) 将当前文件当成vim文件来进行源加载。
+- `,vc` - (Vim command) Copy the command under the cursor and run it. Very useful for testing single-line changes in vimrc.
+- `,vr` - (Vim re-documented) Use the current file as a vim file to load the source.
 
 
 
-#### SpaceVim界面元素：
-SpaceVim的界面元素以[SPC] t或[SPC] T开头，可以通过在vim窗口内按下[SPC]键查看二级指令，同理，再按下所需要的二级指令后可以再对三级指令进行查看。
+#### SpaceVim Interface elements:
+The interface elements of SpaceVim start with [SPC] t or [SPC] T. You can view the second-level instructions by pressing the [SPC] key in the vim window. In the same way, press the required second-level instructions and then you can check the three Level instructions to view.
 
-- `SPC t h s` - 显示/隐藏语法高亮
-- `SPC t n` - 显示/隐藏行号
-- `SPC t h h` - 高亮当前行
-- `SPC T m` - 显示/隐藏菜单栏（没看出区别）
-- `SPC T t` - 显示/隐藏工具栏（没看出区别）
-- `SPC [1-9]` - 跳到指定的窗口
-
-
-
-#### 切换Tab：
-当打开多个文件后，文件会以Tab的形式罗列在标签栏中，可以通过`\[1-9]`切换至对应序号的Tab。
-
-- `\1` - 打开标签1
-- `\2` - 打开标签2
-- `\3` - 打开标签3
-- `\4` - 打开标签4
-- `\5` - 打开标签5
-- `\6` - 打开标签6
-- `\7` - 打开标签7
-- `\8` - 打开标签8
-- `\9` - 打开标签9
+- `SPC t h s` - Show/hide syntax highlighting
+- `SPC t n` - Show/hide line number
+- `SPC t h h` - Highlight current line
+- `SPC T m` - Show/hide the menu bar (no difference is seen)
+- `SPC T t` - Show/hide the toolbar (don’t see the difference)
+- `SPC [1-9]` - Jump to the specified window
 
 
 
-#### 文件树：
-文件树用于显示当前打开文件所在位置的文件目录
-`SPC f t/<F3>` - 打开文件树
+#### Switch Tab:
+When multiple files are opened, the files will be listed in the tab bar in the form of Tabs, and you can switch to the Tab with the corresponding serial number via `\[1-9]`.
 
-
-#### 文件树内快捷键：
-
-- `i` - 垂直分割一个新的窗口，并跳转
-- `gi` - 垂直分割一个新的窗口，不跳转
-- `s` - 水平分割一个新的窗口，并跳转
-- `gs` - 水平分割一个新的窗口，不跳转
-- `t` - 在新tab中打开一个新的窗口，并跳转
-- `T` - 在新tab中打开一个新的窗口，不跳转
-- `o` - 打开当前选中的文件或目录，并跳转
-- `go` - 打开当前选中的文件或目录，不跳转
+- `\1` - Open tag 1
+- `\2` - Open tag 2
+- `\3` - Open tag 3
+- `\4` - Open tag 4
+- `\5` - Open tag 5
+- `\6` - Open tag 6
+- `\7` - Open tag 7
+- `\8` - Open tag 8
+- `\9` - Open tag 9
 
 
 
-#### vim光标操作：
+#### File tree:
+The file tree is used to display the file directory where the currently opened file is located. `SPC f t/<F3>`-Open the file tree
 
-- `k` - 向上移动光标
-- `j` - 向下移动光标
-- `h` - 向做移动光标
-- `l` - 向右移动光标
-- `gg` - 页面顶部
-- `G` - 页面底部
-- `[Ctrl] g` - 显示当前光标位置
-- `[Num] G` - 光标移动到指定行
-- `0` - 光标移动到行首
-- `[Num] w` - 光标移动到指定单词数的开头
-- `[Num] e` - 光标移动到指定单词数的末尾
+#### Shortcut keys in the file tree:
 
-
-
-#### vim模式切换：
-`[Esc]` - 退出当前模式
-`i` - 插入模式
-`v` - 选择模式
-`R` - 替换模式
-
-
-#### 文档操作：
-
-- `q` - 退出
-- `w` - 保存
-- `wq` - 保存并退出
-- `q!` - 强制退出
+- `i` - Split a new window vertically and jump
+- `gi` - Split a new window vertically without jumping
+- `s` - Split a new window horizontally and jump
+- `gs` - Split a new window horizontally without jumping
+- `t` - Open a new window in a new tab and jump
+- `T` - Open a new window in a new tab without jumping
+- `o` - Open the currently selected file or directory and jump
+- `go` - Open the currently selected file or directory without jumping
 
 
 
-#### 文本编辑：
+#### vim cursor operation:
 
-- `y` - 复制选中区域
-- `yy` - 复制一整行
-- `p` - 粘贴
-
-
-- `o` - 下方插入一行
-- `O` - 上方插入一行
-- `A` - 行尾插入
-- `a` - 光标右侧插入
-- `i` - 光标左侧插入
-- `u` - 撤销操作
-- `U` - 按行撤销操作
-- `[Ctrl] R` - 重做
-- `x` - 删除选中的内容
-- `dw` - 删除单词
-- `d$` - 删除至行尾
-- `dd` - 删除整行
-- `d[num]w` - 删除指定数量的单词
-- `r` - 替换一个字符
-- `:s/A/B` - 该行首个A替换成B
-- `:s/A/B/g` - 该行所有A替换成B
-- `:[num1,num2]s/A/B/g` - 将指定行的A替换成B
-- `:%s/A/B/g` - 将指当前tab内的所有A替换成B
+- `k` - Move cursor up
+- `j` - Move cursor down
+- `h` - Move cursor left
+- `l` - Move cursor right
+- `gg` - Move to top of the file
+- `G` - Move to bottom of the file
+- `[Ctrl] g` - Show current cursor position
+- `[Num] G` - Cursor to the specified line
+- `0` - Cursor to the beginning of the line
+- `[Num] w` - Move the cursor to the beginning of the specified number of words
+- `[Num] e` - Move the cursor to the end of the specified number of words
 
 
 
-文档查询：
+#### vim mode switch:
+`[Esc]` - Exit current mode
+`i` - Insert mode
+`v` - Select mode
+`R` - Replace mode
 
-- `:/A` - 文档内查找A
-- `:/A` - 文档内查找A，忽略大小写
-- `n` - 下一个
-- `N` - 上一个
-- `:nohlsearch` - 取消高亮
-- `:set hls is` - 高亮显示查询结果
-- `:set ic` - 忽略大小写
+
+#### Document operation:
+
+- `q` - quit
+- `w` - save
+- `wq` - save & quit
+- `q!` - foce quit
+
+
+
+#### Document editing:
+
+- `y` - Copy selected area
+- `yy` - Copy entire line
+- `p` - Paste
+
+
+- `o` - Insert a row below
+- `O` - Insert a row above
+- `A` - End of line insertion
+- `a` - Insert to the right of the cursor
+- `i` - Insert to the left of the cursor
+- `u` - Undo operation
+- `U` - Undo operation by line
+- `[Ctrl] R` - Redo
+- `x` - Delete selected area
+- `dw` - Delete word
+- `d$` - Delete to end of line
+- `dd` - Delete entire line
+- `d[num]w` - Delete the specified number of words
+- `r` - Replace a character
+- `:s/A/B` - Replace the first A in the line with B
+- `:s/A/B/g` - Replace all A in this line with B
+- `:[num1,num2]s/A/B/g` - Replace A in the specified line with B
+- `:%s/A/B/g` - Replace all A in the current tab with B
+
+
+
+#### Document query:
+
+- `:/A` - Find A in the document
+- `:/A` - Find A in the document, ignoring case
+- `n` - To the next
+- `N` - To the previous
+- `:nohlsearch` - Cancel highlight
+- `:set hls is` - Highlight query results
+- `:set ic` - Ignore case
 ##
 ## 扩展或者重载YADR设置
 
