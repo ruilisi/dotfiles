@@ -23,9 +23,9 @@ Prefix is defined as `C-A`(`PRE` for short)
 `PRE [`: Enter Scroll Mode
 Shortcut | Function |
 :-------:|:--------:|
-S-V      | Select Text       |
-Enter    | Copy Text         |
-]        | Paste text copied from scroll mode |
+`S-V`      | Select Text       |
+`Enter`    | Copy Text         |
+`]`        | Paste text copied from scroll mode |
 
 #### Vim
 * `<L>`: Short for `<localleader>`, which is `\` in our setup
@@ -34,9 +34,9 @@ Enter    | Copy Text         |
 
 Shortcut | Function |
 :-------:|:--------:|
-C-v      | Enter visual mode |
-C-x C-v  | Paste text from system clipboard |
-\<L\>tp  |toggle paste|
+`C-v`      | Enter visual mode |
+`C-x C-v`  | Paste text from system clipboard |
+`\<L\>tp`  |toggle paste|
 
 **Defined by Vim**
 
