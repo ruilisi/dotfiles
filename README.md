@@ -585,6 +585,7 @@ fix SpaceVim Unknown function: TSOnBufEnter
   * https://github.com/SpaceVim/SpaceVim/issues/1800
   * https://github.com/SpaceVim/SpaceVim/issues/3221
 * 解决步骤
-  * 删除cache   rm ~/.cache/vimfiles/.cache
+  * 删除cache   rm -rf ~/.cache/vimfiles/.cache
   * 打开vim  运行`:CheckHealth` 查看当前vim状态，有啥报错修复啥
   * 重新打开vim 再运行`:UpdateRemotePlugins`
+  * 如果还不行，在`~/.local/share/nvim/rplugin.vim` 添加`call dein#reinstall(['nvim-typescript'])`,重新打开vim等待`nvim-typescript`插件安装
