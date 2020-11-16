@@ -492,45 +492,42 @@ The file tree is used to display the file directory where the currently opened f
 - `:set hls is` - Highlight query results
 - `:set ic` - Ignore case
 ##
-## 扩展或者重载YADR设置
+## Extend or reload YADR settings
+
+- [Debug vim mapping](doc/vim/keymaps.md)
+- [Reload vim settings through ~/.vimrc.after or similar files](doc/vim/override.md)
+- [Add your own vim plugin](doc/vim/manage_plugins.md)
 
 
-- [调试vim映射](doc/vim/keymaps.md)
-- [通过~/.vimrc.after或者类似文件来重载vim设置](doc/vim/override.md)
-- [添加你自己的vim插件](doc/vim/manage_plugins.md)
+
+## Miscellaneous
 
 
-
-## 杂项
-
-
-- [特别表扬和感谢](doc/credits.md)
-- [其他推荐的提高OSX生产力的工具](doc/osx_tools.md)
+- [Special praise and thanks](doc/credits.md)
+- [Other recommended tools to improve OSX productivity](doc/osx_tools.md)
 - [Yan's Blog](http://yanpritzker.com)
 
 
 
 ### OSX Hacks
 
-
-osx文件是一个为开发者或者高能用户进行合理默认设置的bash脚本。在运行它之前先读一下。使用:
+The osx file is a bash script with reasonable default settings for developers or high-power users. Read it before running it. use:
 
 
 ```
 bin/osx
 ```
 
-
-这些特殊技巧是以Lion为中心的。不一定在其他OS上也能行。我最喜欢的模块包括:
-
-
-- 极快的重复击键速度(现在你可以通过j/k实现快速滚动)
-- 无磁盘镜像验证(下载的文件打开速度更快)
-- 在finder中显示~/Library文件夹下的内容(在Lion中隐藏的)
+These special skills are centered on Lion. Not necessarily on other OSs. My favorite modules include:
 
 
+- Extremely fast repeated keystroke speed (now you can achieve fast scrolling through j/k)
+- No disk mirror verification (downloaded files open faster)
+- Display the contents of the ~/Library folder in the finder (hidden in Lion)
 
-### Macvim遇到Lua的麻烦了?
+
+
+### Macvim has trouble with Lua?
 
 
 ```
@@ -541,11 +538,10 @@ brew install macvim --custom-icons --with-override-system-vim --with-lua --with-
 ```
 
 
-### 终端Vim碰到Lua的麻烦？
+### Terminal Vim has trouble with Lua?
 
 
-通过RVM管理的Ruby来安装一个终端Vim(和lua一起)会导致neocomplete插件发生segfault。尝试卸载vim，然后使用系统ruby来卸载vim:
-
+Installing a terminal Vim (together with lua) through Ruby managed by RVM will cause a segfault on the neocomplete plugin. Try to uninstall vim, and then use system ruby to uninstall vim:
 
 ```
 brew uninstall vim
@@ -556,19 +552,18 @@ rvm system do brew install vim --with-lua
 ### [Pry](http://pry.github.com/)
 
 
-Pry提供了一个更好的使用了颜色、tab补全及其他更多小技巧开包即用的IRB。你还可以通过安装[pry-nav](https://github.com/nixme/pry-nav)把它当做一个真正的调试器。
+Pry provides a better IRB that uses colors, tab completion, and other more tricks out of the box. You can also install [pry-nav](https://github.com/nixme/pry-nav) as a real debugger.
 
+[Learn more about YADR's pry customization and how to install](doc/pry.md)
 
-[了解更多YADR's pry定制化以及如何安装](doc/pry.md)
-
-## 语言支持
+## Language support
 #### Typescript
 fix SpaceVim Unknown function: TSOnBufEnter
-* 主要参考
+* References
   * https://github.com/SpaceVim/SpaceVim/issues/1800
   * https://github.com/SpaceVim/SpaceVim/issues/3221
-* 解决步骤
-  * 删除cache   rm -rf ~/.cache/vimfiles/.cache
-  * 打开vim  运行`:CheckHealth` 查看当前vim状态，有啥报错修复啥
-  * 重新打开vim 再运行`:UpdateRemotePlugins`
-  * 如果还不行，在`~/.local/share/nvim/rplugin.vim` 添加`call dein#reinstall(['nvim-typescript'])`,重新打开vim等待`nvim-typescript`插件安装
+* Resolution steps
+  * Delete cache   rm -rf ~/.cache/vimfiles/.cache
+  * Open vim  run `:CheckHealth` check the current vim status, and fix any errors.
+  * Reopen vim and run `:UpdateRemotePlugins`
+  * If it still doesn't work, add `call dein#reinstall(['nvim-typescript'])` to `~/.local/share/nvim/rplugin.vim`, reopen vim and wait for the `nvim-typescript` plugin to install
