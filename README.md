@@ -1,13 +1,13 @@
 # Ruilisi dotfiles
 
 
-## Requirements
-`zsh`, `tmux`, `vim`, `ag` are installed and zsh is set as your login shell:
+## 环境需求
+安装`zsh`, `tmux`, `vim`, `ag`，并且zsh设置为你的登录shell:
 ```sh
 chsh -s $(which zsh)
 ```
 
-## Install
+## 安装
 
 ```sh
 bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/install.sh`"
@@ -16,64 +16,64 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/i
 ## Shortcuts
 
 #### Tmux
-Prefix is defined as `C-A`(`PRE` for short)
+前缀定义为 `C-A`(简称`PRE`)
 
 **Scroll Mode**
 
-`PRE [`: Enter Scroll Mode
+`PRE [`: 进入滚动模式
 Shortcut | Function |
 :-------:|:--------:|
-`S-V`      | Select Text       |
-`Enter`    | Copy Text         |
-`]`        | Paste text copied from scroll mode |
+`S-V`      | 选中文本       |
+`Enter`    | 复制文本         |
+`]`        | 复制滚动模式下的内容 |
 
 #### Vim
-* `<L>`: Short for `<localleader>`, which is `\` in our setup
+* `<L>`: `<localleader>`的缩写, 我们设置为 `\`。
 
 **Defined by Us**
 
 Shortcut | Function |
 :-------:|:--------:|
-`C-v`      | Enter visual mode |
-`C-x C-v`  | Paste text from system clipboard |
-`\<L\>tp`  |toggle paste|
+`C-v`      | 视图模式 |
+`C-x C-v`  | 从系统粘贴板复制内容 |
+`\<L\>tp`  | 切换粘贴|
 
 **Defined by Vim**
 
 Shortcut | Function |
 :-------:|:--------:|
-`o`        |insert a new line below|
-`S-o`      |insert a new line above|
-`0`        |go to the beginning of the line|
-`$`        |go to the end of the line|
-`v`        |enter character selection mode|
-`x`        |delete selected content|
-`V`        |enter line selection mode|
-`y`       |copy selected content|
-`p`        |paste copied content|
-`Ctrl+u`   |page up|
-`Ctrl+d`   |page down|
-`:w`       |save file|
-`:q`       |quit vim|
-`:/ keyword`|search|
-`n`        |go to the next content|
-`S-N`      |go to the previous content|
-`w`        |move forward one word|
-`b`        |move back one word|
-`gg`       |move to the top of the file|
-`S-G`      |move to the bottom of the file|
-`Ctrl+\`   |show(hide) the Buffers|
-`[spc] c l`|(un)comment the selected line|
-`%s key1/key2/g`|replace Key1 with Key2|
+`o`        |光标下方插入新的一行|
+`S-o`      |光标上方插入新的一行|
+`0`        |跳至行首|
+`$`        |跳至行尾|
+`v`        |进入字符选择模式|
+`x`        |删除选中的内容|
+`V`        |进入整行选中模式|
+`y`        |复制选中的内容|
+`p`        |粘贴选中的内容|
+`Ctrl+u`   |往上翻页|
+`Ctrl+d`   |往下翻页|
+`:w`       |保存文件|
+`:q`       |退出Vim|
+`:/ keyword`|搜索|
+`n`        |跳到下一个搜索到的内容|
+`S-N`      |跳到上一个搜索到的内容|
+`w`        |往前移动一个单词|
+`b`        |往后移动一个单词|
+`gg`       |移动到文档顶部|
+`S-G`      |移动到文档底部|
+`Ctrl+\`   |显示(隐藏)文件树|
+`[spc] c l`|快速注释或解除注释行|
+`%s key1/key2/g`|将文档中的key1替换为key2|
 
 #### vim && markdown
-* Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
-* Open vim and enter command: `:SPUPdate`
+* 安装 `prettier`: `yarn global add prettier` 或 `npm install --global prettier`
+* 打开vim并进入的命令: `:SPUPdate`
 
 ## Q&A
 
-#### How to edit command line in vim
-During editing command line, press `esc` to enter normal mode, then press `C-x C-e` to edit current command line in vim.
+#### 如何在vim中编辑命令行
+在编辑命令行期间，按esc进入正常模式，然后按`C-x C-e`在vim中编辑当前命令行。
 
 #### 安装 iTerm Solarized Colors
 
@@ -334,37 +334,37 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
 
 
 
-#### zsh function
+#### zsh 功能
 
 
-- ##### tips: $number is the argument
-- `secure_source` -source `~/.yadr/zsh/function.zsh` file, let `function.zsh` modify work immediately in current window
-- `pp $1` -useage:`pp xx`, grep process by name
-- `set_proxy` -set terminal proxy use http proxy
-- `set_vagrant_proxy` -set terminal proxy use vagrant http proxy
-- `set_ss_proxy` -set terminal proxy use socks proxy
-- `unset_proxy` -cancel all proxy
-- `post $1 $2` -curl POST with application/json
-- `git-set-remote $1` -set project git remote url
-- `gem_source_to_taobao` -set ruby gem source to taobao
-- `docker_rm_all` -delete all docker images
-- `Replace $1 $2` -replcae all text under current path
+- ##### 贴士: $数字 为参数
+- `secure_source` -source `~/.yadr/zsh/function.zsh` 文件,让 `function.zsh` 在当前窗口立即工作。
+- `pp $1` -使用:`pp xx`, grep 进程的名称。
+- `set_proxy` -让终端使用HTTP代理
+- `set_vagrant_proxy` -让终端使用vagrant代理
+- `set_ss_proxy` -让终端使用socks代理
+- `unset_proxy` -取消所用的代理
+- `post $1 $2` -使用application/json来curl POST请求
+- `git-set-remote $1` -设置项目的git地址
+- `gem_source_to_taobao` -将ruby的源地址设置为淘宝镜像
+- `docker_rm_all` -删除所有docker镜像
+- `Replace $1 $2` -替换当前路径下的所有内容
 - `swap $1 $2` -`swap file1 file2`
-- `init_db` -init rails project database
-- `kexec` -execute k8s pod by regex pod name
-- `klog` -show k8s pod log by regex pod name
-- `git_tag_delete` -delete gtihub tag
-- `git_tag_add` -add gtihub tag
-- `dc` -alias of docker-compose
+- `init_db` -初始化Rails项目数据库：:
+- `kexec` -通过正则表达式pod名称执行k8s pod
+- `klog` -通过正则表达式pod名称显示k8s pod日志
+- `git_tag_delete` -删除github的tag
+- `git_tag_add` -添加github的tag
+- `dc` -docker-compose的别名
 
 
 
 
-#### some alias define
+#### 一些别名定义
 
 
 
-- you can find detail in `~/.yadr/zsh/aliases.zsh`
+- 阅读详情: `~/.yadr/zsh/aliases.zsh`
 
 
 
@@ -378,16 +378,16 @@ SpaceVim的界面元素以[SPC] t或[SPC] T开头，可以通过在vim窗口内�
 - `SPC T m` - 显示/隐藏菜单栏（没看出区别）
 - `SPC T t` - 显示/隐藏工具栏（没看出区别）
 - `SPC [1-9]` - 跳到指定的窗口
-- `SPC f t` - Open file tree
-- `SPC p f` - find files in current project
-- `SPC f y` - show and copy current file absolute path in the cmdline
-- `SPC f S` - save all files
-- `SPC f o` - Find current file in file tree
-- `SPC f D` - delete a file and the associated buffer with confirmation
-- `SPC f p` - search word in current project
-- `SPC p /` - fuzzy search for text in current project
-- `SPC c l` - toggle comment lines
-- `SPC c p` - toggle comment paragraphs
+- `SPC f t` - 打开文件树
+- `SPC p f` - 在当前文件内查找文件
+- `SPC f y` - 在命令行内复制并显示当前文件的绝对路径
+- `SPC f S` - 保存全部文件
+- `SPC f o` - 在文件树内查找当前文件
+- `SPC f D` - 确认删除文件和关联的缓冲区
+- `SPC f p` - 在当前项目内查找内容
+- `SPC p /` - 在当前项目中模糊搜索文本
+- `SPC c l` - 注释或取消注释行
+- `SPC c p` - 注释或取消注释段落
 
 
 
