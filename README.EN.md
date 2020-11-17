@@ -285,36 +285,6 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 
 
 
-#### Tools
-
-
-- `Ctrl-p` Use `p` to paste and `Ctrl-p` to cycle through the previous pasteable content. Provided by YankRing.
-- `,yr` - View yankring-the list of content you copied earlier. Of course, you can type `ctrl-p` after pasting to cycle through the previously copied content.
-- `crs`, `crc`, `cru`use abolish.vim to force the use of snake_case, camelCase, and UPPERCASE. `:help abolish` can view more content.
-- `:NR` - NarrowRgn - Use this command on the selected text to create a segmented display area generated from the text. Try it, and then use `:wq` to return.
-- `,ig` - Toggle indentation visualization style
-- `,cf` - Copy the file name (full path) of the current file to the paste buffer of the system (not vi)
-- `,cn` - 同上，但仅为文件名
-- `,yw` - 从一个单词内部的任何一个地方拉取这个单词(所以你不需要到单词的起始位置)
-- `,ow` - 用当前拉取区域的内容(即复制的内容)覆盖当前光标所在单词 - 你可以在当前单词的任何地方。为你省去可视选择的过程。
-- `,ocf` - 打开所有改过的文件(从@garybernhardt偷过来的)。将所有git中改过的文件全部分割显示出来。
-- `,w` - 删除尾部空白字符
-- `sj` - 将一行例如一个一行散列{:foo => {:bar => :baz}}分割为多行的散列(j = 向下)
-- `sk` - 撤销裂开的链接(k = 向上)
-- `,he` - Html 字符转义
-- `,hu` - Html 字符反转
-- `,hp` - Html 预览 (用Safari打开)
-- `Cmd-Shift-A` - 对其 (输入一个字符/表达式来对其, 在可视化模式或者它本身情况下都能工作) (Linux里的`Alt`)
-- `:ColorToggle` - 打开#abc123颜色高亮(css中有效)
-- `:Gitv` - Git记录的浏览器
-- `,hi` - 显示当前的高亮组。如果你不喜欢什么东西的颜色, 先用这个, 然后在你的vimrc.after中`hi! link [groupname] [anothergroupname]`来重新映射颜色。你可以通过使用`:hi`来查看所有可用的颜色。
-- `,gt` - Go Tidy - 清理你的html代码 (在可视选择情况下可用)
-- `:Wrap` - 包裹长行(例如在编辑markdown时)
-- `Cmd-/` - 切换注释 (通常情况下gcc中从tComment来) (Linux中是`Alt`)
-- `gcp` (注释一段)
-
-
-
 #### Rails & Ruby
 
 
@@ -322,12 +292,6 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 - `,rs` & `,rl` to run rspec or a spec line in iTerm (check the iTerm window for information).
 - `,tt` Add `now: true`tag to a block of the spec file, and then test the block by `rspec --tag=now`.
 - `,ss` & `,sl` To achieve the same thing, by using `spring rspec`, one can make your Rails specs faster, by caching `Rails env` (must have spring gem installed).
-- vim-ruby-refactoring - Try `,rem`, `,rel` to extract method or let statement
-- `Ctrl-s` - open the relevant spec to the split window. Similar to :A and :AV in rails.vim, but it is faster to notice the fast_spec directory and input.
-- `:Bopen [gem name]` navigate into the gem (@tpope/vim-bundler).
-- `,gcp` - Grep the current Partial to find all references to the current view partial.
-- `,orb` - Go to the ruby block one level. Take you from the nested block to the previous level (very useful for rspec)
-
 
 
 #### Vim Dev
@@ -387,7 +351,8 @@ The interface elements of SpaceVim start with [SPC] t or [SPC] T. You can view t
 - `SPC f D` - delete a file and the associated buffer with confirmation
 - `SPC f p` - search word in current project
 - `SPC p /` - fuzzy search for text in current project
-
+- `SPC c l` - toggle comment lines
+- `SPC c p` - toggle comment paragraphs
 
 #### Switch Tab:
 When multiple files are opened, the files will be listed in the tab bar in the form of Tabs, and you can switch to the Tab with the corresponding serial number via `\[1-9]`.
