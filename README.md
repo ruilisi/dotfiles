@@ -23,7 +23,6 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/i
 `PRE [`: 进入滚动模式
 Shortcut | Function |
 :-------:|:--------:|
-`S-V`      | 选中文本       |
 `Enter`    | 复制文本         |
 `]`        | 复制滚动模式下的内容 |
 
@@ -32,11 +31,18 @@ Shortcut | Function |
 
 **Defined by Us**
 
+Normal Mode
+
 Shortcut | Function |
 :-------:|:--------:|
-`C-v`      | 视图模式 |
-`C-x C-v`  | 从系统粘贴板复制内容 |
-`\<L\>tp`  | 切换粘贴|
+`C-v`    | 视图模式 |
+`C-x C-v`| 从系统粘贴板复制内容 |
+`<L>tp`  | 切换粘贴|
+
+Visual Mode
+Shortcut | Function |
+:-------:|:--------:|
+`C-c`    | 复制     |
 
 **Defined by Vim**
 
@@ -65,6 +71,7 @@ Shortcut | Function |
 `Ctrl+\`   |显示(隐藏)文件树|
 `[spc] c l`|快速注释或解除注释行|
 `%s key1/key2/g`|将文档中的key1替换为key2|
+`S-V`      | 选中文本       |
 
 #### vim && markdown
 * 安装 `prettier`: `yarn global add prettier` 或 `npm install --global prettier`
@@ -461,8 +468,6 @@ SpaceVim的界面元素以[SPC] t或[SPC] T开头，可以通过在vim窗口内�
 - `y` - 复制选中区域
 - `yy` - 复制一整行
 - `p` - 粘贴
-
-
 - `o` - 下方插入一行
 - `O` - 上方插入一行
 - `A` - 行尾插入
@@ -500,16 +505,6 @@ SpaceVim的界面元素以[SPC] t或[SPC] T开头，可以通过在vim窗口内�
 - [调试vim映射](doc/vim/keymaps.md)
 - [通过~/.vimrc.after或者类似文件来重载vim设置](doc/vim/override.md)
 - [添加你自己的vim插件](doc/vim/manage_plugins.md)
-
-
-
-## 杂项
-
-
-- [特别表扬和感谢](doc/credits.md)
-- [其他推荐的提高OSX生产力的工具](doc/osx_tools.md)
-- [Yan's Blog](http://yanpritzker.com)
-
 
 
 ### OSX Hacks
