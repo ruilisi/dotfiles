@@ -257,51 +257,9 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 
 #### 导航
 
-
-- `,z` - 到前一个缓冲区 (:bp)
-- `,x` - 到下一个缓冲区 (:bn)
-- `Cmd-j` 及 `Cmd-k` 用函数来上下粗略的移动(Linux中的`Alt`)
-- `Ctrl-o` - 之前的光标位置 - 这是一个标准的健映射，但很有用，所以这边给出来了
-- `Ctrl-i` - 对应于Ctrl-O(再一次, 这是标准的)
-
-
-
 #### 搜索/代码导航
 
-
-- `,f` - 快速查找class的定义(exuberant ctags必须被安装过)
-- `,F` - 类似于`,f`，但是会用垂直分割的界面显示
-- `,gf` 或 `Ctrl-f` - 和vim中正常的gf一样 (进入文件), 但是在一个垂直分割的界面中 (碰到带有行数的，例如file.rb:123，一样能行)
-- `gF` - 标准的vim键映射, 为了完整性而列在这里 (带有行数也行)
-- `,k` - 搜索当前光标下的单词，然后将结果显示到quickfix窗口里
-- `,K` - Grep当前单词一直到下一个感叹号(在ruby foo!方法中很有用)
-- `Cmd-*` - 将所有当前单词出现的地方高亮(与正常的`*`一样，除了不移动)
-- `,hl` - 切换搜索高亮
-- `,gg` 或 `,ag` - 在命令行中grep，在双引号之间输入。 使用RipGrep。
-- 在使用`,gg`搜索过，你可以用`Ctrl-x` 和 `Ctrl-z`来浏览 (或者标准vim命令 `:cn` 和 `:cp`)
-- `,gd` - 当光标在函数名字上的时候，Grep定义 (检索'def [function name]')
-- `,gcf` - 在当前文件搜索对当前文件的索引
-- `//` - 清除搜索
-- `,,w` (别名 `,<esc>`) 或者 `,,b` (别名 `,<shift-esc>`) - EasyMotion, 一个让你有种vim统治者的工具，它能将所有屏幕上所有可以跳入的地方全部高亮。
-- `,mc` - 将该单词标记为多光标处理模式(就像sublime). 用 `Ctrl-n` (下一个), `Ctrl-p` (前一个), `Ctrl-x`(跳过) 来添加更多的光标, 然后就像正常用vim那样，例如修改单词。
-- `gK` - 打开cursor底下这个单词的文档。
-- Spacebar - Sneak - 在一行中通过输入两个字符来移动。就像是vim的`f`但更加精确。
-- `:Gsearch foo` - 全局搜索, 然后使用正常的`%s/search/replace/g`紧接着用`:Greplace`来在所有的文件中作替换操作。结束后，使用`:wall`来写入所有文件。
-
-
-
 #### 文件导航
-
-
-- `,t` - CtrlP 模糊文件选择
-- `,b` - CtrlP 缓冲区选择 - 非常适用于想跳入一个你已经打开的文件
-- `Cmd-Shift-M` - 跳入方法- CtrlP 在当前缓冲区里作标签化搜索
-- `,jm` 跳入模型内。其他`,j`键映射: `,jc`控制器, `,jh`帮助集, 等等。
-- `Cmd-Shift-N` - NERDTree toggle (Linux中的`Alt`)
-- `Ctrl-\` - 在NERDTree中显示当前文件
-- `Cmd-Shift-P` - 清除CtrlP缓存
-
-
 
 #### A better way to press keys for common editing commands
 
@@ -362,6 +320,7 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 
 - `,vv` & `,cc` to switch between view and controller-they are the mappings corresponding to :Rcontroller and :Rview. Explore: R family commands can learn more about the fun of rails.vim!
 - `,rs` & `,rl` to run rspec or a spec line in iTerm (check the iTerm window for information).
+- `,tt` Add `now: true`tag to a block of the spec file, and then test the block by `rspec --tag=now`.
 - `,ss` & `,sl` To achieve the same thing, by using `spring rspec`, one can make your Rails specs faster, by caching `Rails env` (must have spring gem installed).
 - vim-ruby-refactoring - Try `,rem`, `,rel` to extract method or let statement
 - `Ctrl-s` - open the relevant spec to the split window. Similar to :A and :AV in rails.vim, but it is faster to notice the fast_spec directory and input.
@@ -377,6 +336,38 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 - `,vc` - (Vim command) Copy the command under the cursor and run it. Very useful for testing single-line changes in vimrc.
 - `,vr` - (Vim re-documented) Use the current file as a vim file to load the source.
 
+#### zsh function
+
+
+- ##### tips: $number is the argument
+- `secure_source` -source `~/.yadr/zsh/function.zsh` file, let `function.zsh` modify work immediately in current window
+- `pp $1` -useage:`pp xx`, grep process by name
+- `set_proxy` -set terminal proxy use http proxy
+- `set_vagrant_proxy` -set terminal proxy use vagrant http proxy
+- `set_ss_proxy` -set terminal proxy use socks proxy
+- `unset_proxy` -cancel all proxy
+- `post $1 $2` -curl POST with application/json
+- `git-set-remote $1` -set project git remote url
+- `gem_source_to_taobao` -set ruby gem source to taobao
+- `docker_rm_all` -delete all docker images
+- `Replace $1 $2` -replcae all text under current path
+- `swap $1 $2` -`swap file1 file2`
+- `init_db` -init rails project database
+- `kexec` -execute k8s pod by regex pod name
+- `klog` -show k8s pod log by regex pod name
+- `git_tag_delete` -delete gtihub tag
+- `git_tag_add` -add gtihub tag
+- `dc` -alias of docker-compose
+
+
+
+
+#### some alias define
+
+
+
+- you can find detail in `~/.yadr/zsh/aliases.zsh`
+
 
 
 #### SpaceVim Interface elements:
@@ -388,7 +379,14 @@ The interface elements of SpaceVim start with [SPC] t or [SPC] T. You can view t
 - `SPC T m` - Show/hide the menu bar (no difference is seen)
 - `SPC T t` - Show/hide the toolbar (don’t see the difference)
 - `SPC [1-9]` - Jump to the specified window
-
+- `SPC f t` - Open file tree
+- `SPC p f` - find files in current project
+- `SPC f y` - show and copy current file absolute path in the cmdline
+- `SPC f S` - save all files
+- `SPC f o` - Find current file in file tree
+- `SPC f D` - delete a file and the associated buffer with confirmation
+- `SPC f p` - search word in current project
+- `SPC p /` - fuzzy search for text in current project
 
 
 #### Switch Tab:
