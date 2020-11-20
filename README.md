@@ -33,39 +33,39 @@ Shortcut | Function |
 
 **Defined by Us**
 
-Shortcut | Function |
-:-------:|:--------:|
-`C-v`      | Enter visual mode |
-`C-x C-v`  | Paste text from system clipboard |
-`\<L\>tp`  |toggle paste|
+Shortcut | Function 
+:-------:|:--------:
+`C-v`      | Enter visual mode 
+`C-x C-v`  | Paste text from system clipboard 
+`\<L\>tp`  |toggle paste
 
 **Defined by Vim**
 
-Shortcut | Function |
-:-------:|:--------:|
-`o`        |insert a new line below|
-`S-o`      |insert a new line above|
-`0`        |go to the beginning of the line|
-`$`        |go to the end of the line|
-`v`        |enter character selection mode|
-`x`        |delete selected content|
-`V`        |enter line selection mode|
-`y`       |copy selected content|
-`p`        |paste copied content|
-`Ctrl+u`   |page up|
-`Ctrl+d`   |page down|
-`:w`       |save file|
-`:q`       |quit vim|
-`:/ keyword`|search|
-`n`        |go to the next content|
-`S-N`      |go to the previous content|
-`w`        |move forward one word|
-`b`        |move back one word|
-`gg`       |move to the top of the file|
-`S-G`      |move to the bottom of the file|
-`Ctrl+\`   |show(hide) the Buffers|
-`[spc] c l`|(un)comment the selected line|
-`%s key1/key2/g`|replace Key1 with Key2|
+Shortcut | Function 
+:-------:|:--------:
+`o`        |insert a new line below
+`O`      |insert a new line above
+`0`        |go to the beginning of the line
+`$`        |go to the end of the line
+`v`        |enter character selection mode
+`x`        |delete selected content
+`V`        |enter line selection mode
+`y`       |copy selected content
+`p`        |paste copied content
+`Ctrl+u`   |page up
+`Ctrl+d`   |page down
+`:w`       |save file
+`:q`       |quit vim
+`w`        |move forward one word
+`b`        |move back one word
+`gg`       |move to the top of the file
+`G`      |move to the bottom of the file
+`Ctrl+\`   |show(hide) the Buffers
+`:/ keyword`|search
+`n`        |go to the next content
+`N`      |go to the previous content
+`[spc] c l`|(un)comment the selected line
+`:%s/key1/key2/g`| replae Key1 with Key2 
 
 #### vim && markdown
 * Install `prettier`: `yarn global add prettier` or `npm install --global prettier`
@@ -180,19 +180,30 @@ YADR will take over your ~/.gitconfig, so if you want to store your git username
 
 We recommend setting your user information in this file. In addition, you can set your environment variables appropriately in your ~/.secrets.
 
-- `git l` or `gl`- More effective git log
-- `git b` or `gb`- A list of branches containing the summary of the previous commit
-- `git r` - Information about the source list
-- `git t` or `gt`- Information about the tag list
-- `git nb` or `gnb`- Just like checkoub -b, create a new branch
-- `git cp` or `gcp`- cherry-pick -x (Show those branches which have been cherrypicked)
-- `git simple` - A more concise command to build changelogs
-- `git recent-branches` - Show you about the branches you have used recently
-- `git unstage` / `guns` (remove from index) and `git uncommit` / `gunc` (Revoke to the moment before the last commit-if the code has been pushed, this operation will be very dangerous) Alias
-- Some reasonable default settings, such as optimizing merged branch information, pushing only the current branch, deleting status prompts, and using easy-to-remember prefixes in the diff process: (i)ndex, (w)ork tree, (c)ommit and (o)bject
-- Slightly optimized the color of diff
-- `gdmb` (g)it (d)elete (m)erged (b)ranches - Delete all branches that have been merged into the current branch
-- `Gdiff` Display changes
+Shortcut | Alias 
+:-------:|:--------:
+`ga`     |`git add`
+`gb`     |`git branch`
+`gbc` or `gnb`    |`git checkout -b`
+`gbs`    |`git show-branch`
+`gc`     |`git commit --verbose`
+`gco`    |`git checkout`
+`gcp`    |`git cherry-pick --ff`
+`gd`     |`git diff`
+`gf`     |`git fetch`
+`gfc`    |`git clone`
+`gfm`    |`git pull`
+`gfr`    |`git pull --rebase`
+`gl`     |`git log`
+`gpc`    |`git push --set-upstream origin "$(git-branch-current 2> /dev/null)"`
+`gr`     |`git rebase`
+`gra`    |`git rebase --abort`
+`grc`    |`git rebase --continue`
+`grs`    |`git rebase --skip`
+`gsd`    |`git stash drop`
+`gsl`    |`git stash list`
+`gsp`    |`git stash pop`
+`gst`    |`git stash`
 
 
 
@@ -242,25 +253,25 @@ Some of the most useful commands provided by YADR are listed below. This is not 
 
 #### Tmux
 
+C refer to Ctrl
+Shortcut | Function 
+:-------:|:--------:
+`h(jkl)` |`←(↓↑→)Move pane`
+`C-a c`  |`Craete a new pane`
+`C-a s`  |`Split panes up and down`
+`C-a v`  |`Split panes left and right`
+`C-a x`  |`Kill pane`
+`C-a H(JKL)` |`←(↓↑→)Move dividing line`
+`C-a ,` |`Switch to Tmux command line mode`
+`C-a d` |`Exit Session`
+`C-a D` |`Exit Session`
+`C-a 1` |`Enter pane 1`
 
-- `h`(jkl): ←(↓↑→)move pane
-- `c-a c`: Create a new pane
-- `c-a s`: Split panes up and down
-- `c-a v`: Split panes left and right
-- `c-a x`: Kill pane
-- `c-a H`(JKL): ←(↓↑→)Move dividing line
-- `c-a ,`: Switch to Tmux command line mode
-- `c-a d`: Exit Session
-- `c-a D`: Choose to exit Session
-- `c-a 1`(23456789): Enter pane 1(23456789)
+#### Index
 
+#### Code search 
 
-
-#### 导航
-
-#### 搜索/代码导航
-
-#### 文件导航
+#### File index
 
 #### A better way to press keys for common editing commands
 

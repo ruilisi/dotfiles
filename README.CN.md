@@ -22,8 +22,8 @@ bash -c "`curl -fsSL https://raw.githubusercontent.com/ruilisi/dotfiles/master/i
 **Scroll Mode**
 
 `PRE [`: 进入滚动模式
-Shortcut | Function |
-:-------:|:--------:|
+Shortcut | Function 
+:-------:|:--------:
 `Enter`    | 复制文本         |
 `]`        | 复制滚动模式下的内容 |
 
@@ -34,45 +34,45 @@ Shortcut | Function |
 
 Normal Mode
 
-Shortcut | Function |
-:-------:|:--------:|
-`C-v`    | 视图模式 |
-`C-x C-v`| 从系统粘贴板复制内容 |
-`<L>tp`  | 切换粘贴|
+Shortcut | Function 
+:-------:|:--------:
+`C-v`    | 视图模式 
+`C-x C-v`| 从系统粘贴板复制内容 
+`<L>tp`  | 切换粘贴
 
 Visual Mode
-Shortcut | Function |
-:-------:|:--------:|
-`C-c`    | 复制     |
+Shortcut | Function 
+:-------:|:--------:
+`C-c`    | 复制     
 
 **Defined by Vim**
 
-Shortcut | Function |
-:-------:|:--------:|
-`o`        |光标下方插入新的一行|
-`S-o`      |光标上方插入新的一行|
-`0`        |跳至行首|
-`$`        |跳至行尾|
-`v`        |进入字符选择模式|
-`x`        |删除选中的内容|
-`V`        |进入整行选中模式|
-`y`        |复制选中的内容|
-`p`        |粘贴选中的内容|
-`Ctrl+u`   |往上翻页|
-`Ctrl+d`   |往下翻页|
-`:w`       |保存文件|
-`:q`       |退出Vim|
-`:/ keyword`|搜索|
-`n`        |跳到下一个搜索到的内容|
-`S-N`      |跳到上一个搜索到的内容|
-`w`        |往前移动一个单词|
-`b`        |往后移动一个单词|
-`gg`       |移动到文档顶部|
-`S-G`      |移动到文档底部|
-`Ctrl+\`   |显示(隐藏)文件树|
-`[spc] c l`|快速注释或解除注释行|
-`%s key1/key2/g`|将文档中的key1替换为key2|
-`S-V`      | 选中文本       |
+Shortcut | Function 
+:-------:|:--------:
+`o`        |光标下方插入新的一行
+`O`      |光标上方插入新的一行
+`0`        |跳至行首
+`$`        |跳至行尾
+`v`        |进入字符选择模式
+`x`        |删除选中的内容
+`V`        |进入整行选中模式
+`y`        |复制选中的内容
+`p`        |粘贴选中的内容
+`Ctrl+u`   |往上翻页
+`Ctrl+d`   |往下翻页
+`:w`       |保存文件
+`:q`       |退出Vim
+`:/ keyword`|搜索
+`n`        |跳到下一个搜索到的内容
+`N`      |跳到上一个搜索到的内容
+`w`        |往前移动一个单词
+`b`        |往后移动一个单词
+`gg`       |移动到文档顶部
+`G`      |移动到文档底部
+`Ctrl+\`   |显示(隐藏)文件树
+`[spc] c l`|快速注释或解除注释行
+`%s key1/key2/g`|将文档中的key1替换为key2
+`S-V`      | 选中文本       
 
 #### vim && markdown
 * 安装 `prettier`: `yarn global add prettier` 或 `npm install --global prettier`
@@ -197,21 +197,30 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
 我们推荐在这个文件里设置你的用户信息是。另外，你可以将你的环境变量恰当地设置在你的 `~/.secrets`里。
 
 
-- `git l` 或 `gl`- 可用度更高的git log
-- `git b` 或 `gb`- 含有上一个commit摘要的分支列表
-- `git r` - 有关源列表的信息
-- `git t` 或 `gt`- 有关标签列表的信息
-- `git nb` 或 `gnb`- 正如checkoub -b，建立一个新的分支
-- `git cp` 或 `gcp`- cherry-pick -x (显示那些被cherrypick过的)
-- `git simple` - 一个更加简洁的构建changelogs的命令
-- `git recent-branches` - 帮助告诉你最近使用过的分支
-- `git unstage` / `guns` (从index上移除) 以及 `git uncommit` / `gunc` (撤销至上一个commit之前的时刻 - 如果代码已经push过，这个操作将会非常危险) 别名
-- 一些合情合理的默认设置, 例如优化合并分支信息, 只推送当前分支, 删除状态提示, 以及在diff过程中使用易于记忆的前缀: (i)ndex, (w)ork tree, (c)ommit and (o)bject
-- 微微优化了diff的颜色
-- `gdmb` (g)it (d)elete (m)erged (b)ranches - 删除所有已经合并到当前分支的分支
-- `Gdiff`显示代码前后更改
-
-
+快捷键 | 命令 
+:-------:|:--------:
+`ga`     |`git add`
+`gb`     |`git branch`
+`gbc` or `gnb`    |`git checkout -b`
+`gbs`    |`git show-branch`
+`gc`     |`git commit --verbose`
+`gco`    |`git checkout`
+`gcp`    |`git cherry-pick --ff`
+`gd`     |`git diff`
+`gf`     |`git fetch`
+`gfc`    |`git clone`
+`gfm`    |`git pull`
+`gfr`    |`git pull --rebase`
+`gl`     |`git log`
+`gpc`    |`git push --set-upstream origin "$(git-branch-current 2> /dev/null)"`
+`gr`     |`git rebase`
+`gra`    |`git rebase --abort`
+`grc`    |`git rebase --continue`
+`grs`    |`git rebase --skip`
+`gsd`    |`git stash drop`
+`gsl`    |`git stash list`
+`gsp`    |`git stash pop`
+`gst`    |`git stash`
 
 ##### vim-gitgutter
 
@@ -266,15 +275,15 @@ YADR会接管你的`~/.gitconfig`, 所以如果你想存储你的git用户名及
 
 
 - `h`(jkl): 左(下上右)移窗格
-- `c-a c`: 创建一个新的窗区
-- `c-a s`: 上下分割窗格
-- `c-a v`: 左右分割窗格
-- `c-a x`: 删除窗格
-- `c-a H`(JKL): 左(下上右)移分割线
-- `c-a ,`: 输入Tmux命令行模式
-- `c-a d`: 退出Session
-- `c-a D`: 选择退出Session
-- `c-a 1`(23456789): 进入窗区1(23456789)
+- `C-a c`: 创建一个新的窗区
+- `C-a s`: 上下分割窗格
+- `C-a v`: 左右分割窗格
+- `C-a x`: 删除窗格
+- `C-a H`(JKL): 左(下上右)移分割线
+- `C-a ,`: 输入Tmux命令行模式
+- `C-a d`: 退出Session
+- `C-a D`: 选择退出Session
+- `C-a 1`(23456789): 进入窗区1(23456789)
 
 
 
