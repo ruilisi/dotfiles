@@ -217,6 +217,7 @@ alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
 alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 
 # k8s
+alias k="kubectl"
 alias kpg="kubectl get pods | grep"
 alias ksg="kubectl get service | grep"
 
@@ -260,7 +261,6 @@ alias edit_alias="vim $yadr_zsh/aliases.zsh $yadr_zsh/functions.zsh -p"
 alias docker_purge='docker stop $(docker ps -qa);docker rm $(docker ps -qa)'
 alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn"
 alias vim="nvim"
-alias k="kubectl"
 
 ## source files
 alias ss="source ~/.yadr/zsh/functions.zsh; source ~/.yadr/zsh/aliases.zsh"

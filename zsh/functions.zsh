@@ -467,3 +467,6 @@ function gc {
 function gcm {
   (gc --message $*) || return
 }
+function k_delete_evicted {
+  k delete pod `k get pods | grep Evicted | awk '{print $1}'`
+}
