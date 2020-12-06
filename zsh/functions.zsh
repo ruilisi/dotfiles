@@ -402,7 +402,11 @@ function klogs {
   if [[ "$PROJECT" != "" ]]; then
     kubectl logs -f deployment/$PROJECT --all-containers=true --since=5s --pod-running-timeout=2s $finalopts
   elif  [[ "$INSTANCE" != "" ]]; then
-    kubectl logs -f --max-log-requests=10 -l app.kubernetes.io/instance=$INSTANCE
+    while true; do
+      kubectl logs -f --max-log-requests=10 -l app.kubernetes.io/instance=$INSTANCE 1>&0
+      echo "Waiting..."
+      sleep 2
+    done
   fi
 }
 
