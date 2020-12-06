@@ -471,5 +471,5 @@ function k_delete_evicted {
   k delete pod `k get pods | grep Evicted | awk '{print $1}'`
 }
 function k_get_instance {
-  k get deployment -o jsonpath="{.items[*].metadata.labels['app\.kubernetes\.io\/instance']}" | tr " " "\n"
+  k get pods -o jsonpath="{.items[*].metadata.labels['app\.kubernetes\.io\/instance']}" | tr " " "\n" | uniq
 }
