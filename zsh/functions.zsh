@@ -334,7 +334,7 @@ function kexec {
       echo $fg[red]"Pod not found for $PROJECT"$reset_color
       break
     fi
-    RUNNING_PODS=($(echo $ALL_PODS | egrep "$PROJECT.* ?1/[0-9]? *Running" | awk '{print $1}'))
+    RUNNING_PODS=($(echo $ALL_PODS | egrep "$PROJECT.* ?[1-9]/[0-9]? *Running" | awk '{print $1}'))
     if [[ `echo $ALL_PODS | wc -l` != ${#RUNNING_PODS[@]} ]]; then
       sleep 2
       echo $fg[red]'Pods are not ready, wait...'$reset_color
