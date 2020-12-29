@@ -232,6 +232,9 @@ function gitcopy() {
   fi
 }
 function kubectl() {
+  echo $RUNNING_POD
+  echo $NAMESPACE
+  echo $KCONTEXT
   DEBUG=false
   finalopts=()
   while [[ $@ != "" ]] do
@@ -255,6 +258,7 @@ function kubectl() {
     esac
   done
   [[ $DEBUG == "true" ]] && echo "kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts"
+  echo "kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts"
   command kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts
 }
 function stern {
@@ -297,9 +301,12 @@ function helm() {
   [[ $DEBUG == "true" ]] && echo "helm $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config"
   command helm $finalopts --kubeconfig=$HOME/.kube/${KCONTEXT}_config
 }
-function kexec {
+NAMESPACE=default
+RUNNING_POD=""
+LEFT_ARGS=""
+KCONTEXT=""
+function getpod {
   RAN=true
-  NAMESPACE=default
   function usage ()
   {
     echo "Usage :  $0 [options] [--]
@@ -370,9 +377,15 @@ function kexec {
       break
     fi
   done
-  if [[ $RUNNING_POD_INDEX != -1 ]]; then
-    echo "kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $@"
-    kubectl -it -n $NAMESPACE exec $RUNNING_PODS[$RUNNING_POD_INDEX] -- $@
+  RUNNING_POD=$RUNNING_PODS[$RUNNING_POD_INDEX]
+  LEFT_ARGS=$@
+}
+
+function kexec {
+  getpod $@
+  if [[ $RUNNING_POD != "" ]]; then
+    echo "kubectl -it -n $NAMESPACE exec $RUNNING_POD -- /bin/sh -c $LEFT_ARGS"
+    kubectl -it -n $NAMESPACE exec $RUNNING_POD -- /bin/sh -c $LEFT_ARGS
   fi
 }
 
