@@ -149,6 +149,5 @@ function kubectl() {
     esac
   done
   [[ $DEBUG == "true" ]] && echo "kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts"
-  echo "kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts"
   command kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts
 }

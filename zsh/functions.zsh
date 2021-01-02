@@ -132,22 +132,6 @@ function swap() {
     mv $TMPFILE "$2"
   fi
 }
-
-function init_db() {
-  SERVICE=server
-  while getopts ":s:" o; do
-    case "${o}" in
-      s)
-        SERVICE=${OPTARG}
-        ;;
-      *)
-        echo "Usage: init_db [-s SERVICE]"
-        return
-        ;;
-    esac
-  done
-  dc exec $SERVICE rails db:drop db:create db:migrate db:seed
-}
 function cmd_exists() {
   $* &> /dev/null
   if [[ $? == 0 ]]; then
