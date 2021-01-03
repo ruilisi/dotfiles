@@ -220,6 +220,7 @@ alias emacs="env LC_CTYPE=zh_CN.UTF-8 emacs"
 alias k="kubectl"
 alias kpg="kubectl get pods | grep"
 alias ksg="kubectl get service | grep"
+alias k_get_pods_sort_by_time="k get pods --sort-by=.metadata.creationTimestamp"
 
 # rails
 alias rails_setup='rails db:reset; rails db:seed RAILS_ENV=test'
