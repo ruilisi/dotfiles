@@ -317,3 +317,7 @@ function gc {
 function gcm {
   (gc --message $*) || return
 }
+
+function random_hex {
+  openssl rand -hex $(expr $1 / 2)
+}
