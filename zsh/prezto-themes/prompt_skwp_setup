@@ -23,11 +23,6 @@ function prompt_skwp_precmd {
     git-info on
     git-info
   fi
-
-  # Get ruby information
-  if (( $+functions[ruby-info] )); then
-    ruby-info
-  fi
 }
 
 function prompt_skwp_setup {
@@ -66,12 +61,9 @@ function prompt_skwp_setup {
   zstyle ':prezto:module:git:info:untracked' format "${__PROMPT_SKWP_COLORS[3]}●%f"
   zstyle ':prezto:module:git:info:keys' format 'prompt' '(%b%d%a%m%u)'
 
-  # ruby info (rvm, rbenv)
-  zstyle ':prezto:module:ruby:info:version' format '[%v]'
-
   PROMPT="${__PROMPT_SKWP_COLORS[3]}%n%f ${__PROMPT_SKWP_COLORS[5]}%~%f "'$git_info[prompt]'"$ "
   [[ "$KCONTEXT" != ""  ]] && PROMPT="%F{blue}$KCONTEXT💡 $PROMPT"
-  RPROMPT='%F{blue}${ruby_info[version]}'
+  RPROMPT='%F{blue}'
 }
 
 alias disable_git_info='DISABLE_GIT_INFO=1'
