@@ -151,3 +151,6 @@ function kubectl() {
   [[ $DEBUG == "true" ]] && echo "kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts"
   command kubectl --kubeconfig=$HOME/.kube/${KCONTEXT}_config $finalopts
 }
+function k_force_delete_pod () {
+  k delete pod $1 --grace-period=0 --force
+}
