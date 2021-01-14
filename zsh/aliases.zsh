@@ -264,4 +264,4 @@ alias yarn_sass="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn
 alias vim="nvim"
 
 ## source files
-alias ss="source ~/.yadr/zsh/functions.zsh; source ~/.yadr/zsh/aliases.zsh"
+alias ss="source ~/.zshrc"
