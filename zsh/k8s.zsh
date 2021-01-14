@@ -154,3 +154,6 @@ function kubectl() {
 function k_force_delete_pod () {
   k delete pod $1 --grace-period=0 --force
 }
+function k_get_containers_of_pod {
+  k get pods $1 -o jsonpath='{.spec.containers[*].name}*'
+}
